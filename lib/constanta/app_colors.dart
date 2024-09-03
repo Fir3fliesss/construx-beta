@@ -1,0 +1,11 @@
+import 'package:flutter/material.dart';
+
+class AppColors {
+
+  static const Color hijau = Color(0xFF05A67E);
+  
+  static const Color biru = Color(0xFF023D74);
+
+  static const Color abu = Color(0xFF323A47);
+  
+}
