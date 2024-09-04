@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:construx_beta/app/modules/company_information/controllers/company_information_controller.dart';
+import '../../company_information/controllers/company_information_controller.dart';
 import '../../sidebar/views/sidebar_view.dart';
 import '../../../../constanta/app_colors.dart';
 
@@ -17,20 +17,20 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Spasi tambahan di sini
-                SizedBox(height: 40), // Sesuaikan dengan kebutuhan spasi
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                const SizedBox(height: 40),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children: const [
+                        children: [
                           Text(
                             'Basic Setting',
-                            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 24.0, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(width: 760.0), // Spasi antara dua teks
+                          SizedBox(width: 760.0),
                           Text(
                             'Basic Settings > Company Information',
                             style: TextStyle(color: Colors.black54),
@@ -40,26 +40,55 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                     ],
                   ),
                 ),
-                SizedBox(height: 16.0), // Spasi tambahan sebelum tabel
+                const SizedBox(height: 16.0),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: [
-                      IconButton(
-                        icon: Icon(Icons.add_circle_outline),
-                        onPressed: controller.showAddCompanyDialog,
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: AppColors
+                              .abuabu,
+                          shape: BoxShape.circle,
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.add_circle_outline),
+                          color: Colors
+                              .black,
+                          onPressed: controller.showAddCompanyDialog,
+                        ),
                       ),
-                      IconButton(
-                        icon: Icon(Icons.refresh),
-                        onPressed: () {
-                          // Tambahkan logika untuk refresh tabel
-                        },
+                      const SizedBox(width: 16),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: AppColors
+                              .abuabu,
+                          shape: BoxShape.circle,
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.refresh),
+                          color: Colors
+                              .black,
+                          onPressed: () {
+                            controller.companies.refresh();
+                          },
+                        ),
                       ),
-                      IconButton(
-                        icon: Icon(Icons.upload_outlined),
-                        onPressed: () {
-                          // Tambahkan logika untuk upload data
-                        },
+                      const SizedBox(width: 16),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: AppColors
+                              .abuabu,
+                          shape: BoxShape.circle,
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.upload_outlined),
+                          color: Colors
+                              .black,
+                          onPressed: () {
+                            controller.exportCompanies();
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -70,6 +99,8 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                       padding: const EdgeInsets.all(16.0),
                       child: Obx(() {
                         return DataTable(
+                          headingRowColor:
+                              WidgetStateProperty.all(AppColors.abuabu),
                           columns: const [
                             DataColumn(label: Text('No')),
                             DataColumn(label: Text('Corporate Name')),
@@ -82,27 +113,30 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                           rows: controller.companies.map((company) {
                             return DataRow(
                               cells: [
-                                DataCell(Text(company.id.toString())), // Sesuaikan dengan data sebenarnya
-                                DataCell(Text(company.name)), // Sesuaikan dengan data sebenarnya
-                                DataCell(Text(company.city ?? '-')), // Sesuaikan dengan data sebenarnya
-                                DataCell(Text(company.address ?? '-')), // Sesuaikan dengan data sebenarnya
-                                DataCell(Text(company.personInCharge ?? '-')), // Sesuaikan dengan data sebenarnya
-                                DataCell(Text(company.contactInfo ?? '-')), // Sesuaikan dengan data sebenarnya
+                                DataCell(Text(company.id.toString())),
+                                DataCell(Text(company.name)),
+                                DataCell(Text(company.city ?? '-')),
+                                DataCell(Text(company.address ?? '-')),
+                                DataCell(Text(company.personInCharge ?? '-')),
+                                DataCell(Text(company.contactInfo ?? '-')),
                                 DataCell(Row(
                                   children: [
                                     IconButton(
-                                      icon: Icon(Icons.edit),
-                                      onPressed: () => controller.editCompany(company),
+                                      icon: const Icon(Icons.edit),
+                                      onPressed: () =>
+                                          controller.editCompany(company),
                                     ),
                                     IconButton(
-                                      icon: Icon(Icons.delete),
-                                      onPressed: () => controller.deleteCompany(company),
+                                      icon: const Icon(Icons.delete),
+                                      onPressed: () =>
+                                          controller.deleteCompany(company),
                                     ),
                                   ],
                                 )),
                               ],
                             );
                           }).toList(),
+                          border: const TableBorder(bottom: BorderSide(width: 2, color: AppColors.abuabu),),
                         );
                       }),
                     ),

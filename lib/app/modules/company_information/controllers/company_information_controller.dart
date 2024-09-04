@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:excel/excel.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:construx_beta/app/data/company_model.dart';
@@ -22,11 +25,21 @@ class CompanyInformationController extends GetxController {
   }
 
   void loadInitialData() {
-    // Simulating loading data from an API or local storage
     companies.assignAll([
-      CompanyModel(id: 1, name: 'Lorem Ipsum', city: '-', address: '-', personInCharge: 'John Doe', contactInfo: 'john@example.com'),
-      CompanyModel(id: 2, name: 'Dolor Sit', city: '-', address: '-', personInCharge: 'Jane Doe', contactInfo: 'jane@example.com'),
-      // Add more sample data here...
+      CompanyModel(
+          id: 1,
+          name: 'Lorem Ipsum',
+          city: '-',
+          address: '-',
+          personInCharge: 'John Doe',
+          contactInfo: 'john@example.com'),
+      CompanyModel(
+          id: 2,
+          name: 'Dolor Sit',
+          city: '-',
+          address: '-',
+          personInCharge: 'Jane Doe',
+          contactInfo: 'jane@example.com'),
     ]);
   }
 
@@ -42,7 +55,8 @@ class CompanyInformationController extends GetxController {
         contactInfo: selectedCompany.value.contactInfo,
       ));
       Get.back();
-      Get.snackbar('Success', 'Company added successfully', snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Success', 'Company added successfully',
+          snackPosition: SnackPosition.BOTTOM);
     }
   }
 
@@ -60,9 +74,10 @@ class CompanyInformationController extends GetxController {
           company.address = selectedCompany.value.address;
           company.personInCharge = selectedCompany.value.personInCharge;
           company.contactInfo = selectedCompany.value.contactInfo;
-          companies.refresh(); // Refresh the list to reflect changes
+          companies.refresh();
           Get.back();
-          Get.snackbar('Success', 'Company updated successfully', snackPosition: SnackPosition.BOTTOM);
+          Get.snackbar('Success', 'Company updated successfully',
+              snackPosition: SnackPosition.BOTTOM);
         }
       },
       textCancel: 'Cancel',
@@ -78,10 +93,54 @@ class CompanyInformationController extends GetxController {
       onConfirm: () {
         companies.remove(company);
         Get.back();
-        Get.snackbar('Success', 'Company deleted successfully', snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar('Success', 'Company deleted successfully',
+            snackPosition: SnackPosition.BOTTOM);
       },
     );
   }
+
+Future<void> exportCompanies() async {
+  try {
+    var excel = Excel.createExcel();
+    excel.rename(excel.getDefaultSheet()!, 'Company_Information');
+    Sheet sheetObject = excel['Company_Information'];
+
+    sheetObject.appendRow([
+      TextCellValue('No'),
+      TextCellValue('Corporate Name'),
+      TextCellValue('City'),
+      TextCellValue('Detailed Address'),
+      TextCellValue('Person In Charge'),
+      TextCellValue('Contact Information')
+    ]);
+
+    for (var company in companies) {
+      sheetObject.appendRow([
+        TextCellValue(company.id.toString()),
+        TextCellValue(company.name),
+        TextCellValue(company.city ?? '-'),
+        TextCellValue(company.address ?? '-'),
+        TextCellValue(company.personInCharge ?? '-'),
+        TextCellValue(company.contactInfo ?? '-')
+      ]);
+    }
+
+    var fileBytes = excel.save();
+    if (fileBytes == null) {
+      print('Error: File bytes are null');
+      return;
+    }
+
+    var directory = await getApplicationDocumentsDirectory();
+    var file = File('${directory.path}/company_information.xlsx');
+    file.createSync(recursive: true);
+    file.writeAsBytesSync(fileBytes);
+
+    print('File saved to ${file.path}');
+  } catch (e) {
+    print('An error occurred: $e');
+  }
+}
 
   Widget _buildCompanyForm() {
     return Form(
@@ -90,31 +149,34 @@ class CompanyInformationController extends GetxController {
         children: [
           TextFormField(
             initialValue: selectedCompany.value.name,
-            decoration: InputDecoration(labelText: 'Company Name'),
+            decoration: const InputDecoration(labelText: 'Company Name'),
             onSaved: (value) => selectedCompany.value.name = value!,
-            validator: (value) => value!.isEmpty ? 'Please enter the company name' : null,
+            validator: (value) =>
+                value!.isEmpty ? 'Please enter the company name' : null,
           ),
           TextFormField(
             initialValue: selectedCompany.value.city,
-            decoration: InputDecoration(labelText: 'City'),
+            decoration: const InputDecoration(labelText: 'City'),
             onSaved: (value) => selectedCompany.value.city = value!,
           ),
           TextFormField(
             initialValue: selectedCompany.value.address,
-            decoration: InputDecoration(labelText: 'Detailed Address'),
+            decoration: const InputDecoration(labelText: 'Detailed Address'),
             onSaved: (value) => selectedCompany.value.address = value!,
           ),
           TextFormField(
             initialValue: selectedCompany.value.personInCharge,
-            decoration: InputDecoration(labelText: 'Person In Charge'),
+            decoration: const InputDecoration(labelText: 'Person In Charge'),
             onSaved: (value) => selectedCompany.value.personInCharge = value!,
-            validator: (value) => value!.isEmpty ? 'Please enter the person in charge' : null,
+            validator: (value) =>
+                value!.isEmpty ? 'Please enter the person in charge' : null,
           ),
           TextFormField(
             initialValue: selectedCompany.value.contactInfo,
-            decoration: InputDecoration(labelText: 'Contact Information'),
+            decoration: const InputDecoration(labelText: 'Contact Information'),
             onSaved: (value) => selectedCompany.value.contactInfo = value!,
-            validator: (value) => value!.isEmpty ? 'Please enter contact information' : null,
+            validator: (value) =>
+                value!.isEmpty ? 'Please enter contact information' : null,
           ),
         ],
       ),

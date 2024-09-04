@@ -7,5 +7,7 @@ class AppColors {
   static const Color biru = Color(0xFF023D74);
 
   static const Color abu = Color(0xFF323A47);
+
+  static const Color abuabu = Color(0xFFEEEFF0);
   
 }
