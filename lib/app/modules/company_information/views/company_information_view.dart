@@ -92,15 +92,11 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                                   children: [
                                     IconButton(
                                       icon: Icon(Icons.edit),
-                                      onPressed: () {
-                                        // Tambahkan logika untuk edit data
-                                      },
+                                      onPressed: () => controller.editCompany(company),
                                     ),
                                     IconButton(
                                       icon: Icon(Icons.delete),
-                                      onPressed: () {
-                                        // Tambahkan logika untuk hapus data
-                                      },
+                                      onPressed: () => controller.deleteCompany(company),
                                     ),
                                   ],
                                 )),
