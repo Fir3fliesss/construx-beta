@@ -1,0 +1,8 @@
+{
+    "id": 0,
+    "name": "string",
+    "city": "string",
+    "address": "string",
+    "personInCharge": "string",
+    "contactInfo": "string"
+  }

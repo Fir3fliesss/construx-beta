@@ -1,23 +1,141 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:construx_beta/app/data/company_model.dart';
 
 class CompanyInformationController extends GetxController {
-  //TODO: Implement CompanyInformationController
+  var companies = <CompanyModel>[].obs;
+  var selectedCompany = CompanyModel(
+    id: 0,
+    name: '',
+    city: '',
+    address: '',
+    personInCharge: '',
+    contactInfo: '',
+  ).obs;
 
-  final count = 0.obs;
+  final formKey = GlobalKey<FormState>();
+
   @override
   void onInit() {
     super.onInit();
+    loadInitialData();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void loadInitialData() {
+    // Simulating loading data from an API or local storage
+    companies.assignAll([
+      CompanyModel(id: 1, name: 'Lorem Ipsum', city: '-', address: '-', personInCharge: 'John Doe', contactInfo: 'john@example.com'),
+      CompanyModel(id: 2, name: 'Dolor Sit', city: '-', address: '-', personInCharge: 'Jane Doe', contactInfo: 'jane@example.com'),
+      // Add more sample data here...
+    ]);
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void addCompany() {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      companies.add(CompanyModel(
+        id: companies.length + 1,
+        name: selectedCompany.value.name,
+        city: selectedCompany.value.city,
+        address: selectedCompany.value.address,
+        personInCharge: selectedCompany.value.personInCharge,
+        contactInfo: selectedCompany.value.contactInfo,
+      ));
+      Get.back();
+      Get.snackbar('Success', 'Company added successfully', snackPosition: SnackPosition.BOTTOM);
+    }
   }
 
-  void increment() => count.value++;
+  void editCompany(CompanyModel company) {
+    selectedCompany.value = company;
+    Get.defaultDialog(
+      title: 'Edit Company',
+      content: _buildCompanyForm(),
+      textConfirm: 'Save',
+      onConfirm: () {
+        if (formKey.currentState!.validate()) {
+          formKey.currentState!.save();
+          company.name = selectedCompany.value.name;
+          company.city = selectedCompany.value.city;
+          company.address = selectedCompany.value.address;
+          company.personInCharge = selectedCompany.value.personInCharge;
+          company.contactInfo = selectedCompany.value.contactInfo;
+          companies.refresh(); // Refresh the list to reflect changes
+          Get.back();
+          Get.snackbar('Success', 'Company updated successfully', snackPosition: SnackPosition.BOTTOM);
+        }
+      },
+      textCancel: 'Cancel',
+    );
+  }
+
+  void deleteCompany(CompanyModel company) {
+    Get.defaultDialog(
+      title: 'Delete Company',
+      middleText: 'Are you sure you want to delete ${company.name}?',
+      textConfirm: 'Delete',
+      textCancel: 'Cancel',
+      onConfirm: () {
+        companies.remove(company);
+        Get.back();
+        Get.snackbar('Success', 'Company deleted successfully', snackPosition: SnackPosition.BOTTOM);
+      },
+    );
+  }
+
+  Widget _buildCompanyForm() {
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            initialValue: selectedCompany.value.name,
+            decoration: InputDecoration(labelText: 'Company Name'),
+            onSaved: (value) => selectedCompany.value.name = value!,
+            validator: (value) => value!.isEmpty ? 'Please enter the company name' : null,
+          ),
+          TextFormField(
+            initialValue: selectedCompany.value.city,
+            decoration: InputDecoration(labelText: 'City'),
+            onSaved: (value) => selectedCompany.value.city = value!,
+          ),
+          TextFormField(
+            initialValue: selectedCompany.value.address,
+            decoration: InputDecoration(labelText: 'Detailed Address'),
+            onSaved: (value) => selectedCompany.value.address = value!,
+          ),
+          TextFormField(
+            initialValue: selectedCompany.value.personInCharge,
+            decoration: InputDecoration(labelText: 'Person In Charge'),
+            onSaved: (value) => selectedCompany.value.personInCharge = value!,
+            validator: (value) => value!.isEmpty ? 'Please enter the person in charge' : null,
+          ),
+          TextFormField(
+            initialValue: selectedCompany.value.contactInfo,
+            decoration: InputDecoration(labelText: 'Contact Information'),
+            onSaved: (value) => selectedCompany.value.contactInfo = value!,
+            validator: (value) => value!.isEmpty ? 'Please enter contact information' : null,
+          ),
+        ],
+      ),
+    );
+  }
+
+  void showAddCompanyDialog() {
+    selectedCompany.value = CompanyModel(
+      id: 0,
+      name: '',
+      city: '',
+      address: '',
+      personInCharge: '',
+      contactInfo: '',
+    );
+    Get.defaultDialog(
+      title: 'Add Company',
+      content: _buildCompanyForm(),
+      textConfirm: 'Add',
+      onConfirm: addCompany,
+      textCancel: 'Cancel',
+    );
+  }
 }
