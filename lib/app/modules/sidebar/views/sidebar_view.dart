@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../../constanta/app_colors.dart';
 
@@ -9,19 +8,18 @@ class Sidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250, // Lebar sidebar
-      color: AppColors.abu, // Warna latar sidebar
+      width: 300,
+      color: AppColors.abu,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(
-                  'construx_beta/assets/images/logo.svg', // Gambar logo
-                  width: 60.0,
-                  height: 60.0,
+                Image.asset(
+                  'assets/images/CONSTRUX-LOGO.png',
+                  width: 400.0,
                 ),
               ],
             ),
@@ -38,6 +36,7 @@ class Sidebar extends StatelessWidget {
             title: const Text('Basic Settings', style: TextStyle(color: Colors.white)),
             children: <Widget>[
               ListTile(
+                contentPadding: const EdgeInsets.only(left: 50.0),
                 leading: const Icon(Icons.info, color: Colors.white),
                 title: const Text('Company Information', style: TextStyle(color: Colors.white)),
                 onTap: () {
@@ -45,6 +44,7 @@ class Sidebar extends StatelessWidget {
                 },
               ),
               ListTile(
+                contentPadding: const EdgeInsets.only(left: 50.0),
                 leading: const Icon(Icons.person, color: Colors.white),
                 title: const Text('User Role', style: TextStyle(color: Colors.white)),
                 onTap: () {

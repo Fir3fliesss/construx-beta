@@ -21,7 +21,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         children: [
@@ -30,7 +30,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                             style: TextStyle(
                                 fontSize: 24.0, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(width: 760.0),
+                          SizedBox(width: 700.0),
                           Text(
                             'Basic Settings > Company Information',
                             style: TextStyle(color: Colors.black54),
@@ -47,28 +47,24 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                     children: [
                       Container(
                         decoration: const BoxDecoration(
-                          color: AppColors
-                              .abuabu,
+                          color: AppColors.abuabu,
                           shape: BoxShape.circle,
                         ),
                         child: IconButton(
                           icon: const Icon(Icons.add_circle_outline),
-                          color: Colors
-                              .black,
+                          color: Colors.black,
                           onPressed: controller.showAddCompanyDialog,
                         ),
                       ),
                       const SizedBox(width: 16),
                       Container(
                         decoration: const BoxDecoration(
-                          color: AppColors
-                              .abuabu,
+                          color: AppColors.abuabu,
                           shape: BoxShape.circle,
                         ),
                         child: IconButton(
                           icon: const Icon(Icons.refresh),
-                          color: Colors
-                              .black,
+                          color: Colors.black,
                           onPressed: () {
                             controller.companies.refresh();
                           },
@@ -77,14 +73,12 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                       const SizedBox(width: 16),
                       Container(
                         decoration: const BoxDecoration(
-                          color: AppColors
-                              .abuabu,
+                          color: AppColors.abuabu,
                           shape: BoxShape.circle,
                         ),
                         child: IconButton(
                           icon: const Icon(Icons.upload_outlined),
-                          color: Colors
-                              .black,
+                          color: Colors.black,
                           onPressed: () {
                             controller.exportCompanies();
                           },
@@ -93,10 +87,17 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                     ],
                   ),
                 ),
-                Expanded(
+
+                Container(
+                  constraints: const BoxConstraints(
+                    minWidth:
+                        double.infinity,
+                    maxHeight:
+                        500,
+                  ),
                   child: SingleChildScrollView(
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Obx(() {
                         return DataTable(
                           headingRowColor:
@@ -136,7 +137,10 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                               ],
                             );
                           }).toList(),
-                          border: const TableBorder(bottom: BorderSide(width: 2, color: AppColors.abuabu),),
+                          border: const TableBorder(
+                            bottom:
+                                BorderSide(width: 2, color: AppColors.abuabu),
+                          ),
                         );
                       }),
                     ),
