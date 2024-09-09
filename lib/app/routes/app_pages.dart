@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/appbar/bindings/appbar_binding.dart';
+import '../modules/appbar/views/appbar_view.dart';
 import '../modules/company_information/bindings/company_information_binding.dart';
 import '../modules/company_information/views/company_information_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.SIDEBAR,
       page: () => const Sidebar(),
       binding: SidebarBinding(),
+    ),
+    GetPage(
+      name: _Paths.APPBAR,
+      page: () => const AppbarView(),
+      binding: AppbarBinding(),
     ),
   ];
 }
