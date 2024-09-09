@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../company_information/controllers/company_information_controller.dart';
+import '../controllers/user_role_controller.dart';
 import '../../sidebar/views/sidebar_view.dart';
 import '../../../../constanta/app_colors.dart';
 import '../../appbar/views/appbar_view.dart';
 
-class CompanyInformationView extends GetView<CompanyInformationController> {
-  const CompanyInformationView({super.key});
+class UserRoleView extends GetView<UserRoleController> {
+  const UserRoleView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                       ),
                       Spacer(),
                       Text(
-                        'Basic Settings > Company Information',
+                        'Basic Settings > User Role',
                         style: TextStyle(color: Colors.black54),
                       ),
                     ],
@@ -62,7 +62,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                               child: IconButton(
                                 icon: const Icon(Icons.add_circle_outline),
                                 color: Colors.black,
-                                onPressed: controller.showAddCompanyDialog,
+                                onPressed: controller.showAddUserRoleDialog,
                               ),
                             ),
                             const SizedBox(width: 16),
@@ -75,7 +75,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                                 icon: const Icon(Icons.refresh),
                                 color: Colors.black,
                                 onPressed: () {
-                                  controller.companies.refresh();
+                                  controller.userRoles.refresh();
                                 },
                               ),
                             ),
@@ -89,7 +89,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                                 icon: const Icon(Icons.upload_outlined),
                                 color: Colors.black,
                                 onPressed: () {
-                                  controller.exportCompanies();
+                                  controller.exportUserRoles();
                                 },
                               ),
                             ),
@@ -97,7 +97,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                         ),
                       ),
                       Container(
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           minWidth: double.infinity,
                           maxHeight: 500,
                         ),
@@ -106,42 +106,50 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                             padding: const EdgeInsets.all(20.0),
                             child: Obx(() {
                               return DataTable(
-                                headingRowColor:
+                                headingRowColor: 
                                     WidgetStateProperty.all(AppColors.abuabu),
+                                columnSpacing: 255.0,
                                 columns: const [
                                   DataColumn(label: Text('No')),
-                                  DataColumn(label: Text('Corporate Name')),
-                                  DataColumn(label: Text('City')),
-                                  DataColumn(label: Text('Detailed Address')),
-                                  DataColumn(label: Text('Person In Charge')),
-                                  DataColumn(
-                                      label: Text('Contact Information')),
+                                  DataColumn(label: Text('User Role')),
+                                  DataColumn(label: Text('Valid')),
                                   DataColumn(label: Text('Operate')),
                                 ],
-                                rows: controller.companies.map((company) {
+                                rows: controller.userRoles.map((userRole) {
                                   return DataRow(
                                     cells: [
-                                      DataCell(Text(company.id.toString())),
-                                      DataCell(Text(company.name)),
-                                      DataCell(Text(company.city ?? '-')),
-                                      DataCell(Text(company.address ?? '-')),
-                                      DataCell(
-                                          Text(company.personInCharge ?? '-')),
-                                      DataCell(
-                                          Text(company.contactInfo ?? '-')),
-                                      DataCell(Row(
-                                        children: [
-                                          IconButton(
-                                            icon: const Icon(Icons.edit),
-                                            onPressed: () =>
-                                                controller.editCompany(company),
-                                          ),
-                                          IconButton(
-                                            icon: const Icon(Icons.delete, color: Color(0xFFD32F2F),),
-                                            onPressed: () => controller
-                                                .deleteCompany(company),
-                                          ),
-                                        ],
+                                      DataCell(Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 0),
+                                        child: Text(userRole.no.toString()),
+                                      )),
+                                      DataCell(Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 0), 
+                                        child: Text(userRole.userRole ?? '-'),
+                                      )),
+                                      DataCell(Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 0),
+                                        child: Text(userRole.valid ?? '-'),
+                                      )),
+                                      DataCell(Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 0),
+                                        child: Row(
+                                          children: [
+                                            IconButton(
+                                              icon: const Icon(Icons.edit),
+                                              onPressed: () => controller
+                                                  .editUserRole(userRole),
+                                            ),
+                                            SizedBox(width: 50,),
+                                            IconButton(
+                                              icon: const Icon(
+                                                Icons.delete,
+                                                color: Color(0xFFD32F2F),
+                                              ),
+                                              onPressed: () => controller
+                                                  .deleteUserRole(userRole),
+                                            ),
+                                          ],
+                                        ),
                                       )),
                                     ],
                                   );
@@ -149,8 +157,10 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                                 border: const TableBorder(
                                   bottom: BorderSide(
                                       width: 2, color: AppColors.abuabu),
-                                      left: BorderSide(width: 2, color: AppColors.abuabu),
-                                      right: BorderSide(width: 2, color: AppColors.abuabu),
+                                  left: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                  right: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
                                 ),
                               );
                             }),

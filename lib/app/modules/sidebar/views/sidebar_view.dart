@@ -40,7 +40,7 @@ class Sidebar extends StatelessWidget {
                 leading: const Icon(Icons.info, color: Colors.white),
                 title: const Text('Company Information', style: TextStyle(color: Colors.white)),
                 onTap: () {
-                  Get.toNamed('/company-information'); // Navigasi ke halaman Company Information
+                  Get.toNamed('/company-information');
                 },
               ),
               ListTile(
@@ -48,13 +48,19 @@ class Sidebar extends StatelessWidget {
                 leading: const Icon(Icons.person, color: Colors.white),
                 title: const Text('User Role', style: TextStyle(color: Colors.white)),
                 onTap: () {
-                  Get.toNamed('/user-role'); // Navigasi ke halaman User Role
+                  Get.toNamed('/user-role');
                 },
               ),
-              // Tambahkan item menu lainnya sesuai kebutuhan
+              ListTile(
+                contentPadding: const EdgeInsets.only(left: 50.0),
+                leading: const Icon(Icons.category_outlined, color: Colors.white),
+                title: const Text('Commodity Category', style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Get.toNamed('/commodity-category');
+                },
+              ),
             ],
           ),
-          // Tambahkan item lain sesuai kebutuhan
         ],
       ),
     );

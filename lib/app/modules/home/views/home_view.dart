@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
                 const AppbarView(),
                 Expanded(
                   child: Container(
-                    color: Colors.grey[100],
+                    color: AppColors.background,
                     padding: const EdgeInsets.all(16.0),
                     child: const Center(
                       child: Text('ConstruX', style: TextStyle(fontSize: 24.0)),

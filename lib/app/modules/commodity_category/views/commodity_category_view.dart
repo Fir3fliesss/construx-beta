@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../company_information/controllers/company_information_controller.dart';
+import '../../commodity_category/controllers/commodity_category_controller.dart';
 import '../../sidebar/views/sidebar_view.dart';
 import '../../../../constanta/app_colors.dart';
 import '../../appbar/views/appbar_view.dart';
 
-class CompanyInformationView extends GetView<CompanyInformationController> {
-  const CompanyInformationView({super.key});
+class CommodityCategoryView extends GetView<CommodityCategoryController> {
+  const CommodityCategoryView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +25,13 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                   child: Row(
                     children: [
                       Text(
-                        'Basic Setting',
+                        'Commodity Categories',
                         style: TextStyle(
                             fontSize: 24.0, fontWeight: FontWeight.bold),
                       ),
                       Spacer(),
                       Text(
-                        'Basic Settings > Company Information',
+                        'Basic Settings > Commodity Categories',
                         style: TextStyle(color: Colors.black54),
                       ),
                     ],
@@ -62,7 +62,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                               child: IconButton(
                                 icon: const Icon(Icons.add_circle_outline),
                                 color: Colors.black,
-                                onPressed: controller.showAddCompanyDialog,
+                                onPressed: controller.showAddCategoryDialog,
                               ),
                             ),
                             const SizedBox(width: 16),
@@ -75,7 +75,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                                 icon: const Icon(Icons.refresh),
                                 color: Colors.black,
                                 onPressed: () {
-                                  controller.companies.refresh();
+                                  controller.categories.refresh();
                                 },
                               ),
                             ),
@@ -89,7 +89,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                                 icon: const Icon(Icons.upload_outlined),
                                 color: Colors.black,
                                 onPressed: () {
-                                  controller.exportCompanies();
+                                  controller.exportCategories();
                                 },
                               ),
                             ),
@@ -110,36 +110,29 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                                     WidgetStateProperty.all(AppColors.abuabu),
                                 columns: const [
                                   DataColumn(label: Text('No')),
-                                  DataColumn(label: Text('Corporate Name')),
-                                  DataColumn(label: Text('City')),
-                                  DataColumn(label: Text('Detailed Address')),
-                                  DataColumn(label: Text('Person In Charge')),
-                                  DataColumn(
-                                      label: Text('Contact Information')),
+                                  DataColumn(label: Text('Commodity Category')),
+                                  DataColumn(label: Text('Creator')),
+                                  DataColumn(label: Text('Creation Time')),
                                   DataColumn(label: Text('Operate')),
                                 ],
-                                rows: controller.companies.map((company) {
+                                rows: controller.categories.map((category) {
                                   return DataRow(
                                     cells: [
-                                      DataCell(Text(company.id.toString())),
-                                      DataCell(Text(company.name)),
-                                      DataCell(Text(company.city ?? '-')),
-                                      DataCell(Text(company.address ?? '-')),
-                                      DataCell(
-                                          Text(company.personInCharge ?? '-')),
-                                      DataCell(
-                                          Text(company.contactInfo ?? '-')),
+                                      DataCell(Text(category.no.toString())),
+                                      DataCell(Text(category.commodityCategory ?? '-')),
+                                      DataCell(Text(category.creator ?? '-')),
+                                      DataCell(Text(category.createTime ?? '-')),
                                       DataCell(Row(
                                         children: [
                                           IconButton(
                                             icon: const Icon(Icons.edit),
                                             onPressed: () =>
-                                                controller.editCompany(company),
+                                                controller.editCategory(category),
                                           ),
                                           IconButton(
                                             icon: const Icon(Icons.delete, color: Color(0xFFD32F2F),),
                                             onPressed: () => controller
-                                                .deleteCompany(company),
+                                                .deleteCategory(category),
                                           ),
                                         ],
                                       )),

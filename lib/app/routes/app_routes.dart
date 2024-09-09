@@ -7,6 +7,8 @@ abstract class Routes {
   static const COMPANY_INFORMATION = _Paths.COMPANY_INFORMATION;
   static const SIDEBAR = _Paths.SIDEBAR;
   static const APPBAR = _Paths.APPBAR;
+  static const USER_ROLE = _Paths.USER_ROLE;
+  static const COMMODITY_CATEGORY = _Paths.COMMODITY_CATEGORY;
 }
 
 abstract class _Paths {
@@ -15,4 +17,6 @@ abstract class _Paths {
   static const COMPANY_INFORMATION = '/company-information';
   static const SIDEBAR = '/sidebar';
   static const APPBAR = '/appbar';
+  static const USER_ROLE = '/user-role';
+  static const COMMODITY_CATEGORY = '/commodity-category';
 }

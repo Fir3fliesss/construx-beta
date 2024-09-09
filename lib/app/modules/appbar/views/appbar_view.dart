@@ -72,6 +72,16 @@ class AppbarView extends GetView<AppbarController>
                 icon: const Icon(Icons.notifications_none_rounded),
                 onPressed: () {},
               ),
+              const SizedBox(width: 16),
+              IconButton(
+                icon: const Icon(Icons.person_outline_rounded),
+                onPressed: () {},
+              ),
+              const SizedBox(width: 8),
+              const Text(
+                'Nusa',
+                style: TextStyle(fontWeight: FontWeight.w800),
+              ),
             ],
           ),
         ],
