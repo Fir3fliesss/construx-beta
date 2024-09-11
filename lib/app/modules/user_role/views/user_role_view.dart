@@ -107,7 +107,7 @@ class UserRoleView extends GetView<UserRoleController> {
                             child: Obx(() {
                               return DataTable(
                                 headingRowColor: 
-                                    MaterialStateProperty.all(AppColors.abuabu),
+                                    WidgetStateProperty.all(AppColors.abuabu),
                                 columnSpacing: 255.0,
                                 columns: const [
                                   DataColumn(label: Text('No')),

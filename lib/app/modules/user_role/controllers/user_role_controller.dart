@@ -127,11 +127,14 @@ class UserRoleController extends GetxController {
             validator: (value) =>
                 value!.isEmpty ? 'Please enter a user role' : null,
           ),
+          // Toggle button for "Valid" status
           SwitchListTile(
             title: const Text('Valid'),
-            value: selectedUserRole.value.valid == 'Yes', // Toggle status
+            value: selectedUserRole.value.valid == 'Yes', // Status toggle
             onChanged: (value) {
-              selectedUserRole.value.valid = value ? 'Yes' : 'No'; // Update valid status
+              selectedUserRole.update((role) {
+                role!.valid = value ? 'Yes' : 'No'; // Ubah status valid
+              });
             },
           ),
         ],
