@@ -28,7 +28,7 @@ class Sidebar extends StatelessWidget {
           ),
           Obx(() => Container(
             color: controller.selectedIndex.value == 0
-                      ? Colors.green
+                      ? AppColors.hijau
                       : AppColors.abu,
             child: ListTile(
                   leading: const Icon(
@@ -36,7 +36,7 @@ class Sidebar extends StatelessWidget {
                     color: Colors.white,
                   ),
                   title: Text(
-                    'Home',
+                    'Home Page',
                     style: TextStyle(color: Colors.white),
                   ),
                   onTap: () {
@@ -59,7 +59,7 @@ class Sidebar extends StatelessWidget {
                 tilePadding: EdgeInsets.symmetric(horizontal: 16),
                 collapsedBackgroundColor: Colors.transparent,
                 backgroundColor: controller.selectedIndex.value == 1
-                    ? Colors.green
+                    ? AppColors.hijau
                     : Colors.transparent,
                 initiallyExpanded: controller.isExpanded(1),
                 onExpansionChanged: (bool expanded) {
@@ -71,7 +71,7 @@ class Sidebar extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     color: controller.selectedSubIndex.value == 1
-                        ? Colors.white
+                        ? AppColors.putih
                         : AppColors.abu,
                     child: ListTile(
                       contentPadding: const EdgeInsets.only(left: 50.0),
@@ -79,14 +79,14 @@ class Sidebar extends StatelessWidget {
                         Icons.info,
                         color: controller.selectedSubIndex.value == 1
                             ? Colors.black
-                            : Colors.white,
+                            : AppColors.putih,
                       ),
                       title: Text(
                         'Company Information',
                         style: TextStyle(
                           color: controller.selectedSubIndex.value == 1
-                              ? Colors.black
-                              : Colors.white,
+                              ? AppColors.textGelap
+                              : AppColors.putih,
                         ),
                       ),
                       tileColor: controller.selectedSubIndex.value == 1
@@ -100,7 +100,7 @@ class Sidebar extends StatelessWidget {
                   ),
                   Container(
                     color: controller.selectedSubIndex.value == 2
-                        ? Colors.white
+                        ? AppColors.putih
                         : AppColors.abu,
                     child: ListTile(
                       contentPadding: const EdgeInsets.only(left: 50.0),
@@ -108,18 +108,18 @@ class Sidebar extends StatelessWidget {
                         Icons.person,
                         color: controller.selectedSubIndex.value == 2
                             ? Colors.black
-                            : Colors.white,
+                            : AppColors.putih,
                       ),
                       title: Text(
                         'User Role',
                         style: TextStyle(
                           color: controller.selectedSubIndex.value == 2
-                              ? Colors.black
-                              : Colors.white,
+                              ? AppColors.textGelap
+                              : AppColors.putih,
                         ),
                       ),
                       tileColor: controller.selectedSubIndex.value == 2
-                          ? Colors.white
+                          ? AppColors.putih
                           : Colors.transparent,
                       onTap: () {
                         controller.selectSubItem(2);
@@ -129,7 +129,7 @@ class Sidebar extends StatelessWidget {
                   ),
                   Container(
                     color: controller.selectedSubIndex.value == 3
-                        ? Colors.white
+                        ? AppColors.putih
                         : AppColors.abu,
                     child: ListTile(
                       contentPadding: const EdgeInsets.only(left: 50.0),
@@ -137,14 +137,14 @@ class Sidebar extends StatelessWidget {
                         Icons.category_outlined,
                         color: controller.selectedSubIndex.value == 3
                             ? Colors.black
-                            : Colors.white,
+                            : AppColors.putih,
                       ),
                       title: Text(
                         'Commodity Category',
                         style: TextStyle(
                           color: controller.selectedSubIndex.value == 3
-                              ? Colors.black
-                              : Colors.white,
+                              ? AppColors.textGelap
+                              : AppColors.putih,
                         ),
                       ),
                       tileColor: controller.selectedSubIndex.value == 3
@@ -161,7 +161,7 @@ class Sidebar extends StatelessWidget {
 
               Obx( () => Container(
                 color: controller.selectedIndex.value == 2
-                    ? Colors.green
+                    ? AppColors.hijau
                     : AppColors.abu,
                 child: ListTile(
                   leading: const Icon(
