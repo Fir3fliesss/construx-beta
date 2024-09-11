@@ -1,12 +1,9 @@
 import 'package:get/get.dart';
-
-import '../controllers/sidebar_controller.dart';
+import 'package:construx_beta/app/modules/sidebar/controllers/sidebar_controller.dart';
 
 class SidebarBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SidebarController>(
-      () => SidebarController(),
-    );
+    Get.put<SidebarController>(SidebarController());
   }
 }

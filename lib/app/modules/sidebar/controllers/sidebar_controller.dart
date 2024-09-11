@@ -1,23 +1,33 @@
 import 'package:get/get.dart';
 
 class SidebarController extends GetxController {
-  //TODO: Implement SidebarController
+  // Index dari item list yang dipilih
+  var selectedIndex = 0.obs;
+  var selectedSubIndex = 0.obs;
+  
+  // Map untuk track sublist yang expanded atau tidak
+  var expandedItems = <int, bool>{}.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  // Function untuk memilih index list
+  void selectItem(int index) {
+    selectedIndex.value = index;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void selectSubItem(int index) {
+    selectedSubIndex.value = index;
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  // Function untuk toggle expand/collapse sublist
+  void toggleExpand(int index) {
+    if (expandedItems.containsKey(index)) {
+      expandedItems[index] = !(expandedItems[index] ?? false);
+    } else {
+      expandedItems[index] = true;
+    }
   }
 
-  void increment() => count.value++;
+  // Check apakah sublist terbuka
+  bool isExpanded(int index) {
+    return expandedItems[index] ?? false;
+  }
 }

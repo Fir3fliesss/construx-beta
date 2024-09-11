@@ -13,7 +13,7 @@ class CommodityCategoryView extends GetView<CommodityCategoryController> {
     return Scaffold(
       body: Row(
         children: [
-          const Sidebar(),
+          Sidebar(),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
