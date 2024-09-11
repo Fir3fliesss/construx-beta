@@ -34,7 +34,7 @@ class Sidebar extends StatelessWidget {
             title: Text('Home', style: TextStyle(color: Colors.white),),
             tileColor: controller.selectedIndex.value == 0
                 ? Colors.green
-                : Colors.transparent,
+                : AppColors.abu,
             onTap: () {
               controller.selectItem(0);
               Get.toNamed('/home');
@@ -67,11 +67,12 @@ class Sidebar extends StatelessWidget {
                     ? Colors.white
                     : AppColors.abu,
                 child: ListTile(
+                  contentPadding: const EdgeInsets.only(left: 50.0),
                   leading: Icon(Icons.info, color: controller.selectedSubIndex.value == 1
                     ? Colors.black
                     : Colors.white,),
                   title: Text(
-                      'company information',
+                      'Company Information',
                       style: TextStyle(
                         color: controller.selectedSubIndex.value == 1 ? Colors.black : Colors.white,
                       ),
@@ -89,13 +90,14 @@ class Sidebar extends StatelessWidget {
               Container(
                 color: controller.selectedSubIndex.value == 2
                     ? Colors.white
-                    : Colors.transparent,
+                    : AppColors.abu,
                 child: ListTile(
+                  contentPadding: const EdgeInsets.only(left: 50.0),
                   leading: Icon(Icons.person, color: controller.selectedSubIndex.value == 2
                     ? Colors.black
                     : Colors.white,),
                   title: Text(
-                    'user profile',
+                    'User Role',
                     style: TextStyle(
                       color: controller.selectedSubIndex.value == 2 ? Colors.black : Colors.white,
                     ),
@@ -105,20 +107,21 @@ class Sidebar extends StatelessWidget {
                     : Colors.transparent,
                   onTap: () {
                     controller.selectSubItem(2);
-                    Get.toNamed('/user-profile');
+                    Get.toNamed('/user-role');
                   },
                 ),
               ),
               Container(
                 color: controller.selectedSubIndex.value == 3
                     ? Colors.white
-                    : Colors.transparent,
+                    : AppColors.abu,
                 child: ListTile(
+                  contentPadding: const EdgeInsets.only(left: 50.0),
                   leading: Icon(Icons.category_outlined, color: controller.selectedSubIndex.value == 3
                     ? Colors.black
                     : Colors.white,),
                   title: Text(
-                    'commodity category',
+                    'Commodity Category',
                     style: TextStyle(
                       color: controller.selectedSubIndex.value == 3 ? Colors.black : Colors.white,
                     ),
