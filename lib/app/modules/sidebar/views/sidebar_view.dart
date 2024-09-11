@@ -12,9 +12,8 @@ class Sidebar extends StatelessWidget {
     return Container(
       width: 300,
       color: AppColors.abu,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
+      child: Column(
+        children: [
           DrawerHeader(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -26,159 +25,195 @@ class Sidebar extends StatelessWidget {
               ],
             ),
           ),
-          Obx(() => Container(
-            color: controller.selectedIndex.value == 0
-                      ? AppColors.hijau
-                      : AppColors.abu,
-            child: ListTile(
-                  leading: const Icon(
-                    Icons.home,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    'Home Page',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onTap: () {
-                    controller.selectItem(0);
-                    // Reset sub item selection when main item is selected
-                    controller.selectSubItem(-1); // Add this line to reset sub items
-                    Get.toNamed('/home');
-                  },
-                ),
-          )),
-          Obx(() => ExpansionTile(
-                leading: const Icon(
-                  Icons.settings,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Basic Settings',
-                  style: TextStyle(color: Colors.white),
-                ),
-                tilePadding: EdgeInsets.symmetric(horizontal: 16),
-                collapsedBackgroundColor: Colors.transparent,
-                backgroundColor: controller.selectedIndex.value == 1
-                    ? AppColors.hijau
-                    : Colors.transparent,
-                initiallyExpanded: controller.isExpanded(1),
-                onExpansionChanged: (bool expanded) {
-                  controller.toggleExpand(1);
-                  if (expanded) {
-                    controller.selectItem(1);
-                  }
-                },
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ListView(
+                padding: EdgeInsets.zero,
                 children: <Widget>[
-                  Container(
-                    color: controller.selectedSubIndex.value == 1
-                        ? AppColors.putih
-                        : AppColors.abu,
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.only(left: 50.0),
-                      leading: Icon(
-                        Icons.info,
-                        color: controller.selectedSubIndex.value == 1
-                            ? Colors.black
-                            : AppColors.putih,
-                      ),
-                      title: Text(
-                        'Company Information',
-                        style: TextStyle(
-                          color: controller.selectedSubIndex.value == 1
-                              ? AppColors.textGelap
-                              : AppColors.putih,
+                  // Home Page ListTile
+                  Obx(() => Container(
+                        color: controller.selectedIndex.value == 0
+                            ? AppColors.hijau
+                            : AppColors.abu,
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.home,
+                            color: Colors.white,
+                          ),
+                          title: const Text(
+                            'Home Page',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onTap: () {
+                            controller.selectItem(0);
+                            controller.selectSubItem(-1); // Reset sub-item selection
+                            Get.toNamed('/home');
+                          },
                         ),
-                      ),
-                      tileColor: controller.selectedSubIndex.value == 1
-                          ? Colors.white
-                          : Colors.transparent,
-                      onTap: () {
-                        controller.selectSubItem(1);
-                        Get.toNamed('/company-information');
-                      },
-                    ),
-                  ),
-                  Container(
-                    color: controller.selectedSubIndex.value == 2
-                        ? AppColors.putih
-                        : AppColors.abu,
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.only(left: 50.0),
-                      leading: Icon(
-                        Icons.person,
-                        color: controller.selectedSubIndex.value == 2
-                            ? Colors.black
-                            : AppColors.putih,
-                      ),
-                      title: Text(
-                        'User Role',
-                        style: TextStyle(
-                          color: controller.selectedSubIndex.value == 2
-                              ? AppColors.textGelap
-                              : AppColors.putih,
-                        ),
-                      ),
-                      tileColor: controller.selectedSubIndex.value == 2
-                          ? AppColors.putih
-                          : Colors.transparent,
-                      onTap: () {
-                        controller.selectSubItem(2);
-                        Get.toNamed('/user-role');
-                      },
-                    ),
-                  ),
-                  Container(
-                    color: controller.selectedSubIndex.value == 3
-                        ? AppColors.putih
-                        : AppColors.abu,
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.only(left: 50.0),
-                      leading: Icon(
-                        Icons.category_outlined,
-                        color: controller.selectedSubIndex.value == 3
-                            ? Colors.black
-                            : AppColors.putih,
-                      ),
-                      title: Text(
-                        'Commodity Category',
-                        style: TextStyle(
-                          color: controller.selectedSubIndex.value == 3
-                              ? AppColors.textGelap
-                              : AppColors.putih,
-                        ),
-                      ),
-                      tileColor: controller.selectedSubIndex.value == 3
-                          ? Colors.white
-                          : Colors.transparent,
-                      onTap: () {
-                        controller.selectSubItem(3);
-                        Get.toNamed('/commodity-category');
-                      },
-                    ),
-                  ),
-                ],
-              )),
+                      )),
 
-              Obx( () => Container(
-                color: controller.selectedIndex.value == 2
-                    ? AppColors.hijau
-                    : AppColors.abu,
-                child: ListTile(
-                  leading: const Icon(
-                    Icons.notifications,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    'Receiving Management',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onTap: () {
-                    controller.selectItem(2);
-                    controller.selectSubItem(-1); 
-                    Get.toNamed('/receiving-management');
-                  },
-                ),
-              ))
+                  // Parent with Sub-items (Settings)
+                  Obx(() => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Parent ListTile
+                          Container(
+                            color: controller.selectedIndex.value == 1
+                                ? AppColors.hijau // Warna untuk parent yang dipilih
+                                : AppColors.abu, // Warna default untuk parent
+                            child: ListTile(
+                              leading: const Icon(
+                                Icons.settings,
+                                color: Colors.white,
+                              ),
+                              title: const Text(
+                                'Basic Settings',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              trailing: Icon(
+                                controller.isExpanded(1)
+                                    ? Icons.expand_less
+                                    : Icons.expand_more,
+                                color: Colors.white,
+                              ),
+                              tileColor: Colors.transparent,
+                              onTap: () {
+                                controller.selectItem(1); // Memilih item utama
+                                controller.toggleExpand(1); // Toggle expand/collapse
+                              },
+                            ),
+                          ),
+
+                          // Expanded Sub-items
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 300),
+                            height: controller.isExpanded(1) ? null : 0,
+                            child: Column(
+                              children: [
+                                // Sub-item 1
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: controller.selectedSubIndex.value == 1
+                                        ? AppColors.putih
+                                        : AppColors.abu,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  margin: const EdgeInsets.only(left: 40.0, top: 5),
+                                  child: ListTile(
+                                    leading: Icon(
+                                      Icons.info,
+                                      color: controller.selectedSubIndex.value == 1
+                                          ? Colors.black
+                                          : AppColors.putih,
+                                    ),
+                                    title: Text(
+                                      'Company Information',
+                                      style: TextStyle(
+                                        color: controller.selectedSubIndex.value == 1
+                                            ? AppColors.textGelap
+                                            : AppColors.putih,
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      controller.selectSubItem(1); // Memilih sub-item
+                                      Get.toNamed('/company-information');
+                                    },
+                                  ),
+                                ),
+
+                                // Sub-item 2
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: controller.selectedSubIndex.value == 2
+                                        ? AppColors.putih
+                                        : AppColors.abu,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  margin: const EdgeInsets.only(left: 40.0, top: 5),
+                                  child: ListTile(
+                                    leading: Icon(
+                                      Icons.person,
+                                      color: controller.selectedSubIndex.value == 2
+                                          ? Colors.black
+                                          : AppColors.putih,
+                                    ),
+                                    title: Text(
+                                      'User Role',
+                                      style: TextStyle(
+                                        color: controller.selectedSubIndex.value == 2
+                                            ? AppColors.textGelap
+                                            : AppColors.putih,
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      controller.selectSubItem(2); // Memilih sub-item
+                                      Get.toNamed('/user-role');
+                                    },
+                                  ),
+                                ),
+
+                                // Sub-item 3
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: controller.selectedSubIndex.value == 3
+                                        ? AppColors.putih
+                                        : AppColors.abu,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  margin: const EdgeInsets.only(left: 40.0, top: 5),
+                                  child: ListTile(
+                                    leading: Icon(
+                                      Icons.category_outlined,
+                                      color: controller.selectedSubIndex.value == 3
+                                          ? Colors.black
+                                          : AppColors.putih,
+                                    ),
+                                    title: Text(
+                                      'Commodity Category',
+                                      style: TextStyle(
+                                        color: controller.selectedSubIndex.value == 3
+                                            ? AppColors.textGelap
+                                            : AppColors.putih,
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      controller.selectSubItem(3); // Memilih sub-item
+                                      Get.toNamed('/commodity-category');
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )),
+
+                  // Receiving Management ListTile
+                  Obx(() => Container(
+                        color: controller.selectedIndex.value == 2
+                            ? AppColors.hijau
+                            : AppColors.abu,
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.notifications,
+                            color: Colors.white,
+                          ),
+                          title: const Text(
+                            'Receiving Management',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onTap: () {
+                            controller.selectItem(2); // Pilih item utama
+                            controller.selectSubItem(-1); // Reset sub-item selection
+                            Get.toNamed('/receiving-management');
+                          },
+                        ),
+                      )),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
