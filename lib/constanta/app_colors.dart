@@ -15,5 +15,7 @@ class AppColors {
   static const Color background = Color(0xFFF5F5F5);
 
   static const Color putih = Color(0xFFEDEEEF);
+
+  static const Color abuGelap = Color(0x313A46);
   
 }

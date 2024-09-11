@@ -51,12 +51,12 @@ class SidebarController extends GetxController {
   // Method untuk delay dan navigasi dengan loading screen
   Future<void> navigateWithDelay(String route) async {
     // Tampilkan layar loading
-    Get.to(() => LoadingWidget());
+    // Get.to(() => LoadingWidget());
 
     // Delay selama 1.5 detik
-    await Future.delayed(Duration(milliseconds: 1500));
+    await Future.delayed(Duration(milliseconds: 300));
 
     // Navigasi ke halaman yang diinginkan setelah delay
-    Get.offNamed(route);
+    Get.toNamed(route);
   }
 }
