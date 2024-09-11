@@ -9,6 +9,7 @@ abstract class Routes {
   static const APPBAR = _Paths.APPBAR;
   static const USER_ROLE = _Paths.USER_ROLE;
   static const COMMODITY_CATEGORY = _Paths.COMMODITY_CATEGORY;
+  static const RECEIVING_MANAGEMENT = _Paths.RECEIVING_MANAGEMENT;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const APPBAR = '/appbar';
   static const USER_ROLE = '/user-role';
   static const COMMODITY_CATEGORY = '/commodity-category';
+  static const RECEIVING_MANAGEMENT = '/receiving-management';
 }

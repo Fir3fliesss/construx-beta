@@ -106,7 +106,7 @@ class UserRoleView extends GetView<UserRoleController> {
                             padding: const EdgeInsets.all(20.0),
                             child: Obx(() {
                               return DataTable(
-                                headingRowColor: 
+                                headingRowColor:
                                     WidgetStateProperty.all(AppColors.abuabu),
                                 columnSpacing: 255.0,
                                 columns: const [
@@ -125,17 +125,27 @@ class UserRoleView extends GetView<UserRoleController> {
                                         children: [
                                           IconButton(
                                             icon: const Icon(Icons.edit),
-                                            onPressed: () => controller.editUserRole(userRole),
+                                            onPressed: () => controller
+                                                .editUserRole(userRole),
                                           ),
                                           IconButton(
                                             icon: const Icon(Icons.delete),
-                                            onPressed: () => controller.deleteUserRole(userRole),
+                                            onPressed: () => controller
+                                                .deleteUserRole(userRole),
                                           ),
                                         ],
                                       )),
                                     ],
                                   );
                                 }).toList(),
+                                border: const TableBorder(
+                                  bottom: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                  left: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                  right: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                ),
                               );
                             }),
                           ),

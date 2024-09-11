@@ -1,4 +1,7 @@
+import 'package:construx_beta/app/modules/sidebar/views/loading_view.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../views/sidebar_view.dart';
 
 class SidebarController extends GetxController {
   // Index dari item list yang dipilih
@@ -44,5 +47,17 @@ class SidebarController extends GetxController {
   // Check apakah sublist terbuka
   bool isExpanded(int index) {
     return expandedItems[index] ?? false;
+  }
+
+  // Method untuk delay dan navigasi
+  Future<void> navigateWithDelay(String route) async {
+    // Tampilkan layar loading
+    Get.to(() => LoadingWidget());
+
+    // Delay selama 1.5 detik
+    await Future.delayed(Duration(seconds: 1));
+
+    // Navigasi ke halaman yang diinginkan setelah delay
+    Get.offNamed(route);
   }
 }

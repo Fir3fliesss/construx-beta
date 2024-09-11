@@ -7,7 +7,7 @@ import '../../../data/user_role_model.dart';
 
 class UserRoleController extends GetxController {
   var userRoles = <UserRole>[].obs;
-  var selectedUserRole = UserRole(no: 0, userRole: '', valid: '').obs;
+  var selectedUserRole = UserRole(no: 0, userRole: '', valid: 'Yes').obs; // Default valid set to 'Yes'
 
   final formKey = GlobalKey<FormState>();
 
@@ -127,16 +127,16 @@ class UserRoleController extends GetxController {
             validator: (value) =>
                 value!.isEmpty ? 'Please enter a user role' : null,
           ),
-          // Toggle button for "Valid" status
-          SwitchListTile(
+          // Toggle button for "Valid" status, default to 'Yes'
+          Obx(() => SwitchListTile(
             title: const Text('Valid'),
-            value: selectedUserRole.value.valid == 'Yes', // Status toggle
+            value: selectedUserRole.value.valid == 'Yes', // Default set to 'Yes'
             onChanged: (value) {
               selectedUserRole.update((role) {
                 role!.valid = value ? 'Yes' : 'No'; // Ubah status valid
               });
             },
-          ),
+          )),
         ],
       ),
     );
@@ -144,7 +144,7 @@ class UserRoleController extends GetxController {
 
   // Menampilkan dialog untuk menambah user role
   void showAddUserRoleDialog() {
-    selectedUserRole.value = UserRole(no: 0, userRole: '', valid: '');
+    selectedUserRole.value = UserRole(no: 0, userRole: '', valid: 'Yes'); // Set default valid to 'Yes'
     Get.defaultDialog(
       title: 'Add User Role',
       content: _buildUserRoleForm(),

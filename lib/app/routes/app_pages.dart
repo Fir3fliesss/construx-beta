@@ -8,7 +8,9 @@ import '../modules/company_information/bindings/company_information_binding.dart
 import '../modules/company_information/views/company_information_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import 'package:construx_beta/app/modules/sidebar/bindings/sidebar_binding.dart';
+import '../modules/receiving_management/bindings/receiving_management_binding.dart';
+import '../modules/receiving_management/views/receiving_management_view.dart';
+import '../modules/sidebar/bindings/sidebar_binding.dart';
 import '../modules/sidebar/views/sidebar_view.dart';
 import '../modules/user_role/bindings/user_role_binding.dart';
 import '../modules/user_role/views/user_role_view.dart';
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.COMMODITY_CATEGORY,
       page: () => const CommodityCategoryView(),
       binding: CommodityCategoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECEIVING_MANAGEMENT,
+      page: () => const ReceivingManagementView(),
+      binding: ReceivingManagementBinding(),
     ),
   ];
 }
