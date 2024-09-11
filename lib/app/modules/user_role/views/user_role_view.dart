@@ -97,7 +97,7 @@ class UserRoleView extends GetView<UserRoleController> {
                         ),
                       ),
                       Container(
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           minWidth: double.infinity,
                           maxHeight: 500,
                         ),
@@ -107,7 +107,7 @@ class UserRoleView extends GetView<UserRoleController> {
                             child: Obx(() {
                               return DataTable(
                                 headingRowColor: 
-                                    WidgetStateProperty.all(AppColors.abuabu),
+                                    MaterialStateProperty.all(AppColors.abuabu),
                                 columnSpacing: 255.0,
                                 columns: const [
                                   DataColumn(label: Text('No')),
@@ -118,50 +118,24 @@ class UserRoleView extends GetView<UserRoleController> {
                                 rows: controller.userRoles.map((userRole) {
                                   return DataRow(
                                     cells: [
-                                      DataCell(Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 0),
-                                        child: Text(userRole.no.toString()),
-                                      )),
-                                      DataCell(Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 0), 
-                                        child: Text(userRole.userRole ?? '-'),
-                                      )),
-                                      DataCell(Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 0),
-                                        child: Text(userRole.valid ?? '-'),
-                                      )),
-                                      DataCell(Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 0),
-                                        child: Row(
-                                          children: [
-                                            IconButton(
-                                              icon: const Icon(Icons.edit),
-                                              onPressed: () => controller
-                                                  .editUserRole(userRole),
-                                            ),
-                                            SizedBox(width: 50,),
-                                            IconButton(
-                                              icon: const Icon(
-                                                Icons.delete,
-                                                color: Color(0xFFD32F2F),
-                                              ),
-                                              onPressed: () => controller
-                                                  .deleteUserRole(userRole),
-                                            ),
-                                          ],
-                                        ),
+                                      DataCell(Text(userRole.no.toString())),
+                                      DataCell(Text(userRole.userRole ?? '-')),
+                                      DataCell(Text(userRole.valid ?? '-')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(
+                                            icon: const Icon(Icons.edit),
+                                            onPressed: () => controller.editUserRole(userRole),
+                                          ),
+                                          IconButton(
+                                            icon: const Icon(Icons.delete),
+                                            onPressed: () => controller.deleteUserRole(userRole),
+                                          ),
+                                        ],
                                       )),
                                     ],
                                   );
                                 }).toList(),
-                                border: const TableBorder(
-                                  bottom: BorderSide(
-                                      width: 2, color: AppColors.abuabu),
-                                  left: BorderSide(
-                                      width: 2, color: AppColors.abuabu),
-                                  right: BorderSide(
-                                      width: 2, color: AppColors.abuabu),
-                                ),
                               );
                             }),
                           ),
@@ -169,7 +143,7 @@ class UserRoleView extends GetView<UserRoleController> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

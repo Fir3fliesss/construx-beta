@@ -17,6 +17,7 @@ class UserRoleController extends GetxController {
     loadInitialData();
   }
 
+  // Memuat data awal untuk user roles
   void loadInitialData() {
     userRoles.assignAll([
       UserRole(no: 1, userRole: 'Admin', valid: 'Yes'),
@@ -25,6 +26,7 @@ class UserRoleController extends GetxController {
     ]);
   }
 
+  // Menambahkan user role baru
   void addUserRole() {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
@@ -38,6 +40,7 @@ class UserRoleController extends GetxController {
     }
   }
 
+  // Mengedit user role yang ada
   void editUserRole(UserRole role) {
     selectedUserRole.value = role;
     Get.defaultDialog(
@@ -58,6 +61,7 @@ class UserRoleController extends GetxController {
     );
   }
 
+  // Menghapus user role
   void deleteUserRole(UserRole role) {
     Get.defaultDialog(
       title: 'Delete User Role',
@@ -72,6 +76,7 @@ class UserRoleController extends GetxController {
     );
   }
 
+  // Mengekspor user roles ke Excel
   Future<void> exportUserRoles() async {
     try {
       var excel = Excel.createExcel();
@@ -109,6 +114,7 @@ class UserRoleController extends GetxController {
     }
   }
 
+  // Membangun form untuk menambahkan/mengedit user role
   Widget _buildUserRoleForm() {
     return Form(
       key: formKey,
@@ -121,18 +127,19 @@ class UserRoleController extends GetxController {
             validator: (value) =>
                 value!.isEmpty ? 'Please enter a user role' : null,
           ),
-          TextFormField(
-            initialValue: selectedUserRole.value.valid,
-            decoration: const InputDecoration(labelText: 'Valid (Yes/No)'),
-            onSaved: (value) => selectedUserRole.value.valid = value!,
-            validator: (value) =>
-                value!.isEmpty ? 'Please enter validity' : null,
+          SwitchListTile(
+            title: const Text('Valid'),
+            value: selectedUserRole.value.valid == 'Yes', // Toggle status
+            onChanged: (value) {
+              selectedUserRole.value.valid = value ? 'Yes' : 'No'; // Update valid status
+            },
           ),
         ],
       ),
     );
   }
 
+  // Menampilkan dialog untuk menambah user role
   void showAddUserRoleDialog() {
     selectedUserRole.value = UserRole(no: 0, userRole: '', valid: '');
     Get.defaultDialog(
