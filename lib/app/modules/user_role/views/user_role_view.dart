@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/user_role_controller.dart';
-import '../../sidebar/views/sidebar_view.dart';
 import '../../../../constanta/app_colors.dart';
-import '../../appbar/views/appbar_view.dart';
 
 class UserRoleView extends GetView<UserRoleController> {
   const UserRoleView({super.key});
@@ -13,12 +11,10 @@ class UserRoleView extends GetView<UserRoleController> {
     return Scaffold(
       body: Row(
         children: [
-          Sidebar(),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AppbarView(),
                 const SizedBox(height: 32.0),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),

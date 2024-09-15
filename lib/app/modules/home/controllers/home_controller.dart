@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 
+import '../../sidebar/controllers/loading_controller.dart';
+
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  final LoadingController loadingController = Get.find();
 
-  final count = 0.obs;
-
-
-
-  void increment() => count.value++;
+  @override
+  void onInit() {
+    super.onInit();
+    loadingController.triggerLoading();
+  }
 }

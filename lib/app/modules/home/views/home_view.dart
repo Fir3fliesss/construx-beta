@@ -1,7 +1,5 @@
 import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:flutter/material.dart';
-import '../../sidebar/views/sidebar_view.dart';
-import '../../appbar/views/appbar_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,11 +9,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          Sidebar(),
           Expanded(
             child: Column(
               children: [
-                const AppbarView(),
                 Expanded(
                   child: Container(
                     color: AppColors.background,

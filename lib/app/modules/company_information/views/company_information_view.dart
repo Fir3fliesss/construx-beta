@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../company_information/controllers/company_information_controller.dart';
-import '../../sidebar/views/sidebar_view.dart';
 import '../../../../constanta/app_colors.dart';
-import '../../appbar/views/appbar_view.dart';
 
 class CompanyInformationView extends GetView<CompanyInformationController> {
   const CompanyInformationView({super.key});
@@ -13,12 +11,10 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
     return Scaffold(
       body: Row(
         children: [
-          Sidebar(),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AppbarView(),
                 const SizedBox(height: 32.0),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),

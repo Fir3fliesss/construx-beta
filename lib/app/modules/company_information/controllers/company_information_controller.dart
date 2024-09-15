@@ -4,8 +4,10 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:construx_beta/app/data/company_model.dart';
+import '../../sidebar/controllers/loading_controller.dart';
 
 class CompanyInformationController extends GetxController {
+  final LoadingController loadingController = Get.find();
   var companies = <CompanyModel>[].obs;
   var selectedCompany = CompanyModel(
     id: 0,
@@ -17,13 +19,22 @@ class CompanyInformationController extends GetxController {
   ).obs;
 
   final formKey = GlobalKey<FormState>();
-
-  @override
-  void onInit() {
+// TODO: fix the infinite loading when back to main page
+// TODO: fix the bugs the initial data doesn't load but there's not an error in load data
+@override
+  Future<void> onInit() async {
     super.onInit();
-    loadInitialData();
+    loadingController.triggerLoading();
+    try {
+      loadInitialData(); 
+    } catch (error) {
+      // Tangani error di sini, misalnya:
+      Get.snackbar('Error', 'Gagal memuat data perusahaan.');
+    } finally {
+      // Matikan loading screen setelah selesai, baik berhasil atau error
+      loadingController.isLoading.value = false;
+    }
   }
-
   void loadInitialData() {
     companies.assignAll([
       CompanyModel(
