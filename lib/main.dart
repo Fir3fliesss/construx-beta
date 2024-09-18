@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
 
-import 'app/modules/sidebar/controllers/sidebar_controller.dart';
-
 void main() {
   Get.put(LoadingController(), permanent: true);
   runApp(

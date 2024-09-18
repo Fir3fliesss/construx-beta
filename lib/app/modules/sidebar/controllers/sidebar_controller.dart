@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
-import 'package:construx_beta/app/modules/sidebar/views/loading_view.dart';
 
 class SidebarController extends GetxController {
   // Index dari item list yang dipilih

@@ -19,21 +19,13 @@ class CompanyInformationController extends GetxController {
   ).obs;
 
   final formKey = GlobalKey<FormState>();
-// TODO: fix the infinite loading when back to main page
-// TODO: fix the bugs the initial data doesn't load but there's not an error in load data
+// TODO: fix the loading bugs
+
 @override
   Future<void> onInit() async {
     super.onInit();
-    loadingController.triggerLoading();
-    try {
-      loadInitialData(); 
-    } catch (error) {
-      // Tangani error di sini, misalnya:
-      Get.snackbar('Error', 'Gagal memuat data perusahaan.');
-    } finally {
-      // Matikan loading screen setelah selesai, baik berhasil atau error
-      loadingController.isLoading.value = false;
-    }
+    loadInitialData(); 
+    // loadingController.triggerLoading();
   }
   void loadInitialData() {
     companies.assignAll([
