@@ -26,6 +26,7 @@ class Sidebar extends StatelessWidget {
                     _buildSubItem('Company Information', Icons.info, 1, '/company-information'),
                     _buildSubItem('User Role', Icons.person, 2, '/user-role'),
                     _buildSubItem('Commodity Category', Icons.category_outlined, 3, '/commodity-category'),
+                    _buildSubItem('Warehouse Settings', Icons.category_outlined, 4, '/warehouse-settings'),
                   ]),
                   _buildListTile('Receiving Management', Icons.notifications, 2, '/receiving-management'),
                   _buildListTile('Stock Management', Icons.inventory_2, 3, '/stock-management'),
