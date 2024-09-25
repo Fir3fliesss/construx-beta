@@ -98,6 +98,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                           maxHeight: 500,
                         ),
                         child: SingleChildScrollView(
+                         scrollDirection: Axis.horizontal,
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Obx(() {

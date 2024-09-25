@@ -38,7 +38,7 @@ class CommodityCategoryView extends GetView<CommodityCategoryController> {
                   padding: const EdgeInsets.all(5.0),
                   margin: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
-                    border: Border.all(
+                    border: Border.all( 
                       color: AppColors.abuabu,
                       width: 2,
                     ),
