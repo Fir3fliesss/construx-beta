@@ -2,6 +2,7 @@ import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:construx_beta/app/modules/warehouse_settings/controllers/warehouse_settings_controller.dart';
+import 'tab_buttons.dart';
 
 class WarehouseSettingsView extends StatelessWidget {
   final WarehouseSettingsController controller = Get.put(WarehouseSettingsController());
@@ -33,11 +34,7 @@ class WarehouseSettingsView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
                 children: [
-                  buildTabButton(0, "Warehouse Setting", Icons.settings),
-                  SizedBox(width: 16.0),
-                  buildTabButton(1, "Reservoir Setting", Icons.water),
-                  SizedBox(width: 16.0),
-                  buildTabButton(2, "Location Setting", Icons.location_on),
+                  TabButtons()
                 ],
               ),
             ),
