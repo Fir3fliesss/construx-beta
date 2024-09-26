@@ -23,24 +23,32 @@ class Sidebar extends StatelessWidget {
                 children: [
                   _buildListTile('Home Page', Icons.home, 0, '/home'),
                   _buildParentItem('Basic Settings', Icons.settings, 1, [
-                    _buildSubItem('Company Information', Icons.info, 1, '/company-information'),
-                    _buildSubItem('User Role', Icons.person, 2, '/user-role'),
-                    _buildSubItem('Commodity Category', Icons.category_outlined, 3, '/commodity-category'),
-                    _buildSubItem('Warehouse Settings', Icons.category_outlined, 4, '/warehouse-settings'),
+                    _buildSubItem('Company Information', Icons.minimize_rounded, 1, '/company-information'),
+                    _buildSubItem('User Role', Icons.minimize_rounded, 2, '/user-role'),
+                    _buildSubItem('Permission Settings', Icons.minimize_rounded, 3, '/'),
+                    _buildSubItem('User Management', Icons.minimize_rounded, 4, '/'),
+                    _buildSubItem('Commodity Category', Icons.minimize_rounded, 5, '/commodity-category'),
+                    _buildSubItem('Commodity Management', Icons.minimize_rounded, 6, '/'),
+                    _buildSubItem('Supplier Info', Icons.minimize_rounded, 7, '/'),
+                    _buildSubItem('Warehouse Settings', Icons.minimize_rounded, 8, '/warehouse-settings'),
+                    _buildSubItem('Owner Information', Icons.minimize_rounded, 9, '/'),
+                    _buildSubItem('Freight Setting', Icons.minimize_rounded, 10, '/'),
+                    _buildSubItem('Customer Info', Icons.minimize_rounded, 11, '/'),
+                    _buildSubItem('Print Settings', Icons.minimize_rounded, 12, '/'),
                   ]),
                   _buildListTile('Receiving Management', Icons.notifications, 2, '/receiving-management'),
                   _buildListTile('Stock Management', Icons.inventory_2, 3, '/stock-management'),
                   _buildParentItem('Statistic Analysis', Icons.analytics, 4, [
-                    _buildSubItem('Safety Stock', Icons.security, 4, '/safety-stock'),
-                    _buildSubItem('Receiving Statistics', Icons.trending_up, 5, '/receiving-statistics'),
-                    _buildSubItem('Shipment Statistics', Icons.local_shipping, 6, '/shipment-statistics'),
+                    _buildSubItem('Safety Stock', Icons.minimize_rounded, 13, '/safety-stock'),
+                    _buildSubItem('Receiving Statistics', Icons.minimize_rounded, 14, '/receiving-statistics'),
+                    _buildSubItem('Shipment Statistics', Icons.minimize_rounded, 15, '/shipment-statistics'),
                   ]),
                   _buildParentItem('Warehouse Working', Icons.warehouse, 5, [
-                    _buildSubItem('Warehouse Processing', Icons.autorenew, 7, '/warehouse-processing'),
-                    _buildSubItem('Inventory Move', Icons.move_to_inbox, 8, '/inventory-move'),
-                    _buildSubItem('Inventory Freeze', Icons.ac_unit, 9, '/inventory-freeze'),
-                    _buildSubItem('Inventory Adjust', Icons.adjust, 10, '/inventory-adjust'),
-                    _buildSubItem('Inventory Take', Icons.takeout_dining, 11, '/inventory-take'),
+                    _buildSubItem('Warehouse Processing', Icons.minimize_rounded, 16, '/warehouse-processing'),
+                    _buildSubItem('Inventory Move', Icons.minimize_rounded, 17, '/inventory-move'),
+                    _buildSubItem('Inventory Freeze', Icons.minimize_rounded, 18, '/inventory-freeze'),
+                    _buildSubItem('Inventory Adjust', Icons.minimize_rounded, 19, '/inventory-adjust'),
+                    _buildSubItem('Inventory Take', Icons.minimize_rounded, 20, '/inventory-take'),
                   ]),
                   _buildListTile('Delivery Management', Icons.delivery_dining, 6, '/delivery-management'),
                   _buildListTile('Visual Warehouse', Icons.visibility, 7, '/visual-warehouse'),
@@ -57,7 +65,7 @@ class Sidebar extends StatelessWidget {
   Widget _buildDrawerHeader() {
     return DrawerHeader(
       child: Center(
-        child: Image.asset('assets/images/CONSTRUX-LOGO.png', width: 400.0),
+        child: Image.asset('assets/images/logo-construx.png', width: 400.0),
       ),
     );
   }
