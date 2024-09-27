@@ -11,6 +11,14 @@ abstract class Routes {
   static const COMMODITY_CATEGORY = _Paths.COMMODITY_CATEGORY;
   static const RECEIVING_MANAGEMENT = _Paths.RECEIVING_MANAGEMENT;
   static const WAREHOUSE_SETTINGS = _Paths.WAREHOUSE_SETTINGS;
+  static const PERMISSION_SETTINGS = _Paths.PERMISSION_SETTINGS;
+  static const USER_MANAGEMENT = _Paths.USER_MANAGEMENT;
+  static const COMMODITY_MANAGEMENT = _Paths.COMMODITY_MANAGEMENT;
+  static const SUPPLIER_INFO = _Paths.SUPPLIER_INFO;
+  static const OWNER_INFORMATION = _Paths.OWNER_INFORMATION;
+  static const FREIGHT_SETTING = _Paths.FREIGHT_SETTING;
+  static const CUSTOMER_INFO = _Paths.CUSTOMER_INFO;
+  static const PRINT_SETTINGS = _Paths.PRINT_SETTINGS;
 }
 
 abstract class _Paths {
@@ -23,4 +31,12 @@ abstract class _Paths {
   static const COMMODITY_CATEGORY = '/commodity-category';
   static const RECEIVING_MANAGEMENT = '/receiving-management';
   static const WAREHOUSE_SETTINGS = '/warehouse-settings';
+  static const PERMISSION_SETTINGS = '/permission-settings';
+  static const USER_MANAGEMENT = '/user-management';
+  static const COMMODITY_MANAGEMENT = '/commodity-management';
+  static const SUPPLIER_INFO = '/supplier-info';
+  static const OWNER_INFORMATION = '/owner-information';
+  static const FREIGHT_SETTING = '/freight-setting';
+  static const CUSTOMER_INFO = '/customer-info';
+  static const PRINT_SETTINGS = '/print-settings';
 }

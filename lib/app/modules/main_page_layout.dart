@@ -25,7 +25,7 @@ class MainLayout extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                const AppbarView(), // AppBarView sekarang menjadi bagian dari Column
+                const AppbarView(),
                 Expanded(
                   child: Obx(() => loadingController.isLoading.value 
                     ? const LoadingWidget() 

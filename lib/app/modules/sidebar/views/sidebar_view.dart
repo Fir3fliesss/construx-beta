@@ -23,35 +23,65 @@ class Sidebar extends StatelessWidget {
                 children: [
                   _buildListTile('Home Page', Icons.home, 0, '/home'),
                   _buildParentItem('Basic Settings', Icons.settings, 1, [
-                    _buildSubItem('Company Information', Icons.minimize_rounded, 1, '/company-information'),
-                    _buildSubItem('User Role', Icons.minimize_rounded, 2, '/user-role'),
-                    _buildSubItem('Permission Settings', Icons.minimize_rounded, 3, '/'),
-                    _buildSubItem('User Management', Icons.minimize_rounded, 4, '/'),
-                    _buildSubItem('Commodity Category', Icons.minimize_rounded, 5, '/commodity-category'),
-                    _buildSubItem('Commodity Management', Icons.minimize_rounded, 6, '/'),
-                    _buildSubItem('Supplier Info', Icons.minimize_rounded, 7, '/'),
-                    _buildSubItem('Warehouse Settings', Icons.minimize_rounded, 8, '/warehouse-settings'),
-                    _buildSubItem('Owner Information', Icons.minimize_rounded, 9, '/'),
-                    _buildSubItem('Freight Setting', Icons.minimize_rounded, 10, '/'),
-                    _buildSubItem('Customer Info', Icons.minimize_rounded, 11, '/'),
-                    _buildSubItem('Print Settings', Icons.minimize_rounded, 12, '/'),
+                    _buildSubItem('Company Information', Icons.minimize_rounded,
+                        1, '/company-information'),
+                    _buildSubItem(
+                        'User Role', Icons.minimize_rounded, 2, '/user-role'),
+                    _buildSubItem('Permission Settings', Icons.minimize_rounded,
+                        3, '/permission-settings'),
+                    _buildSubItem('User Management', Icons.minimize_rounded, 4,
+                        '/user-management'),
+                    _buildSubItem('Commodity Category', Icons.minimize_rounded,
+                        5, '/commodity-category'),
+                    _buildSubItem('Commodity Management',
+                        Icons.minimize_rounded, 6, '/commodity-management'),
+                    _buildSubItem('Supplier Info', Icons.minimize_rounded, 7,
+                        '/supplier-info'),
+                    _buildSubItem('Warehouse Settings', Icons.minimize_rounded,
+                        8, '/warehouse-settings'),
+                    _buildSubItem('Owner Information', Icons.minimize_rounded,
+                        9, '/owner-information'),
+                    _buildSubItem('Freight Setting', Icons.minimize_rounded, 10,
+                        '/freight-setting'),
+                    _buildSubItem('Customer Info', Icons.minimize_rounded, 11,
+                        '/customer-info'),
+                    _buildSubItem('Print Settings', Icons.minimize_rounded, 12,
+                        '/print-settings'),
                   ]),
-                  _buildListTile('Receiving Management', Icons.notifications, 2, '/receiving-management'),
-                  _buildListTile('Stock Management', Icons.inventory_2, 3, '/stock-management'),
+                  _buildListTile('Receiving Management', Icons.notifications, 2,
+                      '/receiving-management'),
+                  _buildListTile('Stock Management', Icons.inventory_2, 3,
+                      '/stock-management'), // route belum ada
                   _buildParentItem('Statistic Analysis', Icons.analytics, 4, [
-                    _buildSubItem('Safety Stock', Icons.minimize_rounded, 13, '/safety-stock'),
-                    _buildSubItem('Receiving Statistics', Icons.minimize_rounded, 14, '/receiving-statistics'),
-                    _buildSubItem('Shipment Statistics', Icons.minimize_rounded, 15, '/shipment-statistics'),
+                    _buildSubItem('Safety Stock', Icons.minimize_rounded, 13,
+                        '/safety-stock'), // route belum ada
+                    _buildSubItem(
+                        'Receiving Statistics',
+                        Icons.minimize_rounded,
+                        14,
+                        '/receiving-statistics'), // route belum ada
+                    _buildSubItem('Shipment Statistics', Icons.minimize_rounded,
+                        15, '/shipment-statistics'), // route belum ada
                   ]),
                   _buildParentItem('Warehouse Working', Icons.warehouse, 5, [
-                    _buildSubItem('Warehouse Processing', Icons.minimize_rounded, 16, '/warehouse-processing'),
-                    _buildSubItem('Inventory Move', Icons.minimize_rounded, 17, '/inventory-move'),
-                    _buildSubItem('Inventory Freeze', Icons.minimize_rounded, 18, '/inventory-freeze'),
-                    _buildSubItem('Inventory Adjust', Icons.minimize_rounded, 19, '/inventory-adjust'),
-                    _buildSubItem('Inventory Take', Icons.minimize_rounded, 20, '/inventory-take'),
+                    _buildSubItem(
+                        'Warehouse Processing',
+                        Icons.minimize_rounded,
+                        16,
+                        '/warehouse-processing'), // route belum ada
+                    _buildSubItem('Inventory Move', Icons.minimize_rounded, 17,
+                        '/inventory-move'), // route belum ada
+                    _buildSubItem('Inventory Freeze', Icons.minimize_rounded,
+                        18, '/inventory-freeze'), // route belum ada
+                    _buildSubItem('Inventory Adjust', Icons.minimize_rounded,
+                        19, '/inventory-adjust'), // route belum ada
+                    _buildSubItem('Inventory Take', Icons.minimize_rounded, 20,
+                        '/inventory-take'), // route belum ada
                   ]),
-                  _buildListTile('Delivery Management', Icons.delivery_dining, 6, '/delivery-management'),
-                  _buildListTile('Visual Warehouse', Icons.visibility, 7, '/visual-warehouse'),
+                  _buildListTile('Delivery Management', Icons.delivery_dining,
+                      6, '/delivery-management'), // route belum ada
+                  _buildListTile('Visual Warehouse', Icons.visibility, 7,
+                      '/visual-warehouse'), // route belum ada
                 ],
               ),
             ),
@@ -72,9 +102,12 @@ class Sidebar extends StatelessWidget {
 
   Widget _buildListTile(String title, IconData icon, int index, String route) {
     return Obx(() => AnimatedContainer(
-          duration: const Duration(milliseconds: 300), // Durasi animasi transisi warna
+          duration: const Duration(
+              milliseconds: 300), // Durasi animasi transisi warna
           decoration: BoxDecoration(
-            color: controller.selectedIndex.value == index ? AppColors.hijau : AppColors.abu,
+            color: controller.selectedIndex.value == index
+                ? AppColors.hijau
+                : AppColors.abu,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: ListTile(
@@ -89,19 +122,26 @@ class Sidebar extends StatelessWidget {
         ));
   }
 
-  Widget _buildParentItem(String title, IconData icon, int index, List<Widget> subItems) {
+  Widget _buildParentItem(
+      String title, IconData icon, int index, List<Widget> subItems) {
     return Obx(() => Column(
           children: [
             AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               decoration: BoxDecoration(
-                color: controller.selectedIndex.value == index ? AppColors.hijau : AppColors.abu,
+                color: controller.selectedIndex.value == index
+                    ? AppColors.hijau
+                    : AppColors.abu,
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: ListTile(
                 leading: Icon(icon, color: Colors.white),
                 title: Text(title, style: const TextStyle(color: Colors.white)),
-                trailing: Icon(controller.isExpanded(index) ? Icons.expand_less : Icons.expand_more, color: Colors.white),
+                trailing: Icon(
+                    controller.isExpanded(index)
+                        ? Icons.expand_less
+                        : Icons.expand_more,
+                    color: Colors.white),
                 onTap: () {
                   controller.toggleExpand(index);
                   controller.selectItem(index);
@@ -109,7 +149,9 @@ class Sidebar extends StatelessWidget {
               ),
             ),
             AnimatedSize(
-              duration: const Duration(milliseconds: 300), // Durasi animasi untuk membuka/tutup sublist
+              duration: const Duration(
+                  milliseconds:
+                      300), // Durasi animasi untuk membuka/tutup sublist
               child: Column(
                 children: controller.isExpanded(index) ? subItems : [],
               ),
@@ -118,17 +160,27 @@ class Sidebar extends StatelessWidget {
         ));
   }
 
-  Widget _buildSubItem(String title, IconData icon, int subIndex, String route) {
+  Widget _buildSubItem(
+      String title, IconData icon, int subIndex, String route) {
     return Obx(() => AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           margin: const EdgeInsets.only(left: 40, top: 5),
           decoration: BoxDecoration(
-            color: controller.selectedSubIndex.value == subIndex ? AppColors.putih : AppColors.abu,
+            color: controller.selectedSubIndex.value == subIndex
+                ? AppColors.putih
+                : AppColors.abu,
             borderRadius: BorderRadius.circular(8),
           ),
           child: ListTile(
-            leading: Icon(icon, color: controller.selectedSubIndex.value == subIndex ? Colors.black : Colors.white),
-            title: Text(title, style: TextStyle(color: controller.selectedSubIndex.value == subIndex ? AppColors.textGelap : Colors.white)),
+            leading: Icon(icon,
+                color: controller.selectedSubIndex.value == subIndex
+                    ? Colors.black
+                    : Colors.white),
+            title: Text(title,
+                style: TextStyle(
+                    color: controller.selectedSubIndex.value == subIndex
+                        ? AppColors.textGelap
+                        : Colors.white)),
             onTap: () {
               controller.selectSubItem(subIndex);
               controller.navigateWithDelay(route);
