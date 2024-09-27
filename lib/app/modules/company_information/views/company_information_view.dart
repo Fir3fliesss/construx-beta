@@ -98,7 +98,6 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                           maxHeight: 500,
                         ),
                         child: SingleChildScrollView(
-                         scrollDirection: Axis.horizontal,
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Obx(() {
@@ -120,12 +119,12 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                                     cells: [
                                       DataCell(Text(company.id.toString())),
                                       DataCell(Text(company.name)),
-                                      DataCell(Text(company.city ?? '-')),
-                                      DataCell(Text(company.address ?? '-')),
+                                      DataCell(Text(company.city)),
+                                      DataCell(Text(company.address)),
                                       DataCell(
-                                          Text(company.personInCharge ?? '-')),
+                                          Text(company.personInCharge)),
                                       DataCell(
-                                          Text(company.contactInfo ?? '-')),
+                                          Text(company.contactInfo)),
                                       DataCell(Row(
                                         children: [
                                           IconButton(

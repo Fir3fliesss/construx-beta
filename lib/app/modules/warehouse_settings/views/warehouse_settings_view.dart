@@ -270,21 +270,21 @@ class WarehouseSettingsView extends StatelessWidget {
                     ),
 
                     // Pagination (aligned under the table)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.chevron_left),
-                        ),
-                        for (int i = 1; i <= 5; i++)
-                          buildPaginationButton(i, i == 3), // Page 3 is active
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.chevron_right),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     IconButton(
+                    //       onPressed: () {},
+                    //       icon: Icon(Icons.chevron_left),
+                    //     ),
+                    //     for (int i = 1; i <= 5; i++)
+                    //       buildPaginationButton(i, i == 3), // Page 3 is active
+                    //     IconButton(
+                    //       onPressed: () {},
+                    //       icon: Icon(Icons.chevron_right),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),
