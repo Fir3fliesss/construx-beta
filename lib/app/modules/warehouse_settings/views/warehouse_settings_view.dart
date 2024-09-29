@@ -17,8 +17,8 @@ class WarehouseSettingsView extends StatelessWidget {
           children: [
             const SizedBox(height: 16.0),
             // Header
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
                 children: [
                   Text('Basic Setting',
@@ -96,178 +96,83 @@ class WarehouseSettingsView extends StatelessWidget {
                     ),
 
                     // Data table
-                    Container(
-                      constraints: const BoxConstraints(
-                          minWidth: double.infinity, maxHeight: 500),
-                      child: SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: LayoutBuilder(
-                            builder: (context, constraints) {
-                              // Mendapatkan lebar layar dari constraints
-                              final screenWidth = constraints.maxWidth;
 
-                              // Membagi lebar layar untuk semua kolom
-                              final columnWidth =
-                                  screenWidth / 11; // Terdapat 11 kolom
-
-                              return DataTable(
-                                headingRowColor:
-                                    WidgetStateProperty.all(Colors.grey[200]),
-                                columnSpacing:
-                                    0, // Menghilangkan jarak antar kolom
-                                columns: [
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth, // Set lebar kolom
-                                      child: Text('No',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('Warehouse Name',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('City',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('Address',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('Contact Telp',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('Email',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('Manager',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('Creator',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('Create Time',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('Valid',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Container(
-                                      width: columnWidth,
-                                      child: Text('Operations',
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                ],
-                                rows: List.generate(
-                                  10,
-                                  (index) => DataRow(cells: [
-                                    DataCell(Container(
-                                      width: columnWidth, // Mengatur lebar sel
-                                      child: Text('${index + 1}',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Text('Warehouse ${index + 1}',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Text('City $index',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Text('-',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Text('-',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Text('-',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Text('-',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Text('-',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Text('-',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Text('Yes',
-                                          textAlign: TextAlign.center),
-                                    )),
-                                    DataCell(Container(
-                                      width: columnWidth,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.edit, color: Colors.blue),
-                                          SizedBox(width: 8.0),
-                                          Icon(Icons.delete, color: Colors.red),
-                                        ],
-                                      ),
-                                    )),
-                                  ]),
+                  Container(
+                    constraints: const BoxConstraints(
+                      minWidth: double.infinity,
+                      maxHeight: 500,
+                    ),
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: DataTable(
+                          headingRowColor: WidgetStateProperty.all(Colors.grey[200]),
+                          columnSpacing: 10, // Memberikan jarak antar kolom yang sesuai
+                          columns: const [
+                            DataColumn(
+                              label: Center(child: Text('No')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('Warehouse Name')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('City')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('Address')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('Contact Telp')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('Email')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('Manager')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('Creator')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('Create Time')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('Valid')),
+                            ),
+                            DataColumn(
+                              label: Center(child: Text('Operations')),
+                            ),
+                          ],
+                          rows: List.generate(
+                            10,
+                            (index) => DataRow(cells: [
+                              DataCell(Center(child: Text('${index + 1}'))),
+                              DataCell(Center(child: Text('Warehouse ${index + 1}'))),
+                              DataCell(Center(child: Text('City $index'))),
+                              const DataCell(Center(child: Text('-'))),
+                              const DataCell(Center(child: Text('-'))),
+                              const DataCell(Center(child: Text('-'))),
+                              const DataCell(Center(child: Text('-'))),
+                              const DataCell(Center(child: Text('-'))),
+                              const DataCell(Center(child: Text('-'))),
+                              const DataCell(Center(child: Text('Yes'))),
+                              const DataCell(
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.edit, color: Colors.blue),
+                                    SizedBox(width: 30.0),
+                                    Icon(Icons.delete, color: Colors.red),
+                                  ],
                                 ),
-                              );
-                            },
+                              ),
+                            ]),
                           ),
                         ),
                       ),
                     ),
+                  ),
+
 
                     // Pagination (aligned under the table)
                     // Row(
@@ -313,7 +218,7 @@ class WarehouseSettingsView extends StatelessWidget {
                 : Colors.black,
             padding:
                 const EdgeInsets.symmetric(vertical: 18.0, horizontal: 24.0),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
+            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
       );
     });
   }
@@ -338,7 +243,7 @@ class WarehouseSettingsView extends StatelessWidget {
   // Pagination button builder
   Widget buildPaginationButton(int pageNumber, bool isActive) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      margin: const EdgeInsets.symmetric(horizontal: 4.0),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: isActive ? Colors.blue : Colors.grey[300],

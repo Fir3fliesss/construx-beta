@@ -19,6 +19,8 @@ abstract class Routes {
   static const FREIGHT_SETTING = _Paths.FREIGHT_SETTING;
   static const CUSTOMER_INFO = _Paths.CUSTOMER_INFO;
   static const PRINT_SETTINGS = _Paths.PRINT_SETTINGS;
+  static const RESERVOIR_SETTINGS = _Paths.RESERVOIR_SETTINGS;
+  static const LOCATION_SETTINGS = _Paths.LOCATION_SETTINGS;
 }
 
 abstract class _Paths {
@@ -39,4 +41,6 @@ abstract class _Paths {
   static const FREIGHT_SETTING = '/freight-setting';
   static const CUSTOMER_INFO = '/customer-info';
   static const PRINT_SETTINGS = '/print-settings';
+  static const RESERVOIR_SETTINGS = '/reservoir-settings';
+  static const LOCATION_SETTINGS = '/location-settings';
 }

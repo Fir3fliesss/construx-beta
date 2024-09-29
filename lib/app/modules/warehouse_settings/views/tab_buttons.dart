@@ -12,22 +12,23 @@ class TabButtons extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Row(
         children: [
-          buildTabButton(0, "Warehouse Setting", Icons.settings),
+          buildTabButton(0, "Warehouse Setting", Icons.settings, '/warehouse-settings'),
           SizedBox(width: 16.0),
-          buildTabButton(1, "Reservoir Setting", Icons.water),
+          buildTabButton(1, "Reservoir Setting", Icons.water, '/reservoir-settings'),
           SizedBox(width: 16.0),
-          buildTabButton(2, "Location Setting", Icons.location_on),
+          buildTabButton(2, "Location Setting", Icons.location_on, '/location-settings'),
         ],
       ),
     );
   }
 
   // Tab button builder
-  Widget buildTabButton(int index, String text, IconData icon) {
+  Widget buildTabButton(int index, String text, IconData icon, String routeName) {
     return Obx(() {
       return ElevatedButton.icon(
         onPressed: () {
           controller.changeButton(index);
+          Get.toNamed(routeName); // Navigate to the specified route
         },
         icon: Icon(icon),
         label: Text(text),
