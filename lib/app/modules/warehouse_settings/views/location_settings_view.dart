@@ -27,7 +27,7 @@ class LocationSettingsView extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        'Basic Settings > Company Information',
+                        'Basic Settings > Location Settings',
                         style: TextStyle(color: Colors.black54),
                       ),
                     ],

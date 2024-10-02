@@ -124,7 +124,7 @@ class AppPages {
       name: _Paths.OWNER_INFORMATION,
       page: () => MainLayout(
         loadingController: Get.find(),
-        child: const OwnerInformationView(),
+        child:  OwnerInformationView(),
       ),
       binding: OwnerInformationBinding(),
     ),

@@ -26,7 +26,7 @@ class CommodityManagementView extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        'Basic Settings > Commodity Info',
+                        'Basic Settings > Commodity Management',
                         style: TextStyle(color: Colors.black54),
                       ),
                     ],

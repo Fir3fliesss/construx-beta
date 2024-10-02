@@ -27,7 +27,7 @@ class ReservoirSettingsView extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        'Basic Settings > Company Information',
+                        'Basic Settings > Reservior Settings',
                         style: TextStyle(color: Colors.black54),
                       ),
                     ],

@@ -26,7 +26,7 @@ class UserManagementView extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        'Basic Settings > Supplier Info',
+                        'Basic Settings > User Management',
                         style: TextStyle(color: Colors.black54),
                       ),
                     ],
