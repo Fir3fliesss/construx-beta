@@ -100,7 +100,7 @@ class AppPages {
       name: _Paths.USER_MANAGEMENT,
       page: () => MainLayout(
         loadingController: Get.find(),
-        child: const UserManagementView(),
+        child:  UserManagementView(),
       ),
       binding: UserManagementBinding(),
     ),
@@ -108,7 +108,7 @@ class AppPages {
       name: _Paths.COMMODITY_MANAGEMENT,
       page: () => MainLayout(
         loadingController: Get.find(),
-        child: const CommodityManagementView(),
+        child: CommodityManagementView(),
       ),
       binding: CommodityManagementBinding(),
     ),
@@ -116,7 +116,7 @@ class AppPages {
       name: _Paths.SUPPLIER_INFO,
       page: () => MainLayout(
         loadingController: Get.find(),
-        child: const SupplierInfoView(),
+        child: SupplierInfoView(),
       ),
       binding: SupplierInfoBinding(),
     ),
