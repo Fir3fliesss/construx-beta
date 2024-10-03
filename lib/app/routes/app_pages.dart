@@ -132,7 +132,7 @@ class AppPages {
       name: _Paths.FREIGHT_SETTING,
       page: () => MainLayout(
         loadingController: Get.find(),
-        child: const FreightSettingView(),
+        child: FreightSettingView(),
       ),
       binding: FreightSettingBinding(),
     ),
@@ -140,7 +140,7 @@ class AppPages {
       name: _Paths.CUSTOMER_INFO,
       page: () => MainLayout(
         loadingController: Get.find(),
-        child: const CustomerInfoView(),
+        child: CustomerInfoView(),
       ),
       binding: CustomerInfoBinding(),
     ),
