@@ -1,3 +1,4 @@
+import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class PermissionSettingsView extends StatelessWidget {
@@ -35,54 +36,98 @@ class PermissionSettingsView extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           // Container with actions and tables
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.1),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: const Offset(0, 3),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Container(
+              width: double.infinity, // Menyediakan lebar penuh untuk container
+              height: 800, // Sesuaikan tinggi container sesuai kebutuhan
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Row with action icons
+                    Row(
+                      children: [
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: AppColors.abuabu,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                              icon: const Icon(Icons.add_circle_outline),
+                              color: Colors.black,
+                              onPressed: () {}),
+                        ),
+                        const SizedBox(width: 16),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: AppColors.abuabu,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(Icons.edit),
+                            color: Colors.black,
+                            onPressed: () {},
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: AppColors.abuabu,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(Icons.upload_outlined),
+                            color: Colors.black,
+                            onPressed: () {},
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: AppColors.abuabu,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(Icons.delete),
+                            color: Colors.black,
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Row with action icons
-                      Row(
+                    const SizedBox(height: 20),
+                    // Tables for User Role and Menu Name
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildIconButton(Icons.add_circle_outline, 'Add'),
-                          const SizedBox(width: 16),
-                          _buildIconButton(Icons.edit, 'Edit'),
-                          const SizedBox(width: 16),
-                          _buildIconButton(Icons.upload_file, 'Upload'),
-                          const SizedBox(width: 16),
-                          _buildIconButton(Icons.delete, 'Delete'),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      // Tables for User Role and Menu Name
-                      Expanded(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // User Role Table
-                            Expanded(
-                              flex: 1,
+                          // User Role Table
+                          Expanded(
+                            flex: 1,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
                               child: DataTable(
                                 headingRowHeight: 40,
                                 headingTextStyle: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
+                                headingRowColor:
+                                    MaterialStateProperty.all(AppColors.abuabu),
                                 dataTextStyle: const TextStyle(
                                   color: Colors.black,
                                 ),
@@ -108,18 +153,31 @@ class PermissionSettingsView extends StatelessWidget {
                                     ],
                                   );
                                 }),
+                                border: const TableBorder(
+                                  bottom: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                  left: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                  right: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                ),
                               ),
                             ),
-                            const SizedBox(width: 16),
-                            // Menu Name Table
-                            Expanded(
-                              flex: 3,
+                          ),
+                          const SizedBox(width: 16),
+                          // Menu Name Table
+                          Expanded(
+                            flex: 3,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
                               child: DataTable(
                                 headingRowHeight: 40,
                                 headingTextStyle: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
+                                headingRowColor:
+                                    WidgetStateProperty.all(AppColors.abuabu),
                                 dataTextStyle: const TextStyle(
                                   color: Colors.black,
                                 ),
@@ -135,14 +193,12 @@ class PermissionSettingsView extends StatelessWidget {
                                   return DataRow(
                                     cells: [
                                       DataCell(Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text('Menu Item ${index + 1}'),
                                           Icon(
                                             Icons.chevron_right,
                                             color: Colors.grey[400],
                                           ),
+                                          Text('Menu Item ${index + 1}'),
                                         ],
                                       )),
                                       DataCell(Icon(
@@ -152,36 +208,26 @@ class PermissionSettingsView extends StatelessWidget {
                                     ],
                                   );
                                 }),
+                                border: const TableBorder(
+                                  bottom: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                  left: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                  right: BorderSide(
+                                      width: 2, color: AppColors.abuabu),
+                                ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ),
+          )
         ],
-      ),
-    );
-  }
-
-  // Helper function for building icon buttons
-  Widget _buildIconButton(IconData icon, String tooltip) {
-    return Tooltip(
-      message: tooltip,
-      child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.grey,
-          shape: BoxShape.circle,
-        ),
-        child: IconButton(
-          icon: Icon(icon),
-          color: Colors.black,
-          onPressed: () {},
-        ),
       ),
     );
   }
