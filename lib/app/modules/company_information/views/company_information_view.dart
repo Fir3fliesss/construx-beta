@@ -144,7 +144,7 @@ class CompanyInformationView extends GetView<CompanyInformationController> {
                                 }).toList(),
                                 border: const TableBorder(
                                   bottom: BorderSide(
-                                      width: 2, color: AppColors.abuabu),
+                                      width: 2,  color: AppColors.abuabu),
                                       left: BorderSide(width: 2, color: AppColors.abuabu),
                                       right: BorderSide(width: 2, color: AppColors.abuabu),
                                 ),

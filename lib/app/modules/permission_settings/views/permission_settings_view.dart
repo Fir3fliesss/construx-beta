@@ -12,18 +12,18 @@ class PermissionSettingsView extends StatelessWidget {
         children: [
           const SizedBox(height: 32.0),
           // Header section with title and path
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               children: [
-                const Text(
+                Text(
                   'Basic Setting',
                   style: TextStyle(
                     fontSize: 28.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Spacer(),
+                Spacer(),
                 Text(
                   'Basic Settings > Permission settings',
                   style: TextStyle(
@@ -127,7 +127,7 @@ class PermissionSettingsView extends StatelessWidget {
                                   color: Colors.black,
                                 ),
                                 headingRowColor:
-                                    MaterialStateProperty.all(AppColors.abuabu),
+                                    WidgetStateProperty.all(AppColors.abuabu),
                                 dataTextStyle: const TextStyle(
                                   color: Colors.black,
                                 ),

@@ -55,5 +55,22 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "files.autoSave": "afterDelay",
+  "editor.cursorStyle": "block-outline",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.guides.bracketPairs": "active",
+  "editor.linkedEditing": true,
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.minimap.enabled": false,
+  "workbench.list.smoothScrolling": true,
+  "workbench.editor.autoLockGroups": {
+    "gitlens.rebase": true,
+    "pdf.preview": true,
+    "imagePreview.previewEditor": true,
+    "workbench.input.interactive": true,
+    "mainThreadWebview-simpleBrowser.view": false
+  }
 }

@@ -13,9 +13,9 @@ class UserRole {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['no'] = this.no;
-    data['userRole'] = this.userRole;
-    data['valid'] = this.valid;
+    data['no'] = no;
+    data['userRole'] = userRole;
+    data['valid'] = valid;
     return data;
   }
 }

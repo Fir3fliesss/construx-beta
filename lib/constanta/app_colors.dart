@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
 
   static const Color hijau = Color(0xFF05A67E);
-  
+
   static const Color biru = Color(0xFF023D74);
 
   static const Color abu = Color(0xFF323A47);
@@ -16,6 +16,6 @@ class AppColors {
 
   static const Color putih = Color(0xFFEDEEEF);
 
-  static const Color abuGelap = Color(0x313A46);
-  
+  static const Color abuGelap = Color(0x00313a46);
+
 }

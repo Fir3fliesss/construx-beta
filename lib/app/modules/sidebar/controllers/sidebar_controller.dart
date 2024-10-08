@@ -52,7 +52,7 @@ class SidebarController extends GetxController {
     // Get.to(() => LoadingWidget());
 
     // Delay selama 1.5 detik
-    await Future.delayed(Duration(milliseconds: 300));
+    await Future.delayed(const Duration(milliseconds: 300));
 
     // Navigasi ke halaman yang diinginkan setelah delay
     Get.toNamed(route);

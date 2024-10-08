@@ -60,20 +60,20 @@ class ReservoirSettingsView extends StatelessWidget {
                           child: Row(
                             children: [
                               buildCircleIconButton(
-                                Icons.add_circle_outline, 
-                                "Add", 
+                                Icons.add_circle_outline,
+                                "Add",
                                 AppColors.abuabu
                               ),
                               const SizedBox(width: 16),
                               buildCircleIconButton(
-                                Icons.refresh, 
-                                "Refresh", 
+                                Icons.refresh,
+                                "Refresh",
                                 AppColors.abuabu
                               ),
                               const SizedBox(width: 16),
                               buildCircleIconButton(
-                                Icons.upload_outlined, 
-                                "Upload", 
+                                Icons.upload_outlined,
+                                "Upload",
                                 AppColors.abuabu
                               ),
                             ],
@@ -94,7 +94,7 @@ class ReservoirSettingsView extends StatelessWidget {
                                 columnSpacing: 20, // Jarak antar kolom
                                 columns: const [
                                   DataColumn(
-                                    label: Expanded(child: Center(child: Text('No'))), 
+                                    label: Expanded(child: Center(child: Text('No'))),
                                   ),
                                   DataColumn(
                                     label: Expanded(child: Center(child: Text('Warehouse Name'))),

@@ -199,7 +199,7 @@ class Sidebar extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.abuGelap,
           minimumSize: const Size.fromHeight(50),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
         ),
       ),
     );

@@ -15,11 +15,11 @@ class CommodityCategoryModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['no'] = this.no;
-    data['commodityCategory'] = this.commodityCategory;
-    data['creator'] = this.creator;
-    data['createTime'] = this.createTime;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['no'] = no;
+    data['commodityCategory'] = commodityCategory;
+    data['creator'] = creator;
+    data['createTime'] = createTime;
     return data;
   }
 }

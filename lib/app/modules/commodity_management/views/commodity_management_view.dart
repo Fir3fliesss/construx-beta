@@ -131,7 +131,7 @@ class CommodityManagementView extends StatelessWidget {
     );
   }
 
- 
+
   Widget buildCircleIconButton(IconData icon, String tooltip, Color bgColor) {
     return Tooltip(
       message: tooltip,
@@ -148,15 +148,15 @@ class CommodityManagementView extends StatelessWidget {
     );
   }
 
- 
+
   Widget wrapTextCell(String text, double width) {
     return SizedBox(
-      width: width, 
+      width: width,
         child: Text(
         text,
-        softWrap: true, 
-        maxLines: null, 
-        overflow: TextOverflow.visible, 
+        softWrap: true,
+        maxLines: null,
+        overflow: TextOverflow.visible,
         style: TextStyle(fontSize: 10),
       ),
     );
@@ -167,9 +167,9 @@ class CommodityManagementView extends StatelessWidget {
       width: width,
       child: Text(
         text,
-        softWrap: true, 
-        maxLines: null, 
-        overflow: TextOverflow.visible, 
+        softWrap: true,
+        maxLines: null,
+        overflow: TextOverflow.visible,
         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
       ),
     );
