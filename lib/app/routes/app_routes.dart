@@ -43,4 +43,9 @@ abstract class _Paths {
   static const PRINT_SETTINGS = '/print-settings';
   static const RESERVOIR_SETTINGS = '/reservoir-settings';
   static const LOCATION_SETTINGS = '/location-settings';
+  static const TO_BE_DELIVERED = '/to-be-delivered';
+  static const TO_BE_UNLOADED = '/to-be-unloaded';
+  static const TO_BE_SORTED = '/to-be-sorted';
+  static const PUT_ON_SHELF = '/put-on-shelf';
+  static const RECEIPT_DETAILS = '/receipt-details';
 }

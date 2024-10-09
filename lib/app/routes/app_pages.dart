@@ -31,6 +31,13 @@ import '../modules/user_role/views/user_role_view.dart';
 import '../modules/warehouse_settings/bindings/warehouse_settings_binding.dart';
 import '../modules/warehouse_settings/views/warehouse_settings_view.dart';
 import '../modules/warehouse_settings/views/reservoir_settings_view.dart';
+import '../modules/receiving_management/views/to_be_delivered_view.dart';
+import '../modules/receiving_management/views/to_be_unloaded_view.dart';
+import '../modules/receiving_management/views/to_be_sorted_view.dart';
+import '../modules/receiving_management/views/put_on_shelf_view.dart';
+import '../modules/receiving_management/views/receipt_details_view.dart';
+
+
 
 part 'app_routes.dart';
 
@@ -76,7 +83,7 @@ class AppPages {
       name: _Paths.RECEIVING_MANAGEMENT,
       page: () => MainLayout(
         loadingController: Get.find(),
-        child: const ReceivingManagementView(),
+        child: ReceivingManagementView(),
       ),
       binding: ReceivingManagementBinding(),
     ),
@@ -165,6 +172,46 @@ class AppPages {
       page: () => MainLayout(
         loadingController: Get.find(),
         child: LocationSettingsView(),
+      ),
+      binding: PrintSettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.TO_BE_DELIVERED,
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: ToBeDeliveredView(),
+      ),
+      binding: PrintSettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.TO_BE_UNLOADED,
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: ToBeUnloadedView(),
+      ),
+      binding: PrintSettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.TO_BE_SORTED,
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: ToBeSortedView(),
+      ),
+      binding: PrintSettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PUT_ON_SHELF,
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: PutOnShelfView(),
+      ),
+      binding: PrintSettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECEIPT_DETAILS,
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: ReceiptDetailsView(),
       ),
       binding: PrintSettingsBinding(),
     ),

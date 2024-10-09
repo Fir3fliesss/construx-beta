@@ -4,7 +4,7 @@ import 'package:construx_beta/app/modules/receiving_management/controllers/recei
 import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:construx_beta/app/modules/receiving_management/views/tab_button.dart';
 
-class ReceivingManagementView extends StatelessWidget {
+class ToBeUnloadedView extends StatelessWidget {
   final ReceivingManagementController controller =
       Get.put(ReceivingManagementController());
 
@@ -32,7 +32,7 @@ class ReceivingManagementView extends StatelessWidget {
                             ),
                             Spacer(),
                             Text(
-                              'Receiving Management > Notice Of Arrival',
+                              'Receiving Management > To Be Unloaded',
                               style: TextStyle(color: Colors.black54),
                             ),
                           ],

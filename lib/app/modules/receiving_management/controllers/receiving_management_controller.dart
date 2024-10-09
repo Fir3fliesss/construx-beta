@@ -1,11 +1,15 @@
 import 'package:get/get.dart';
 
 class ReceivingManagementController extends GetxController {
-  //TODO: Implement ReceivingManagementController
+  
+  var selectedButton = 0.obs;
 
-  final count = 0.obs;
+  void changeButton (int index) {
+    selectedButton.value = index;
+  }
 
+  
 
+  
 
-  void increment() => count.value++;
 }

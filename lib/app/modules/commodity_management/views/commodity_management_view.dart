@@ -64,7 +64,7 @@ class CommodityManagementView extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: DataTable(
-                              headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+                              headingRowColor: WidgetStateProperty.all(Colors.grey[200]),
                               columnSpacing: 5, // Kurangi jarak antar kolom
                               columns: [
                                 DataColumn(label: wrapHeaderText('No', 40)), // Lebar lebih kecil untuk kolom No
