@@ -72,5 +72,6 @@
     "imagePreview.previewEditor": true,
     "workbench.input.interactive": true,
     "mainThreadWebview-simpleBrowser.view": false
-  }
+  },
+  "java.compile.nullAnalysis.mode": "automatic"
 }

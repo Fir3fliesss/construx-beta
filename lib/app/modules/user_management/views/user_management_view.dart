@@ -69,7 +69,7 @@ class UserManagementView extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: DataTable(
-                                headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+                                headingRowColor: WidgetStateProperty.all(Colors.grey[200]),
                                 columnSpacing: 40, // Set uniform column spacing
                                 columns: const [
                                   DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
