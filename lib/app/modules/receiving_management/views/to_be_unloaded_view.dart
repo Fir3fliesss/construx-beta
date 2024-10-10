@@ -39,8 +39,6 @@ class ToBeUnloadedView extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 16.0),
-
-
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: TabButtons(),
@@ -81,34 +79,39 @@ class ToBeUnloadedView extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(20.0),
                                     child: DataTable(
-                                      headingRowColor: WidgetStateProperty.all(Colors.grey[200]),
-                                      columnSpacing: 10, // Adjust column spacing
+                                      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+                                      columnSpacing: 8, // Adjust column spacing
                                       columns: [
                                         DataColumn(label: Text('')),
                                         DataColumn(label: Text('No')),
-                                        DataColumn(label: Text('Asn No')),
-                                        DataColumn(label: Text('Batch')),
-                                        DataColumn(label: Text('Estimated time of arrival')),
-                                        DataColumn(label: Text('Good Owner Name')),
-                                        DataColumn(label: Text('Operate')),
+                                        DataColumn(label: Text('ASN No')),
+                                        DataColumn(label: Text('Commodity Code')),
+                                        DataColumn(label: Text('Trade Name')),
+                                        DataColumn(label: Text('Specification Code')),
+                                        DataColumn(label: Text('From Name')),
+                                        DataColumn(label: Text('Goods Owner Name')),
+                                        DataColumn(label: Text('Supplier Name')),
+                                        DataColumn(label: Text('ASN Quantity')),
+                                        DataColumn(label: Text('Commodity Price')),
+                                        DataColumn(label: Text('Weight')),
+                                        DataColumn(label: Text('Volume')),
                                       ],
                                       rows: List.generate(
                                         15,
                                         (index) => DataRow(cells: [
                                           DataCell(Checkbox(value: false, onChanged: (bool? value) {})),
                                           DataCell(Text('${index + 1}')),
-                                          DataCell(Text('20240824-0003')),
-                                          DataCell(Text(index < 2 ? '${333 + index}' : '3433')),
-                                          DataCell(Text('2024-08-1')),
-                                          DataCell(Text('-')),
-                                          DataCell(Row(
-                                            children: [
-                                              Icon(Icons.edit, color: Colors.blue),
-                                              SizedBox(width: 10),
-                                              Icon(Icons.delete, color: Colors.red),
-                                            ],
-                                            ),
-                                          ),
+                                          DataCell(Text('20240731-000${index % 10 + 1}')), // ASN No
+                                          DataCell(Text('CC${index + 1}')), // Commodity Code
+                                          DataCell(Text('Trade Name ${index + 1}')), // Trade Name
+                                          DataCell(Text('Spec Code ${index + 1}')), // Specification Code
+                                          DataCell(Text('From Name ${index + 1}')), // From Name
+                                          DataCell(Text('Goods Owner ${index + 1}')), // Goods Owner Name
+                                          DataCell(Text('${(index + 1) * 10}')), // ASN Quantity
+                                          DataCell(Text('\$${(index + 1) * 100}')), // Commodity Price
+                                          DataCell(Text('${(index + 1) * 5} kg')), // Weight
+                                          DataCell(Text('${(index + 1) * 0.5} m³')), // Volume
+                                          DataCell(Text('${(index + 1) * 0.5} m³')), // Volume
                                         ]),
                                       ),
                                     ),

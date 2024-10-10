@@ -118,7 +118,7 @@ class UserRoleView extends GetView<UserRoleController> {
                                     return DataRow(
                                       cells: [
                                         DataCell(Text(userRole.no.toString())),
-                                        DataCell(Text(
+                                        DataCell(Text(  
                                             userRole.userRole ?? '-')),
                                         DataCell(Text(
                                             userRole.valid ?? '-')),

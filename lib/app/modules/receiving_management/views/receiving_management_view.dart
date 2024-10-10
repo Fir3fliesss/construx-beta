@@ -40,7 +40,6 @@ class ReceivingManagementView extends StatelessWidget {
                       ),
                       const SizedBox(height: 16.0),
 
-
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: TabButtons(),
@@ -53,7 +52,8 @@ class ReceivingManagementView extends StatelessWidget {
                           margin: const EdgeInsets.all(20.0),
                           padding: const EdgeInsets.all(5.0), // Updated padding
                           decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.abuabu, width: 2.0),
+                            border:
+                                Border.all(color: AppColors.abuabu, width: 2.0),
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: Column(
@@ -62,11 +62,56 @@ class ReceivingManagementView extends StatelessWidget {
                                 padding: const EdgeInsets.all(16.0),
                                 child: Row(
                                   children: [
-                                    buildCircleIconButton(Icons.add_circle_outline, 'Add', AppColors.abuabu),
+                                    buildCircleIconButton(
+                                        Icons.add_circle_outline,
+                                        'Add',
+                                        AppColors.abuabu),
                                     const SizedBox(width: 16),
-                                    buildCircleIconButton(Icons.refresh, 'Refresh', AppColors.abuabu),
+                                    buildCircleIconButton(Icons.refresh,
+                                        'Refresh', AppColors.abuabu),
                                     const SizedBox(width: 16),
-                                    buildCircleIconButton(Icons.upload_outlined, 'Upload', AppColors.abuabu),
+                                    buildCircleIconButton(Icons.upload_outlined,
+                                        'Upload', AppColors.abuabu),
+                                    const Spacer(),
+                                    Container(
+                                      width: 200,
+                                      height:
+                                          50, 
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: 'Supplier Name',
+                                          hintStyle: TextStyle(
+                                            color: AppColors.textGelap, 
+                                            fontSize:
+                                                16, 
+                                          ),
+                                          border: OutlineInputBorder(),
+                                          contentPadding: EdgeInsets.all(
+                                              12.0), 
+                                        ),
+                                        textAlignVertical: TextAlignVertical
+                                            .center, 
+                                      ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                    Container(
+                                      width: 200,
+                                      height: 50,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: 'Form Name',
+                                          hintStyle: TextStyle(
+                                            color: AppColors.textGelap, 
+                                            fontSize:
+                                                16,
+                                          ),
+                                          border: OutlineInputBorder(),
+                                          contentPadding: EdgeInsets.all(
+                                              12.0),
+                                        ),
+                                        textAlignVertical: TextAlignVertical.center, 
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -81,32 +126,44 @@ class ReceivingManagementView extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(20.0),
                                     child: DataTable(
-                                      headingRowColor: WidgetStateProperty.all(Colors.grey[200]),
-                                      columnSpacing: 10, // Adjust column spacing
+                                      headingRowColor: WidgetStateProperty.all(
+                                          Colors.grey[200]),
+                                      columnSpacing:
+                                          10, 
                                       columns: [
                                         DataColumn(label: Text('')),
                                         DataColumn(label: Text('No')),
                                         DataColumn(label: Text('Asn No')),
                                         DataColumn(label: Text('Batch')),
-                                        DataColumn(label: Text('Estimated time of arrival')),
-                                        DataColumn(label: Text('Good Owner Name')),
+                                        DataColumn(
+                                            label: Text(
+                                                'Estimated time of arrival')),
+                                        DataColumn(
+                                            label: Text('Good Owner Name')),
                                         DataColumn(label: Text('Operate')),
                                       ],
                                       rows: List.generate(
                                         15,
                                         (index) => DataRow(cells: [
-                                          DataCell(Checkbox(value: false, onChanged: (bool? value) {})),
+                                          DataCell(Checkbox(
+                                              value: false,
+                                              onChanged: (bool? value) {})),
                                           DataCell(Text('${index + 1}')),
                                           DataCell(Text('20240824-0003')),
-                                          DataCell(Text(index < 2 ? '${333 + index}' : '3433')),
+                                          DataCell(Text(index < 2
+                                              ? '${333 + index}'
+                                              : '3433')),
                                           DataCell(Text('2024-08-1')),
                                           DataCell(Text('-')),
-                                          DataCell(Row(
-                                            children: [
-                                              Icon(Icons.edit, color: Colors.blue),
-                                              SizedBox(width: 10),
-                                              Icon(Icons.delete, color: Colors.red),
-                                            ],
+                                          DataCell(
+                                            Row(
+                                              children: [
+                                                Icon(Icons.edit,
+                                                    color: Colors.blue),
+                                                SizedBox(width: 10),
+                                                Icon(Icons.delete,
+                                                    color: Colors.red),
+                                              ],
                                             ),
                                           ),
                                         ]),
