@@ -186,10 +186,20 @@ class PermissionSettingsView extends StatelessWidget {
                                   ),
                                   columns: const [
                                     DataColumn(
-                                      label: Text('Menu Name'),
+                                      label: Expanded(
+                                        child: Text(
+                                          'Menu Name',
+                                          textAlign: TextAlign.left,
+                                        ),
+                                      ),
                                     ),
                                     DataColumn(
-                                      label: Text('Operate'),
+                                      label: Expanded(
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text('Operate'),
+                                        ),
+                                      ),
                                     ),
                                   ],
                                   rows: List<DataRow>.generate(20, (index) {
@@ -204,9 +214,12 @@ class PermissionSettingsView extends StatelessWidget {
                                             Text('Menu Item ${index + 1}'),
                                           ],
                                         )),
-                                        DataCell(Icon(
-                                          Icons.edit,
-                                          color: Colors.grey[600],
+                                        DataCell(Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Icon(
+                                            Icons.edit,
+                                            color: Colors.grey[600],
+                                          ),
                                         )),
                                       ],
                                     );
