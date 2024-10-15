@@ -70,7 +70,7 @@ class CustomerInfoView extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: DataTable(
-                                headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+                                headingRowColor: WidgetStateProperty.all(Colors.grey[200]),
                                 columnSpacing: 20,
                                 columns: const [
                                   DataColumn(
@@ -111,13 +111,13 @@ class CustomerInfoView extends StatelessWidget {
                                   15,
                                   (index) => DataRow(cells: [
                                     DataCell(Center(child: Text('${index + 1}'))),
-                                    DataCell(Center(child: Text('20240824-0003'))),
-                                    DataCell(Center(child: Text('Jakarta'))),
-                                    DataCell(Center(child: Text('Jakarta'))),
-                                    DataCell(Center(child: Text('Byotos'))),
+                                    const DataCell(Center(child: Text('20240824-0003'))),
+                                    const DataCell(Center(child: Text('Jakarta'))),
+                                    const DataCell(Center(child: Text('Jakarta'))),
+                                    const DataCell(Center(child: Text('Byotos'))),
                                     DataCell(Center(child: Text(index == 1 ? 'ali' : '-'))),
                                     DataCell(Center(child: Text(index == 1 ? 'ali' : '-'))),
-                                    DataCell(Center(child: Text('ali'))),
+                                    const DataCell(Center(child: Text('ali'))),
                                     DataCell(Center(child: Text(index == 1 ? '2024-09-11 11:40' : '-'))),
                                     DataCell(Center(child: Text(index == 1 ? '2024-09-11 11:40' : '-'))),
                                     const DataCell(
