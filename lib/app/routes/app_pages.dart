@@ -26,8 +26,13 @@ import '../modules/receiving_management/views/receiving_management_view.dart';
 import '../modules/receiving_management/views/to_be_delivered_view.dart';
 import '../modules/receiving_management/views/to_be_sorted_view.dart';
 import '../modules/receiving_management/views/to_be_unloaded_view.dart';
+import '../modules/receiving_statistics/bindings/receiving_statistics_binding.dart';
+import '../modules/receiving_statistics/views/receiving_statistics_view.dart';
+import '../modules/safety_stock/bindings/safety_stock_binding.dart';
+import '../modules/safety_stock/views/safety_stock_view.dart';
 import '../modules/stock_management/bindings/stock_management_binding.dart';
 import '../modules/stock_management/views/stock_management_view.dart';
+import '../modules/stock_management/views/stock_view.dart';
 import '../modules/supplier_info/bindings/supplier_info_binding.dart';
 import '../modules/supplier_info/views/supplier_info_view.dart';
 import '../modules/user_management/bindings/user_management_binding.dart';
@@ -38,7 +43,6 @@ import '../modules/warehouse_settings/bindings/warehouse_settings_binding.dart';
 import '../modules/warehouse_settings/views/location_settings_view.dart';
 import '../modules/warehouse_settings/views/reservoir_settings_view.dart';
 import '../modules/warehouse_settings/views/warehouse_settings_view.dart';
-import '../modules/stock_management/views/stock_view.dart';
 
 part 'app_routes.dart';
 
@@ -216,22 +220,34 @@ class AppPages {
       ),
       binding: PrintSettingsBinding(),
     ),
-     GetPage(
+    GetPage(
       name: _Paths.STOCK_MANAGEMENT,
       page: () => MainLayout(
         loadingController: Get.find(),
         child: StockManagementView(),
-        ),
+      ),
       binding: StockManagementBinding(),
-     ),
-     GetPage(
+    ),
+    GetPage(
       name: _Paths.STOCK,
       page: () => MainLayout(
         loadingController: Get.find(),
         child: StockView(),
-        ),
+      ),
       binding: StockManagementBinding(),
-     ),
-  
+    ),
+    GetPage(
+      name: _Paths.SAFETY_STOCK,
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: SafetyStockView(),
+      ),
+      binding: SafetyStockBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECEIVING_STATISTICS,
+      page: () => const ReceivingStatisticsView(),
+      binding: ReceivingStatisticsBinding(),
+    ),
   ];
 }

@@ -22,6 +22,8 @@ abstract class Routes {
   static const RESERVOIR_SETTINGS = _Paths.RESERVOIR_SETTINGS;
   static const LOCATION_SETTINGS = _Paths.LOCATION_SETTINGS;
   static const STOCK_MANAGEMENT = _Paths.STOCK_MANAGEMENT;
+  static const SAFETY_STOCK = _Paths.SAFETY_STOCK;
+  static const RECEIVING_STATISTICS = _Paths.RECEIVING_STATISTICS;
 }
 
 abstract class _Paths {
@@ -51,4 +53,6 @@ abstract class _Paths {
   static const RECEIPT_DETAILS = '/receipt-details';
   static const STOCK_MANAGEMENT = '/stock-management';
   static const STOCK = '/stock';
+  static const SAFETY_STOCK = '/safety-stock';
+  static const RECEIVING_STATISTICS = '/receiving-statistics';
 }
