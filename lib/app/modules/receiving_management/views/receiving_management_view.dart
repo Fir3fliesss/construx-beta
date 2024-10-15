@@ -77,7 +77,7 @@ class ReceivingManagementView extends StatelessWidget {
                                       width: 200,
                                       height:
                                           50, 
-                                      child: TextField(
+                                      child: const TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Supplier Name',
                                           hintStyle: TextStyle(
@@ -97,7 +97,7 @@ class ReceivingManagementView extends StatelessWidget {
                                     Container(
                                       width: 200,
                                       height: 50,
-                                      child: TextField(
+                                      child: const TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Form Name',
                                           hintStyle: TextStyle(
@@ -131,16 +131,16 @@ class ReceivingManagementView extends StatelessWidget {
                                       columnSpacing:
                                           10, 
                                       columns: [
-                                        DataColumn(label: Text('')),
-                                        DataColumn(label: Text('No')),
-                                        DataColumn(label: Text('Asn No')),
-                                        DataColumn(label: Text('Batch')),
-                                        DataColumn(
+                                        const DataColumn(label: Text('')),
+                                        const DataColumn(label: Text('No')),
+                                        const DataColumn(label: Text('Asn No')),
+                                        const DataColumn(label: Text('Batch')),
+                                        const DataColumn(
                                             label: Text(
                                                 'Estimated time of arrival')),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Good Owner Name')),
-                                        DataColumn(label: Text('Operate')),
+                                        const DataColumn(label: Text('Operate')),
                                       ],
                                       rows: List.generate(
                                         15,
@@ -149,13 +149,13 @@ class ReceivingManagementView extends StatelessWidget {
                                               value: false,
                                               onChanged: (bool? value) {})),
                                           DataCell(Text('${index + 1}')),
-                                          DataCell(Text('20240824-0003')),
+                                          const DataCell(Text('20240824-0003')),
                                           DataCell(Text(index < 2
                                               ? '${333 + index}'
                                               : '3433')),
-                                          DataCell(Text('2024-08-1')),
-                                          DataCell(Text('-')),
-                                          DataCell(
+                                          const DataCell(Text('2024-08-1')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(
                                             Row(
                                               children: [
                                                 Icon(Icons.edit,

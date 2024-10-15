@@ -15,15 +15,15 @@ class TabButtons extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween, // Sebar rata antar tombol
         children: [
           Expanded(child: buildTabButton(0, "Notice Of Arrival", Icons.note, '/receiving-management')),
-          SizedBox(width: 8), // Jarak antar tombol agar tidak terlalu menempel
+          const SizedBox(width: 8), // Jarak antar tombol agar tidak terlalu menempel
           Expanded(child: buildTabButton(1, "To be Delivered",  Icons.local_shipping, '/to-be-delivered')),
-          SizedBox(width: 8), 
+          const SizedBox(width: 8), 
           Expanded(child: buildTabButton(2, "To be Unloaded",Icons.unarchive, '/to-be-unloaded')),
-          SizedBox(width: 8), 
+          const SizedBox(width: 8), 
           Expanded(child: buildTabButton(3, "To be Sorted", Icons.sort_outlined, '/to-be-sorted')),
-          SizedBox(width: 8), 
+          const SizedBox(width: 8), 
           Expanded(child: buildTabButton(4, "To be Put On The Shelf", Icons.inventory, '/put-on-shelf')),
-          SizedBox(width: 8), 
+          const SizedBox(width: 8), 
           Expanded(child: buildTabButton(5, "Receipt Details", Icons.receipt, '/receipt-details')),
         ],
       ),

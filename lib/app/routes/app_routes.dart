@@ -21,6 +21,7 @@ abstract class Routes {
   static const PRINT_SETTINGS = _Paths.PRINT_SETTINGS;
   static const RESERVOIR_SETTINGS = _Paths.RESERVOIR_SETTINGS;
   static const LOCATION_SETTINGS = _Paths.LOCATION_SETTINGS;
+  static const STOCK_MANAGEMENT = _Paths.STOCK_MANAGEMENT;
 }
 
 abstract class _Paths {
@@ -48,4 +49,6 @@ abstract class _Paths {
   static const TO_BE_SORTED = '/to-be-sorted';
   static const PUT_ON_SHELF = '/put-on-shelf';
   static const RECEIPT_DETAILS = '/receipt-details';
+  static const STOCK_MANAGEMENT = '/stock-management';
+  static const STOCK = '/stock';
 }

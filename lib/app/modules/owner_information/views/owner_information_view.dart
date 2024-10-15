@@ -107,12 +107,12 @@ class OwnerInformationView extends StatelessWidget {
                             (index) => DataRow(cells: [
                                     DataCell(Center(child: Text('${index + 1}'))),
                                     DataCell(Center(child: Text('20240824-000${index + 1}'))),
-                                    DataCell(Center(child: Text('Jakarta'))),
-                                    DataCell(Center(child: Text('-'))),
-                                    DataCell(Center(child: Text('-'))),
-                                    DataCell(Center(child: Text('-'))),
+                                    const DataCell(Center(child: Text('Jakarta'))),
+                                    const DataCell(Center(child: Text('-'))),
+                                    const DataCell(Center(child: Text('-'))),
+                                    const DataCell(Center(child: Text('-'))),
                                     DataCell(Center(child: Text('User $index'))),
-                                    DataCell(Center(child: Text('2024-09-11'))),
+                                    const DataCell(Center(child: Text('2024-09-11'))),
                               const DataCell(
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:construx_beta/app/modules/receiving_management/controllers/receiving_management_controller.dart';
-import 'package:construx_beta/constanta/app_colors.dart';
-import 'package:construx_beta/app/modules/receiving_management/views/tab_button.dart';
 
-class PutOnShelfView extends StatelessWidget {
-  final ReceivingManagementController controller =
-      Get.put(ReceivingManagementController());
+import 'package:get/get.dart';
+import 'package:construx_beta/app/modules/stock_management/views/tab_button.dart';
+import 'package:construx_beta/constanta/app_colors.dart';
+import '../controllers/stock_management_controller.dart';
+
+class StockView extends StatelessWidget {
+  final StockManagementController controller =
+      Get.put(StockManagementController());
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +27,13 @@ class PutOnShelfView extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'Receiving Management',
+                              'Stock Management',
                               style: TextStyle(
                                   fontSize: 24.0, fontWeight: FontWeight.bold),
                             ),
                             Spacer(),
                             Text(
-                              'Receiving Management > To Be Put On The Shelf',
+                              'Stock Management > Stock',
                               style: TextStyle(color: Colors.black54),
                             ),
                           ],
@@ -75,19 +76,22 @@ class PutOnShelfView extends StatelessWidget {
                                     const Spacer(),
                                     Container(
                                       width: 200,
-                                      height: 50,
+                                      height:
+                                          50, 
                                       child: const TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Supplier Name',
                                           hintStyle: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 16,
+                                            color: AppColors.textGelap, 
+                                            fontSize:
+                                                16, 
                                           ),
                                           border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(12.0),
+                                          contentPadding: EdgeInsets.all(
+                                              12.0), 
                                         ),
-                                        textAlignVertical:
-                                            TextAlignVertical.center,
+                                        textAlignVertical: TextAlignVertical
+                                            .center, 
                                       ),
                                     ),
                                     const SizedBox(width: 16),
@@ -98,17 +102,15 @@ class PutOnShelfView extends StatelessWidget {
                                         decoration: InputDecoration(
                                           hintText: 'Form Name',
                                           hintStyle: TextStyle(
-                                            color: Colors
-                                                .grey, // Kamu bisa ubah warna atau gaya teks hint di sini
+                                            color: AppColors.textGelap, 
                                             fontSize:
-                                                16, // Sesuaikan ukuran font
+                                                16,
                                           ),
                                           border: OutlineInputBorder(),
                                           contentPadding: EdgeInsets.all(
-                                              12.0), // Tetap penting untuk menyesuaikan padding
+                                              12.0),
                                         ),
-                                        textAlignVertical: TextAlignVertical
-                                            .center, // Pastikan teks di tengah vertikal
+                                        textAlignVertical: TextAlignVertical.center, 
                                       ),
                                     ),
                                   ],
@@ -125,42 +127,50 @@ class PutOnShelfView extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(20.0),
                                     child: DataTable(
-                              headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
-                              columnSpacing: 10,
-                              columns: [
-                              const DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('')),
-                              const DataColumn(label: Text('ASN No', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Commodity\nCode', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Trade Name', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Specification\nCode', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('From\nName', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Goods Owner\nName', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Supplier\nName', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Asn\nQuantity', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Commodity\nPrice', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Weight', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Volume', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Operate', style: TextStyle(fontSize: 12))),
-                            ],
-                            rows: List.generate(
-                              10,
-                              (index) => DataRow(cells: [
-                                DataCell(Text('${index + 1}', style: const TextStyle(fontSize: 12))),
-                                DataCell(Checkbox(value: false, onChanged: (bool? value) {})),
-                                const DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Icon(Icons.share_outlined, color: AppColors.textGelap, size: 16)),
-                  
+                                      headingRowColor: WidgetStateProperty.all(
+                                          Colors.grey[200]),
+                                      columnSpacing:
+                                          10, 
+                                      columns: [
+                                        const DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('')),
+                                        const DataColumn(label: Text('Commodity Code', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('Trade Name', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(
+                                            label: Text(
+                                                'Specification Code', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(
+                                            label: Text('Quantity', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('Available Quantity', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('Locked Quantity', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('Frozen Quantity', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('Asn Quantity', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('Unload Quantity', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('Sort Quantity', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('Sorted Quantity', style: TextStyle(fontSize: 12))),
+                                        const DataColumn(label: Text('Shortage Quantity', style: TextStyle(fontSize: 12))),   
+                                      ],
+                                      rows: List.generate(
+                                        15,
+                                        (index) => DataRow(cells: [
+                                          DataCell(Text('${index + 1}')),
+                                          DataCell(Checkbox(
+                                              value: false,
+                                              onChanged: (bool? value) {})),
+                                          const DataCell(Text('20240824-0003')),
+                                          DataCell(Text(index < 2
+                                              ? '${333 + index}'
+                                              : '3433')),
+                                          const DataCell(Text('2024-08-1')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
                                         ]),
                                       ),
                                     ),

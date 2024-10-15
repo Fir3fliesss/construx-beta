@@ -15,8 +15,8 @@ class CommodityManagementView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 32.0),
-                Padding(
+                const SizedBox(height: 32.0),
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Row(
                     children: [
@@ -32,7 +32,7 @@ class CommodityManagementView extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
 
                 // Container for table and actions
                 Expanded(
@@ -88,7 +88,7 @@ class CommodityManagementView extends StatelessWidget {
                                 10,
                                 (index) => DataRow(
                                   cells: [
-                                    DataCell(Text('${index + 1}', style: TextStyle(fontSize: 10))), // No
+                                    DataCell(Text('${index + 1}', style: const TextStyle(fontSize: 10))), // No
                                     DataCell(wrapTextCell('CODE${index + 100}', 80)), // Commodity Code
                                     DataCell(wrapTextCell('Commodity Name ${index + 1}', 80)), // Commodity Name
                                     DataCell(wrapTextCell('Category ${index + 1}', 80)), // Commodity Category
@@ -103,10 +103,10 @@ class CommodityManagementView extends StatelessWidget {
                                     DataCell(wrapTextCell('${(index + 5) * (index + 2)} cm³', 80)), // Commodity Volume
                                     DataCell(wrapTextCell('\$${(index + 1) * 50}', 80)), // Commodity Cost
                                     DataCell(wrapTextCell('\$${(index + 1) * 100}', 80)), // Commodity Price
-                                    DataCell(
+                                    const DataCell(
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
-                                        children: const [
+                                        children: [
                                           Icon(Icons.edit, color: Colors.blue, size: 15),
                                           SizedBox(width: 15.0),
                                           Icon(Icons.delete, color: Colors.red, size: 15),
@@ -157,7 +157,7 @@ class CommodityManagementView extends StatelessWidget {
         softWrap: true,
         maxLines: null,
         overflow: TextOverflow.visible,
-        style: TextStyle(fontSize: 10),
+        style: const TextStyle(fontSize: 10),
       ),
     );
   }
@@ -170,7 +170,7 @@ class CommodityManagementView extends StatelessWidget {
         softWrap: true,
         maxLines: null,
         overflow: TextOverflow.visible,
-        style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
       ),
     );
   }

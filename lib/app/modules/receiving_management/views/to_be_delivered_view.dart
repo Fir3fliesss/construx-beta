@@ -76,7 +76,7 @@ class ToBeDeliveredView extends StatelessWidget {
                                     Container(
                                       width: 200,
                                       height: 50,
-                                      child: TextField(
+                                      child: const TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Supplier Name',
                                           hintStyle: TextStyle(
@@ -94,7 +94,7 @@ class ToBeDeliveredView extends StatelessWidget {
                                     Container(
                                       width: 200,
                                       height: 50,
-                                      child: TextField(
+                                      child: const TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Form Name',
                                           hintStyle: TextStyle(
@@ -130,24 +130,24 @@ class ToBeDeliveredView extends StatelessWidget {
                                       columnSpacing:
                                           10, // Adjust column spacing
                                       columns: [
-                                        DataColumn(label: Text('')),
-                                        DataColumn(label: Text('No')),
-                                        DataColumn(label: Text('ASN No')),
-                                        DataColumn(
+                                        const DataColumn(label: Text('')),
+                                        const DataColumn(label: Text('No')),
+                                        const DataColumn(label: Text('ASN No')),
+                                        const DataColumn(
                                             label: Text('Commodity Code')),
-                                        DataColumn(label: Text('Trade Name')),
-                                        DataColumn(
+                                        const DataColumn(label: Text('Trade Name')),
+                                        const DataColumn(
                                             label: Text('Specification Code')),
-                                        DataColumn(label: Text('From Name')),
-                                        DataColumn(
+                                        const DataColumn(label: Text('From Name')),
+                                        const DataColumn(
                                             label: Text('Goods Owner Name')),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Supplier Name')),
-                                        DataColumn(label: Text('Asn Quantity')),
-                                        DataColumn(
+                                        const DataColumn(label: Text('Asn Quantity')),
+                                        const DataColumn(
                                             label: Text('Commodity Price')),
-                                        DataColumn(label: Text('Weight')),
-                                        DataColumn(label: Text('Volume')),
+                                        const DataColumn(label: Text('Weight')),
+                                        const DataColumn(label: Text('Volume')),
                                       ],
                                       rows: List.generate(
                                         15,
@@ -156,17 +156,17 @@ class ToBeDeliveredView extends StatelessWidget {
                                               value: false,
                                               onChanged: (bool? value) {})),
                                           DataCell(Text('${index + 1}')),
-                                          DataCell(Text('20240731-0001')),
-                                          DataCell(Text('20240731-0001')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')), 
-                                          DataCell(Text('-')), 
+                                          const DataCell(Text('20240731-0001')),
+                                          const DataCell(Text('20240731-0001')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')), 
+                                          const DataCell(Text('-')), 
                                         ]),
                                       ),
                                     ),

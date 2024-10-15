@@ -76,7 +76,7 @@ class ToBeSortedView extends StatelessWidget {
                                     Container(
                                       width: 200,
                                       height: 50,
-                                      child: TextField(
+                                      child: const TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Supplier Name',
                                           hintStyle: TextStyle(
@@ -94,7 +94,7 @@ class ToBeSortedView extends StatelessWidget {
                                     Container(
                                       width: 200,
                                       height: 50,
-                                      child: TextField(
+                                      child: const TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Form Name',
                                           hintStyle: TextStyle(
@@ -128,38 +128,38 @@ class ToBeSortedView extends StatelessWidget {
                               headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
                               columnSpacing: 10,
                               columns: [
-                              DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('')),
-                              DataColumn(label: Text('ASN No', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Commodity\nCode', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Trade Name', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Specification\nCode', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('From\nName', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Goods Owner\nName', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Supplier\nName', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Asn\nQuantity', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Commodity\nPrice', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Weight', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Volume', style: TextStyle(fontSize: 12))),
-                              DataColumn(label: Text('Operate', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('')),
+                              const DataColumn(label: Text('ASN No', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Commodity\nCode', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Trade Name', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Specification\nCode', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('From\nName', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Goods Owner\nName', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Supplier\nName', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Asn\nQuantity', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Commodity\nPrice', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Weight', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Volume', style: TextStyle(fontSize: 12))),
+                              const DataColumn(label: Text('Operate', style: TextStyle(fontSize: 12))),
                             ],
                             rows: List.generate(
                               10,
                               (index) => DataRow(cells: [
-                                DataCell(Text('${index + 1}', style: TextStyle(fontSize: 12))),
+                                DataCell(Text('${index + 1}', style: const TextStyle(fontSize: 12))),
                                 DataCell(Checkbox(value: false, onChanged: (bool? value) {})),
-                                DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                DataCell(
+                                const DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
+                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
+                                const DataCell(
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [

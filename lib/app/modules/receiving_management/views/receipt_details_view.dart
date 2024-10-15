@@ -90,64 +90,64 @@ class ReceiptDetailsView extends StatelessWidget {
                                           AppColors.abuabu),
                                       columnSpacing: 10,
                                       columns: [
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('No',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(label: Text('')),
-                                        DataColumn(
+                                        const DataColumn(label: Text('')),
+                                        const DataColumn(
                                             label: Text('ASN No',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Commodity Code',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Trade Name',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Specification Code',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('From Name',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Goods Owner Name',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Supplier Name',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('ASN Quantity',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Weight',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Volume',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Actual\nQuantity',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Sorted\nQuantity',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Shortage\nQuantity',
                                                 style:
                                                     TextStyle(fontSize: 12))),
-                                        DataColumn(
+                                        const DataColumn(
                                             label: Text('Damage\nQuantity',
                                                 style:
                                                     TextStyle(fontSize: 12))),
@@ -161,19 +161,19 @@ class ReceiptDetailsView extends StatelessWidget {
                                               onChanged: (bool? value) {})),
                                           DataCell(
                                               Text('20240713-000${index + 1}')),
-                                          DataCell(Text('20240713-0001')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
-                                          DataCell(Text('-')),
+                                          const DataCell(Text('20240713-0001')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
+                                          const DataCell(Text('-')),
                                         ]),
                                       ),
                                     ),

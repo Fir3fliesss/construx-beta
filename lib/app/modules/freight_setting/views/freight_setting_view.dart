@@ -114,15 +114,15 @@ class FreightSettingView extends StatelessWidget {
                                   15,
                                   (index) => DataRow(cells: [
                                     DataCell(Center(child: Text('${index + 1}'))),
-                                    DataCell(Center(child: Text('20240824-0003'))),
-                                    DataCell(Center(child: Text('Jakarta'))),
+                                    const DataCell(Center(child: Text('20240824-0003'))),
+                                    const DataCell(Center(child: Text('Jakarta'))),
                                     DataCell(Center(child: Text(index == 0 ? 'Bogor' : 'Jakarta'))),
                                     DataCell(Center(child: Text(index == 0 ? '-' : '-'))),
                                     DataCell(Center(child: Text(index == 0 ? 'No. 66' : '-'))),
                                     DataCell(Center(child: Text(index == 0 ? '123' : '-'))),
                                     DataCell(Center(child: Text(index == 0 ? '222' : '-'))),
-                                    DataCell(Center(child: Text('Ali'))),
-                                    DataCell(Center(child: Text('2024-09-11 11:40'))),
+                                    const DataCell(Center(child: Text('Ali'))),
+                                    const DataCell(Center(child: Text('2024-09-11 11:40'))),
                                     DataCell(Center(child: Text(index == 0 ? 'yes' : '-'))),
                                     const DataCell(
                                       Row(
