@@ -26,6 +26,7 @@ abstract class Routes {
   static const RECEIVING_STATISTICS = _Paths.RECEIVING_STATISTICS;
   static const SHIPMENT_STATISTICS = _Paths.SHIPMENT_STATISTICS;
   static const WAREHOUSE_PROCESSING = _Paths.WAREHOUSE_PROCESSING;
+  static const INVENTORY_MOVE = _Paths.INVENTORY_MOVE;
 }
 
 abstract class _Paths {
@@ -59,4 +60,5 @@ abstract class _Paths {
   static const RECEIVING_STATISTICS = '/receiving-statistics';
   static const SHIPMENT_STATISTICS = '/shipment-statistics';
   static const WAREHOUSE_PROCESSING = '/warehouse-processing';
+  static const INVENTORY_MOVE = '/inventory-move';
 }

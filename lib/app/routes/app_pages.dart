@@ -12,6 +12,8 @@ import '../modules/freight_setting/bindings/freight_setting_binding.dart';
 import '../modules/freight_setting/views/freight_setting_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/inventory_move/bindings/inventory_move_binding.dart';
+import '../modules/inventory_move/views/inventory_move_view.dart';
 import '../modules/main_page_layout.dart';
 import '../modules/owner_information/bindings/owner_information_binding.dart';
 import '../modules/owner_information/views/owner_information_view.dart';
@@ -266,7 +268,18 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.WAREHOUSE_PROCESSING,
-      page: () => const WarehouseProcessingView(),
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: WarehouseProcessingView(),
+      ),
+      binding: WarehouseProcessingBinding(),
+    ),  
+    GetPage(
+      name: _Paths.INVENTORY_MOVE,
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: InventoryMoveView(),
+      ),
       binding: WarehouseProcessingBinding(),
     ),
   ];

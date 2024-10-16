@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:construx_beta/constanta/app_colors.dart';
-import '../controllers/warehouse_processing_controller.dart';
+import '../controllers/inventory_move_controller.dart';
 
-class WarehouseProcessingView extends StatelessWidget {
-  final WarehouseProcessingController controller =
-      Get.put(WarehouseProcessingController());
+class InventoryMoveView extends StatelessWidget {
+  final InventoryMoveController controller =
+      Get.put(InventoryMoveController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class WarehouseProcessingView extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        'Warehouse Working > Warehouse Processing',
+                        'Warehouse Working > Inveentory Move',
                         style: TextStyle(color: Colors.black54),
                       ),
                     ],
@@ -115,17 +115,27 @@ class WarehouseProcessingView extends StatelessWidget {
                                     WidgetStateProperty.all(Colors.grey[200]),
                                 columnSpacing: 20,
                                 columns: const [
-                                  const DataColumn(label: Text('No')),
-                                  const DataColumn(label: Text('')),
-                                  const DataColumn(label: Text('Job Code')),
-                                  const DataColumn(label: Text('Job Type')),
-                                  const DataColumn(
-                                      label: Text('Is Update Stock')),
-                                  const DataColumn(label: Text('Processor')),
-                                  const DataColumn(label: Text('Process Time')),
-                                  const DataColumn(label: Text('Creator')),
-                                  const DataColumn(label: Text('Creator Time')),
-                                  const DataColumn(label: Text('Operator'))
+                                        const DataColumn(label: Text('No', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('')),
+                                        const DataColumn(label: Text('Job No', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('Move\nStatus', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(
+                                            label: Text(
+                                                'Commodity\nCode', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(
+                                            label: Text('Commodity\nName', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('Spefication\nCode', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('Specification\nName', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('City', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('Origin\nWarehouse', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('Origin\nLocation', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('Target\nWarehouse', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('Target\nLocation', style: TextStyle(fontSize: 10))),
+                                        const DataColumn(label: Text('Creator', style: TextStyle(fontSize: 10))),  
+                                        const DataColumn(label: Text('Create\nTime', style: TextStyle(fontSize: 10))),  
+                                        const DataColumn(label: Text('Handler', style: TextStyle(fontSize: 10))), 
+                                        const DataColumn(label: Text('Handle\nTime', style: TextStyle(fontSize: 10))), 
+                                        const DataColumn(label: Text('Operate', style: TextStyle(fontSize: 10))), 
                                 ],
                                 rows: List.generate(
                                   15,
@@ -141,6 +151,14 @@ class WarehouseProcessingView extends StatelessWidget {
                                     const DataCell(Text('-')),
                                     const DataCell(Text('-')),
                                     const DataCell(Text('-')),
+                                    const DataCell(Text('-')),
+                                    const DataCell(Text('-')),
+                                    const DataCell(Text('-')),
+                                    const DataCell(Text('-')),
+                                    const DataCell(Text('-')),
+                                    const DataCell(Text('-')),
+                                    const DataCell(Text('-')),
+                                    const DataCell(Text('-')),
                                     const DataCell(
                                       Row(
                                         mainAxisSize: MainAxisSize.min,
@@ -149,12 +167,8 @@ class WarehouseProcessingView extends StatelessWidget {
                                               color: AppColors.textGelap,
                                               size: 16),
                                           SizedBox(width: 4),
-                                          Icon(Icons.copy,
-                                              color: AppColors.abu, size: 16),
-                                          SizedBox(width: 4),
                                           Icon(Icons.book, color: AppColors.abu, size: 16),
-                                          SizedBox(width: 4.0,),
-                                          Icon(Icons.delete, color: AppColors.abu, size: 16),
+                                        
                                         ],
                                       ),
                                     ),
@@ -193,3 +207,4 @@ class WarehouseProcessingView extends StatelessWidget {
     );
   }
 }
+
