@@ -4,7 +4,8 @@ import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:construx_beta/app/modules/warehouse_settings/controllers/warehouse_settings_controller.dart';
 
 class CommodityManagementView extends StatelessWidget {
-  final WarehouseSettingsController controller = Get.put(WarehouseSettingsController());
+  final WarehouseSettingsController controller =
+      Get.put(WarehouseSettingsController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,8 @@ class CommodityManagementView extends StatelessWidget {
                     children: [
                       Text(
                         'Basic Setting',
-                        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
                       ),
                       Spacer(),
                       Text(
@@ -50,11 +52,14 @@ class CommodityManagementView extends StatelessWidget {
                           child: Row(
                             children: [
                               // Action Buttons
-                              buildCircleIconButton(Icons.add_circle_outline, "Add", AppColors.abuabu),
+                              buildCircleIconButton(Icons.add_circle_outline,
+                                  "Add", AppColors.abuabu),
                               const SizedBox(width: 16),
-                              buildCircleIconButton(Icons.refresh, "Refresh", AppColors.abuabu),
+                              buildCircleIconButton(
+                                  Icons.refresh, "Refresh", AppColors.abuabu),
                               const SizedBox(width: 16),
-                              buildCircleIconButton(Icons.upload_outlined, "Upload", AppColors.abuabu),
+                              buildCircleIconButton(Icons.upload_outlined,
+                                  "Upload", AppColors.abuabu),
                             ],
                           ),
                         ),
@@ -64,30 +69,60 @@ class CommodityManagementView extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: DataTable(
-                              headingRowColor: WidgetStateProperty.all(Colors.grey[200]),
+                              headingRowColor:
+                                  WidgetStateProperty.all(Colors.grey[200]),
                               columnSpacing: 5, // Kurangi jarak antar kolom
                               columns: [
-                                DataColumn(label: wrapHeaderText('No', 40)), // Lebar lebih kecil untuk kolom No
-                                DataColumn(label: wrapHeaderText('Commodity Code', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Name', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Category', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Description', 80)),
-                                DataColumn(label: wrapHeaderText('Supplier Name', 80)),
+                                DataColumn(
+                                    label: wrapHeaderText('No',
+                                        40)), // Lebar lebih kecil untuk kolom No
+                                DataColumn(
+                                    label:
+                                        wrapHeaderText('Commodity Code', 80)),
+                                DataColumn(
+                                    label:
+                                        wrapHeaderText('Commodity Name', 80)),
+                                DataColumn(
+                                    label: wrapHeaderText(
+                                        'Commodity Category', 80)),
+                                DataColumn(
+                                    label: wrapHeaderText(
+                                        'Commodity Description', 80)),
+                                DataColumn(
+                                    label: wrapHeaderText('Supplier Name', 80)),
                                 DataColumn(label: wrapHeaderText('Brand', 80)),
-                                DataColumn(label: wrapHeaderText('Specification Code', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Weight', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Length', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Width', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Height', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Volume', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Cost', 80)),
-                                DataColumn(label: wrapHeaderText('Commodity Price', 80)),
-                                DataColumn(label: wrapHeaderText('Operation', 80)),
+                                DataColumn(
+                                    label: wrapHeaderText(
+                                        'Specification Code', 80)),
+                                DataColumn(
+                                    label:
+                                        wrapHeaderText('Commodity Weight', 80)),
+                                DataColumn(
+                                    label:
+                                        wrapHeaderText('Commodity Length', 80)),
+                                DataColumn(
+                                    label:
+                                        wrapHeaderText('Commodity Width', 80)),
+                                DataColumn(
+                                    label:
+                                        wrapHeaderText('Commodity Height', 80)),
+                                DataColumn(
+                                    label:
+                                        wrapHeaderText('Commodity Volume', 80)),
+                                DataColumn(
+                                    label:
+                                        wrapHeaderText('Commodity Cost', 80)),
+                                DataColumn(
+                                    label:
+                                        wrapHeaderText('Commodity Price', 80)),
+                                DataColumn(
+                                    label: wrapHeaderText('Operation', 80)),
                               ],
                               rows: List.generate(
                                 10,
                                 (index) => DataRow(
                                   cells: [
+<<<<<<< HEAD
                                     DataCell(Text('${index + 1}', style: const TextStyle(fontSize: 10))), // No
                                     DataCell(wrapTextCell('CODE${index + 100}', 80)), // Commodity Code
                                     DataCell(wrapTextCell('Commodity Name ${index + 1}', 80)), // Commodity Name
@@ -108,8 +143,55 @@ class CommodityManagementView extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Icon(Icons.edit, color: Colors.blue, size: 15),
+=======
+                                    DataCell(Text('${index + 1}',
+                                        style: TextStyle(fontSize: 10))), // No
+                                    DataCell(wrapTextCell('CODE${index + 100}',
+                                        80)), // Commodity Code
+                                    DataCell(wrapTextCell(
+                                        'Commodity Name ${index + 1}',
+                                        80)), // Commodity Name
+                                    DataCell(wrapTextCell(
+                                        'Category ${index + 1}',
+                                        80)), // Commodity Category
+                                    DataCell(wrapTextCell(
+                                        'Description of the commodity ${index + 1} that is longer',
+                                        80)), // Commodity Description
+                                    DataCell(wrapTextCell(
+                                        'Supplier ${index + 1}',
+                                        80)), // Supplier Name
+                                    DataCell(wrapTextCell(
+                                        'Brand ${index + 1}', 80)), // Brand
+                                    DataCell(wrapTextCell('SPEC${index + 100}',
+                                        80)), // Specification Code
+                                    DataCell(wrapTextCell('${index + 10} kg',
+                                        80)), // Commodity Weight
+                                    DataCell(wrapTextCell('${index + 5} cm',
+                                        80)), // Commodity Length
+                                    DataCell(wrapTextCell('${index + 2} cm',
+                                        80)), // Commodity Width
+                                    DataCell(wrapTextCell('${index + 3} cm',
+                                        80)), // Commodity Height
+                                    DataCell(wrapTextCell(
+                                        '${(index + 5) * (index + 2)} cm³',
+                                        80)), // Commodity Volume
+                                    DataCell(wrapTextCell(
+                                        '\$${(index + 1) * 50}',
+                                        80)), // Commodity Cost
+                                    DataCell(wrapTextCell(
+                                        '\$${(index + 1) * 100}',
+                                        80)), // Commodity Price
+                                    DataCell(
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const [
+                                          Icon(Icons.edit,
+                                              color: Colors.blue, size: 15),
+>>>>>>> c10ea5f (style(permission settings):fixxing UI)
                                           SizedBox(width: 15.0),
-                                          Icon(Icons.delete, color: Colors.red, size: 15),
+                                          Icon(Icons.delete,
+                                              color: Colors.red, size: 15),
                                         ],
                                       ),
                                     ), // Operation (Edit/Delete)
@@ -131,7 +213,6 @@ class CommodityManagementView extends StatelessWidget {
     );
   }
 
-
   Widget buildCircleIconButton(IconData icon, String tooltip, Color bgColor) {
     return Tooltip(
       message: tooltip,
@@ -148,11 +229,10 @@ class CommodityManagementView extends StatelessWidget {
     );
   }
 
-
   Widget wrapTextCell(String text, double width) {
     return SizedBox(
       width: width,
-        child: Text(
+      child: Text(
         text,
         softWrap: true,
         maxLines: null,

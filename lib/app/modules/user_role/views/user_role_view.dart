@@ -100,7 +100,6 @@ class UserRoleView extends GetView<UserRoleController> {
                         child: SingleChildScrollView(
                           scrollDirection: Axis.vertical,
                           child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
                             child: Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: Obx(() {
@@ -118,7 +117,7 @@ class UserRoleView extends GetView<UserRoleController> {
                                     return DataRow(
                                       cells: [
                                         DataCell(Text(userRole.no.toString())),
-                                        DataCell(Text(  
+                                        DataCell(Text(
                                             userRole.userRole ?? '-')),
                                         DataCell(Text(
                                             userRole.valid ?? '-')),
