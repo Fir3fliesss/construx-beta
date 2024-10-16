@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:construx_beta/constanta/app_colors.dart';
-import '../controllers/receiving_statistics_controller.dart';
+import '../controllers/shipment_statistics_controller.dart';
 
-class ReceivingStatisticsView extends StatelessWidget {
-  final ReceivingStatisticsController controller = Get.put(ReceivingStatisticsController());
+class ShipmentStatisticsView extends StatelessWidget {
+  final ShipmentStatisticsController controller = Get.put(ShipmentStatisticsController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class ReceivingStatisticsView extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        'Statistic Analysis > Receiving Statistics',
+                        'Statistic Analysis > Shipment Statistic',
                         style: TextStyle(color: Colors.black54),
                       ),
                     ],
@@ -59,6 +59,45 @@ class ReceivingStatisticsView extends StatelessWidget {
                               buildCircleIconButton(Icons.upload_outlined, "Upload", AppColors.abuabu),
                               const SizedBox(width: 16,),
                               buildCircleIconButton(Icons.bar_chart, "Statistic", AppColors.abuabu),
+                              const Spacer(),
+                                    Container(
+                                      width: 200,
+                                      height: 50,
+                                      child: const TextField(
+                                        decoration: InputDecoration(
+                                          hintText: 'Supplier Name',
+                                          hintStyle: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 16,
+                                          ),
+                                          border: OutlineInputBorder(),
+                                          contentPadding: EdgeInsets.all(12.0),
+                                        ),
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                    Container(
+                                      width: 200,
+                                      height: 50,
+                                      child: const TextField(
+                                        decoration: InputDecoration(
+                                          hintText: 'Form Name',
+                                          hintStyle: TextStyle(
+                                            color: Colors
+                                                .grey, // Kamu bisa ubah warna atau gaya teks hint di sini
+                                            fontSize:
+                                                16, // Sesuaikan ukuran font
+                                          ),
+                                          border: OutlineInputBorder(),
+                                          contentPadding: EdgeInsets.all(
+                                              12.0), // Tetap penting untuk menyesuaikan padding
+                                        ),
+                                        textAlignVertical: TextAlignVertical
+                                            .center, // Pastikan teks di tengah vertikal
+                                      ),
+                                    ),
                             ],
                           ),
                         ),
@@ -80,53 +119,48 @@ class ReceivingStatisticsView extends StatelessWidget {
                                     label: Text('No', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
-                                    label: Text('Asn No', style: TextStyle(fontSize: 12)),
+                                    label: Text('Shipment No', style: TextStyle(fontSize: 12)),
+                                  ),
+                                  DataColumn(
+                                    label: Text('Warehouse\nName', style: TextStyle(fontSize: 12)),
+                                  ),
+                                  DataColumn(
+                                    label: Text('Location Code', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
                                     label: Text('Commodity\nCode', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
-                                    label: Text('Trade Name', style: TextStyle(fontSize: 12)),
+                                    label: Text('Commodity\nName', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
-                                    label: Text('Spesification\nCode', style: TextStyle(fontSize: 12)),
+                                    label: Text('Specification\nCode', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
-                                    label: Text('Form\nName', style: TextStyle(fontSize: 12)),
+                                    label: Text('Specification\nName', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
-                                    label: Text('Goods Owner\nName', style: TextStyle(fontSize: 12)),
+                                    label: Text('Customer\nName', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
-                                    label: Text('Supplier\nName', style: TextStyle(fontSize: 12)),
+                                    label: Text('Serial\nNumber', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
-                                    label: Text('Asn\nQuantity', style: TextStyle(fontSize: 12)),
+                                    label: Text('Delivery\nQuantity', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
-                                    label: Text('Weight', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Volume', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Actual\nQuantity', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Sorted\nQuantity', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Shortage\nQuantity', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('More\nQuantity', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Demage\nQuantity', style: TextStyle(fontSize: 12)),
+                                    label: Text('Delivery\nTime', style: TextStyle(fontSize: 12)),
                                   ),
                                   DataColumn(
                                     label: Text('Commodity\nPrice', style: TextStyle(fontSize: 12)),
                                   ),
+                                  DataColumn(
+                                    label: Text('Expiration\nDate', style: TextStyle(fontSize: 12)),
+                                  ),
+                                  DataColumn(
+                                    label: Text('listing\nDate', style: TextStyle(fontSize: 12)),
+                                  ),
+                                  
                                 ],
                                 rows: List.generate(
                                   15,
@@ -138,8 +172,6 @@ class ReceivingStatisticsView extends StatelessWidget {
                                               ? '${333 + index}'
                                               : '3433')),
                                           const DataCell(Text('2024-08-1')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
                                           const DataCell(Text('-')),
                                           const DataCell(Text('-')),
                                           const DataCell(Text('-')),
@@ -185,3 +217,4 @@ class ReceivingStatisticsView extends StatelessWidget {
     );
   }
 }
+

@@ -30,6 +30,8 @@ import '../modules/receiving_statistics/bindings/receiving_statistics_binding.da
 import '../modules/receiving_statistics/views/receiving_statistics_view.dart';
 import '../modules/safety_stock/bindings/safety_stock_binding.dart';
 import '../modules/safety_stock/views/safety_stock_view.dart';
+import '../modules/shipment_statistics/bindings/shipment_statistics_binding.dart';
+import '../modules/shipment_statistics/views/shipment_statistics_view.dart';
 import '../modules/stock_management/bindings/stock_management_binding.dart';
 import '../modules/stock_management/views/stock_management_view.dart';
 import '../modules/stock_management/views/stock_view.dart';
@@ -246,8 +248,19 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.RECEIVING_STATISTICS,
-      page: () => const ReceivingStatisticsView(),
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: ReceivingStatisticsView(),
+      ),
       binding: ReceivingStatisticsBinding(),
+    ),
+     GetPage(
+      name: _Paths.SHIPMENT_STATISTICS,
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: ShipmentStatisticsView(),
+      ),
+      binding: ShipmentStatisticsBinding(),
     ),
   ];
 }
