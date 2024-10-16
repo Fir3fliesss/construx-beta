@@ -41,6 +41,8 @@ import '../modules/user_management/bindings/user_management_binding.dart';
 import '../modules/user_management/views/user_management_view.dart';
 import '../modules/user_role/bindings/user_role_binding.dart';
 import '../modules/user_role/views/user_role_view.dart';
+import '../modules/warehouse_processing/bindings/warehouse_processing_binding.dart';
+import '../modules/warehouse_processing/views/warehouse_processing_view.dart';
 import '../modules/warehouse_settings/bindings/warehouse_settings_binding.dart';
 import '../modules/warehouse_settings/views/location_settings_view.dart';
 import '../modules/warehouse_settings/views/reservoir_settings_view.dart';
@@ -254,13 +256,18 @@ class AppPages {
       ),
       binding: ReceivingStatisticsBinding(),
     ),
-     GetPage(
+    GetPage(
       name: _Paths.SHIPMENT_STATISTICS,
       page: () => MainLayout(
         loadingController: Get.find(),
         child: ShipmentStatisticsView(),
       ),
       binding: ShipmentStatisticsBinding(),
+    ),
+    GetPage(
+      name: _Paths.WAREHOUSE_PROCESSING,
+      page: () => const WarehouseProcessingView(),
+      binding: WarehouseProcessingBinding(),
     ),
   ];
 }
