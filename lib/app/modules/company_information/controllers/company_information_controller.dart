@@ -21,12 +21,13 @@ class CompanyInformationController extends GetxController {
   final formKey = GlobalKey<FormState>();
 // TODO: fix the loading bugs
 
-@override
+  @override
   Future<void> onInit() async {
     super.onInit();
-    loadInitialData(); 
+    loadInitialData();
     // loadingController.triggerLoading();
   }
+
   void loadInitialData() {
     companies.assignAll([
       CompanyModel(
@@ -102,48 +103,48 @@ class CompanyInformationController extends GetxController {
     );
   }
 
-Future<void> exportCompanies() async {
-  try {
-    var excel = Excel.createExcel();
-    excel.rename(excel.getDefaultSheet()!, 'Company_Information');
-    Sheet sheetObject = excel['Company_Information'];
+  Future<void> exportCompanies() async {
+    try {
+      var excel = Excel.createExcel();
+      excel.rename(excel.getDefaultSheet()!, 'Company_Information');
+      Sheet sheetObject = excel['Company_Information'];
 
-    sheetObject.appendRow([
-      TextCellValue('No'),
-      TextCellValue('Corporate Name'),
-      TextCellValue('City'),
-      TextCellValue('Detailed Address'),
-      TextCellValue('Person In Charge'),
-      TextCellValue('Contact Information')
-    ]);
-
-    for (var company in companies) {
       sheetObject.appendRow([
-        TextCellValue(company.id.toString()),
-        TextCellValue(company.name),
-        TextCellValue(company.city ?? '-'),
-        TextCellValue(company.address ?? '-'),
-        TextCellValue(company.personInCharge ?? '-'),
-        TextCellValue(company.contactInfo ?? '-')
+        TextCellValue('No'),
+        TextCellValue('Corporate Name'),
+        TextCellValue('City'),
+        TextCellValue('Detailed Address'),
+        TextCellValue('Person In Charge'),
+        TextCellValue('Contact Information')
       ]);
+
+      for (var company in companies) {
+        sheetObject.appendRow([
+          TextCellValue(company.id.toString()),
+          TextCellValue(company.name),
+          TextCellValue(company.city ?? '-'),
+          TextCellValue(company.address ?? '-'),
+          TextCellValue(company.personInCharge ?? '-'),
+          TextCellValue(company.contactInfo ?? '-')
+        ]);
+      }
+
+      var fileBytes = excel.save();
+      if (fileBytes == null) {
+        print('Error: File bytes are null');
+        return;
+      }
+
+      var directory = await getApplicationDocumentsDirectory();
+      var file = File('${directory.path}/company_information.xlsx');
+      file.createSync(recursive: true);
+      file.writeAsBytesSync(fileBytes);
+
+      print('File saved to ${file.path}');
+    } catch (e) {
+      print('An error occurred: $e');
     }
-
-    var fileBytes = excel.save();
-    if (fileBytes == null) {
-      print('Error: File bytes are null');
-      return;
-    }
-
-    var directory = await getApplicationDocumentsDirectory();
-    var file = File('${directory.path}/company_information.xlsx');
-    file.createSync(recursive: true);
-    file.writeAsBytesSync(fileBytes);
-
-    print('File saved to ${file.path}');
-  } catch (e) {
-    print('An error occurred: $e');
   }
-}
 
   Widget _buildCompanyForm() {
     return Form(

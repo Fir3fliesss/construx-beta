@@ -1,11 +1,16 @@
 import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+// import '../../../data/permission_settings_model.dart';
+import '../controllers/permission_settings_controller.dart';
 
 class PermissionSettingsView extends StatelessWidget {
   const PermissionSettingsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final PermissionSettingsController controller = Get.put(PermissionSettingsController());
+
     return Scaffold(
       body: Column(
         children: [
@@ -72,7 +77,9 @@ class PermissionSettingsView extends StatelessWidget {
                             child: IconButton(
                                 icon: const Icon(Icons.add_circle_outline),
                                 color: Colors.black,
-                                onPressed: () {}),
+                                onPressed: () {
+                                  _showAddDialog(context, controller);
+                                }),
                           ),
                           const SizedBox(width: 16),
                           Container(
@@ -83,7 +90,13 @@ class PermissionSettingsView extends StatelessWidget {
                             child: IconButton(
                               icon: const Icon(Icons.edit),
                               color: Colors.black,
-                              onPressed: () {},
+                              onPressed: () {
+                                if (controller.selectedRole.value != '') {
+                                  _showEditDialog(context, controller);
+                                } else {
+                                  Get.snackbar('Error', 'Please select a role to edit.');
+                                }
+                              },
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -95,7 +108,9 @@ class PermissionSettingsView extends StatelessWidget {
                             child: IconButton(
                               icon: const Icon(Icons.upload_outlined),
                               color: Colors.black,
-                              onPressed: () {},
+                              onPressed: () {
+                                controller.uploadPermissions();
+                              },
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -107,7 +122,13 @@ class PermissionSettingsView extends StatelessWidget {
                             child: IconButton(
                               icon: const Icon(Icons.delete),
                               color: Colors.black,
-                              onPressed: () {},
+                              onPressed: () {
+                                if (controller.selectedRole.value != '') {
+                                  _showDeleteDialog(context, controller);
+                                } else {
+                                  Get.snackbar('Error', 'Please select a role to delete.');
+                                }
+                              },
                             ),
                           ),
                         ],
@@ -121,119 +142,111 @@ class PermissionSettingsView extends StatelessWidget {
                             // User Role Table
                             Expanded(
                               flex: 1,
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.vertical,
-                                child: DataTable(
-                                  headingRowHeight: 40,
-                                  headingTextStyle: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                  headingRowColor:
-                                      WidgetStateProperty.all(AppColors.abuabu),
-                                  dataTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                  columns: const [
-                                    DataColumn(
-                                      label: Text('User Role'),
+                              child: Obx(() {
+                                return SingleChildScrollView(
+                                  scrollDirection: Axis.vertical,
+                                  child: DataTable(
+                                    headingRowHeight: 40,
+                                    headingTextStyle: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
                                     ),
-                                  ],
-                                  rows: List<DataRow>.generate(5, (index) {
-                                    return DataRow(
-                                      cells: [
-                                        DataCell(Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text('Lorem Ipsum'),
-                                            Icon(
-                                              Icons.chevron_right,
-                                              color: Colors.grey[400],
-                                            ),
-                                          ],
-                                        )),
-                                      ],
-                                    );
-                                  }),
-                                  border: const TableBorder(
-                                    bottom: BorderSide(
-                                        width: 2, color: AppColors.abuabu),
-                                    left: BorderSide(
-                                        width: 2, color: AppColors.abuabu),
-                                    right: BorderSide(
-                                        width: 2, color: AppColors.abuabu),
+                                    headingRowColor: MaterialStateProperty.all(AppColors.abuabu),
+                                    dataTextStyle: const TextStyle(
+                                      color: Colors.black,
+                                    ),
+                                    columns: const [
+                                      DataColumn(
+                                        label: Text('User Role'),
+                                      ),
+                                    ],
+                                    rows: controller.permissionsList
+                                        .map((permission) => DataRow(
+                                              cells: [
+                                                DataCell(GestureDetector(
+                                                  onTap: () {
+                                                    controller.selectRole(permission.roleModel!);
+                                                  },
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(permission.roleModel ?? 'No Role'),
+                                                      Icon(
+                                                        Icons.chevron_right,
+                                                        color: Colors.grey[400],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )),
+                                              ],
+                                            ))
+                                        .toList(),
+                                    border: const TableBorder(
+                                      bottom: BorderSide(width: 2, color: AppColors.abuabu),
+                                      left: BorderSide(width: 2, color: AppColors.abuabu),
+                                      right: BorderSide(width: 2, color: AppColors.abuabu),
+                                    ),
                                   ),
-                                ),
-                              ),
+                                );
+                              }),
                             ),
                             const SizedBox(width: 16),
                             // Menu Name Table
                             Expanded(
                               flex: 3,
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.vertical,
-                                child: DataTable(
-                                  headingRowHeight: 40,
-                                  headingTextStyle: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                  headingRowColor:
-                                      WidgetStateProperty.all(AppColors.abuabu),
-                                  dataTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                  columns: const [
-                                    DataColumn(
-                                      label: Expanded(
-                                        child: Text(
-                                          'Menu Name',
-                                          textAlign: TextAlign.left,
-                                        ),
-                                      ),
+                              child: Obx(() {
+                                return SingleChildScrollView(
+                                  scrollDirection: Axis.vertical,
+                                  child: DataTable(
+                                    headingRowHeight: 40,
+                                    headingTextStyle: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
                                     ),
-                                    DataColumn(
-                                      label: Expanded(
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Text('Operate'),
-                                        ),
-                                      ),
+                                    headingRowColor: MaterialStateProperty.all(AppColors.abuabu),
+                                    dataTextStyle: const TextStyle(
+                                      color: Colors.black,
                                     ),
-                                  ],
-                                  rows: List<DataRow>.generate(20, (index) {
-                                    return DataRow(
-                                      cells: [
-                                        DataCell(Row(
-                                          children: [
-                                            Icon(
-                                              Icons.chevron_right,
-                                              color: Colors.grey[400],
-                                            ),
-                                            Text('Menu Item ${index + 1}'),
-                                          ],
-                                        )),
-                                        DataCell(Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Icon(
-                                            Icons.edit,
-                                            color: Colors.grey[600],
-                                          ),
-                                        )),
-                                      ],
-                                    );
-                                  }),
-                                  border: const TableBorder(
-                                    bottom: BorderSide(
-                                        width: 2, color: AppColors.abuabu),
-                                    left: BorderSide(
-                                        width: 2, color: AppColors.abuabu),
-                                    right: BorderSide(
-                                        width: 2, color: AppColors.abuabu),
+                                    columns: const [
+                                      DataColumn(
+                                        label: Text('Menu Name'),
+                                      ),
+                                      DataColumn(
+                                        label: Text('Operate'),
+                                      ),
+                                    ],
+                                    rows: controller.permissionsList
+                                        .where((permission) =>
+                                            permission.roleModel == controller.selectedRole.value)
+                                        .map((permission) => DataRow(
+                                              cells: [
+                                                DataCell(Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.chevron_right,
+                                                      color: Colors.grey[400],
+                                                    ),
+                                                    Text(permission.menuName ?? 'No Menu'),
+                                                  ],
+                                                )),
+                                                DataCell(Align(
+                                                  alignment: Alignment.centerRight,
+                                                  child: Icon(
+                                                    Icons.edit,
+                                                    color: Colors.grey[600],
+                                                  ),
+                                                )),
+                                              ],
+                                            ))
+                                        .toList(),
+                                    border: const TableBorder(
+                                      bottom: BorderSide(width: 2, color: AppColors.abuabu),
+                                      left: BorderSide(width: 2, color: AppColors.abuabu),
+                                      right: BorderSide(width: 2, color: AppColors.abuabu),
+                                    ),
                                   ),
-                                ),
-                              ),
+                                );
+                              }),
                             ),
                           ],
                         ),
@@ -245,6 +258,104 @@ class PermissionSettingsView extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  // Dialog for adding a new permission
+  void _showAddDialog(BuildContext context, PermissionSettingsController controller) {
+    String role = '';
+    String menuName = '';
+
+    Get.defaultDialog(
+      title: 'Add Permission',
+      content: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(labelText: 'Role'),
+            onChanged: (value) => role = value,
+          ),
+          TextField(
+            decoration: InputDecoration(labelText: 'Menu Name'),
+            onChanged: (value) => menuName = value,
+          ),
+        ],
+      ),
+      confirm: ElevatedButton(
+        onPressed: () {
+          controller.addPermission(role, menuName);
+          Get.back();
+        },
+        child: Text('Add'),
+      ),
+      cancel: ElevatedButton(
+        onPressed: () {
+          Get.back();
+        },
+        child: Text('Cancel'),
+      ),
+    );
+  }
+
+  // Dialog for editing an existing permission
+  void _showEditDialog(BuildContext context, PermissionSettingsController controller) {
+    String role = controller.selectedRole.value;
+    String menuName = controller.permissionsList
+            .firstWhere((permission) => permission.roleModel == controller.selectedRole.value)
+            .menuName ??
+        '';
+
+    Get.defaultDialog(
+      title: 'Edit Permission',
+      content: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(labelText: 'Role'),
+            controller: TextEditingController(text: role),
+            onChanged: (value) => role = value,
+          ),
+          TextField(
+            decoration: InputDecoration(labelText: 'Menu Name'),
+            controller: TextEditingController(text: menuName),
+            onChanged: (value) => menuName = value,
+          ),
+        ],
+      ),
+      confirm: ElevatedButton(
+        onPressed: () {
+          int index = controller.permissionsList.indexWhere(
+              (permission) => permission.roleModel == controller.selectedRole.value);
+          controller.editPermission(index, role, menuName);
+          Get.back();
+        },
+        child: Text('Edit'),
+      ),
+      cancel: ElevatedButton(
+        onPressed: () {
+          Get.back();
+        },
+        child: Text('Cancel'),
+      ),
+    );
+  }
+
+  // Dialog for deleting a permission
+  void _showDeleteDialog(BuildContext context, PermissionSettingsController controller) {
+    Get.defaultDialog(
+      title: 'Delete Permission',
+      content: const Text('Are you sure you want to delete this permission?'),
+      confirm: ElevatedButton(
+        onPressed: () {
+          controller.deletePermission(controller.selectedRole.value as int);
+          Get.back();
+        },
+        child: Text('Delete'),
+      ),
+      cancel: ElevatedButton(
+        onPressed: () {
+          Get.back();
+        },
+        child: Text('Cancel'),
       ),
     );
   }

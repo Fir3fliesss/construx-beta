@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
                     color: AppColors.background,
                     padding: const EdgeInsets.all(16.0),
                     child: const Center(
-                      child: Text('ConstruX', style: TextStyle(fontSize: 24.0)),
+                      child: Text('ConstruX', style: TextStyle(fontSize: 100.0, fontWeight: FontWeight.w500)),
                     ),
                   ),
                 ),

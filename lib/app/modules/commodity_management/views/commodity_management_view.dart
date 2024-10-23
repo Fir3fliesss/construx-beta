@@ -70,7 +70,7 @@ class CommodityManagementView extends StatelessWidget {
                             padding: const EdgeInsets.all(10.0),
                             child: DataTable(
                               headingRowColor:
-                                  WidgetStateProperty.all(Colors.grey[200]),
+                                  MaterialStateProperty.all(Colors.grey[200]),
                               columnSpacing: 5, // Kurangi jarak antar kolom
                               columns: [
                                 DataColumn(
@@ -122,30 +122,9 @@ class CommodityManagementView extends StatelessWidget {
                                 10,
                                 (index) => DataRow(
                                   cells: [
-<<<<<<< HEAD
-                                    DataCell(Text('${index + 1}', style: const TextStyle(fontSize: 10))), // No
-                                    DataCell(wrapTextCell('CODE${index + 100}', 80)), // Commodity Code
-                                    DataCell(wrapTextCell('Commodity Name ${index + 1}', 80)), // Commodity Name
-                                    DataCell(wrapTextCell('Category ${index + 1}', 80)), // Commodity Category
-                                    DataCell(wrapTextCell('Description of the commodity ${index + 1} that is longer', 80)), // Commodity Description
-                                    DataCell(wrapTextCell('Supplier ${index + 1}', 80)), // Supplier Name
-                                    DataCell(wrapTextCell('Brand ${index + 1}', 80)), // Brand
-                                    DataCell(wrapTextCell('SPEC${index + 100}', 80)), // Specification Code
-                                    DataCell(wrapTextCell('${index + 10} kg', 80)), // Commodity Weight
-                                    DataCell(wrapTextCell('${index + 5} cm', 80)), // Commodity Length
-                                    DataCell(wrapTextCell('${index + 2} cm', 80)), // Commodity Width
-                                    DataCell(wrapTextCell('${index + 3} cm', 80)), // Commodity Height
-                                    DataCell(wrapTextCell('${(index + 5) * (index + 2)} cm³', 80)), // Commodity Volume
-                                    DataCell(wrapTextCell('\$${(index + 1) * 50}', 80)), // Commodity Cost
-                                    DataCell(wrapTextCell('\$${(index + 1) * 100}', 80)), // Commodity Price
-                                    const DataCell(
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.edit, color: Colors.blue, size: 15),
-=======
                                     DataCell(Text('${index + 1}',
-                                        style: TextStyle(fontSize: 10))), // No
+                                        style: const TextStyle(
+                                            fontSize: 10))), // No
                                     DataCell(wrapTextCell('CODE${index + 100}',
                                         80)), // Commodity Code
                                     DataCell(wrapTextCell(
@@ -181,14 +160,13 @@ class CommodityManagementView extends StatelessWidget {
                                     DataCell(wrapTextCell(
                                         '\$${(index + 1) * 100}',
                                         80)), // Commodity Price
-                                    DataCell(
+                                    const DataCell(
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
-                                        children: const [
+                                        children: [
                                           Icon(Icons.edit,
                                               color: Colors.blue, size: 15),
->>>>>>> c10ea5f (style(permission settings):fixxing UI)
                                           SizedBox(width: 15.0),
                                           Icon(Icons.delete,
                                               color: Colors.red, size: 15),
