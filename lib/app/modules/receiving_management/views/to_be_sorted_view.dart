@@ -116,65 +116,182 @@ class ToBeSortedView extends StatelessWidget {
                               ),
 
                               // Data table
-                              Container(
-                                constraints: const BoxConstraints(
-                                  minWidth: double.infinity,
-                                  maxHeight: 500,
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: DataTable(
-                              headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
-                              columnSpacing: 10,
-                              columns: [
-                              const DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('')),
-                              const DataColumn(label: Text('ASN No', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Commodity\nCode', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Trade Name', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Specification\nCode', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('From\nName', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Goods Owner\nName', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Supplier\nName', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Asn\nQuantity', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Commodity\nPrice', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Weight', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Volume', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Operate', style: TextStyle(fontSize: 12))),
-                            ],
-                            rows: List.generate(
-                              10,
-                              (index) => DataRow(cells: [
-                                DataCell(Text('${index + 1}', style: const TextStyle(fontSize: 12))),
-                                DataCell(Checkbox(value: false, onChanged: (bool? value) {})),
-                                const DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(
-                                  Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Icon(Icons.add, color: AppColors.textGelap, size: 16),
-                                      SizedBox(width: 4),
-                                      Icon(Icons.edit, color: Colors.blue, size: 16),
-                                      SizedBox(width: 4),
-                                      Icon(Icons.delete, color: Colors.red, size: 16),
-                                    ],
+                              Expanded(
+                                child: LayoutBuilder(
+                                  builder: (context, constraints) {
+                                    // Set the threshold width to trigger horizontal scrolling
+                                    bool isSmallScreen =
+                                        constraints.maxWidth < 1000;
+                                    return Container(
+                                      constraints: BoxConstraints(
+                                        minWidth: double.infinity,
+                                        maxHeight: 500,
+                                      ),
+                                      child: Scrollbar(
+                                        child: SingleChildScrollView(
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: SingleChildScrollView(
+                                              scrollDirection: isSmallScreen
+                                                  ? Axis.horizontal
+                                                  : Axis.vertical,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(20.0),
+                                                child: ConstrainedBox(
+                                                  constraints: BoxConstraints(
+                                                    minWidth: isSmallScreen
+                                                        ? 1000
+                                                        : constraints.maxWidth,
+                                                  ),
+                                                  child: DataTable(
+                                                    headingRowColor:
+                                                        WidgetStateProperty.all(
+                                                            Colors.grey[200]),
+                                                    columnSpacing: 10,
+                                                    columns: [
+                                                      const DataColumn(
+                                                          label: Text('No',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text('')),
+                                                      const DataColumn(
+                                                          label: Text('ASN No',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Commodity\nCode',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Trade Name',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Specification\nCode',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'From\nName',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Goods Owner\nName',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Supplier\nName',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Asn\nQuantity',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Commodity\nPrice',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text('Weight',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text('Volume',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text('Operate',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                    ],
+                                                    rows: List.generate(
+                                                      10,
+                                                      (index) =>
+                                                          DataRow(cells: [
+                                                        DataCell(Text(
+                                                            '${index + 1}',
+                                                            style:
+                                                                const TextStyle(
+                                                                    fontSize:
+                                                                        12))),
+                                                        DataCell(Checkbox(
+                                                            value: false,
+                                                            onChanged: (bool?
+                                                                value) {})),
+                                                        const DataCell(Text(
+                                                            '20240731-0001',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text(
+                                                            '20240731-0001',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Icon(
+                                                            Icons
+                                                                .share_outlined,
+                                                            color: AppColors
+                                                                .textGelap,
+                                                            size: 16)),
+                                                      ]),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ]),
+                                        ),
                                       ),
-                                    ),
-                                  ),
+                                    );
+                                  },
                                 ),
                               ),
                             ],

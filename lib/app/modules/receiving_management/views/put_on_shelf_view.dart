@@ -39,18 +39,15 @@ class PutOnShelfView extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 16.0),
-
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: TabButtons(),
                       ),
                       const SizedBox(height: 16.0),
-
-                      // Container for table and actions
                       Expanded(
                         child: Container(
                           margin: const EdgeInsets.all(20.0),
-                          padding: const EdgeInsets.all(5.0), // Updated padding
+                          padding: const EdgeInsets.all(5.0),
                           decoration: BoxDecoration(
                             border:
                                 Border.all(color: AppColors.abuabu, width: 2.0),
@@ -80,9 +77,7 @@ class PutOnShelfView extends StatelessWidget {
                                         decoration: InputDecoration(
                                           hintText: 'Supplier Name',
                                           hintStyle: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 16,
-                                          ),
+                                              color: Colors.grey, fontSize: 16),
                                           border: OutlineInputBorder(),
                                           contentPadding: EdgeInsets.all(12.0),
                                         ),
@@ -98,73 +93,193 @@ class PutOnShelfView extends StatelessWidget {
                                         decoration: InputDecoration(
                                           hintText: 'Form Name',
                                           hintStyle: TextStyle(
-                                            color: Colors
-                                                .grey, // Kamu bisa ubah warna atau gaya teks hint di sini
-                                            fontSize:
-                                                16, // Sesuaikan ukuran font
-                                          ),
+                                              color: Colors.grey, fontSize: 16),
                                           border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(
-                                              12.0), // Tetap penting untuk menyesuaikan padding
+                                          contentPadding: EdgeInsets.all(12.0),
                                         ),
-                                        textAlignVertical: TextAlignVertical
-                                            .center, // Pastikan teks di tengah vertikal
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-
-                              // Data table
-                              Container(
-                                constraints: const BoxConstraints(
-                                  minWidth: double.infinity,
-                                  maxHeight: 500,
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: DataTable(
-                              headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
-                              columnSpacing: 10,
-                              columns: [
-                              const DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('')),
-                              const DataColumn(label: Text('ASN No', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Commodity\nCode', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Trade Name', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Specification\nCode', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('From\nName', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Goods Owner\nName', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Supplier\nName', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Asn\nQuantity', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Commodity\nPrice', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Weight', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Volume', style: TextStyle(fontSize: 12))),
-                              const DataColumn(label: Text('Operate', style: TextStyle(fontSize: 12))),
-                            ],
-                            rows: List.generate(
-                              10,
-                              (index) => DataRow(cells: [
-                                DataCell(Text('${index + 1}', style: const TextStyle(fontSize: 12))),
-                                DataCell(Checkbox(value: false, onChanged: (bool? value) {})),
-                                const DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('20240731-0001', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Text('-', style: TextStyle(fontSize: 12))),
-                                const DataCell(Icon(Icons.share_outlined, color: AppColors.textGelap, size: 16)),
-                  
-                                        ]),
+                              Expanded(
+                                child: LayoutBuilder(
+                                  builder: (context, constraints) {
+                                    // Set the threshold width to trigger horizontal scrolling
+                                    bool isSmallScreen =
+                                        constraints.maxWidth < 1000;
+                                    return Container(
+                                      constraints: BoxConstraints(
+                                        minWidth: double.infinity,
+                                        maxHeight: 500,
                                       ),
-                                    ),
-                                  ),
+                                      child: Scrollbar(
+                                        child: SingleChildScrollView(
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: SingleChildScrollView(
+                                              scrollDirection: isSmallScreen
+                                                  ? Axis.horizontal
+                                                  : Axis.vertical,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(20.0),
+                                                child: ConstrainedBox(
+                                                  constraints: BoxConstraints(
+                                                    minWidth: isSmallScreen
+                                                        ? 1000
+                                                        : constraints.maxWidth,
+                                                  ),
+                                                  child: DataTable(
+                                                    headingRowColor:
+                                                        WidgetStateProperty.all(
+                                                            Colors.grey[200]),
+                                                    columnSpacing: 10,
+                                                    columns: [
+                                                      const DataColumn(
+                                                          label: Text('No',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text('')),
+                                                      const DataColumn(
+                                                          label: Text('ASN No',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Commodity\nCode',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Trade Name',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Specification\nCode',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'From\nName',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Goods Owner\nName',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Supplier\nName',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Asn\nQuantity',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Commodity\nPrice',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text('Weight',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text('Volume',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                      const DataColumn(
+                                                          label: Text('Operate',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      12))),
+                                                    ],
+                                                    rows: List.generate(
+                                                      10,
+                                                      (index) =>
+                                                          DataRow(cells: [
+                                                        DataCell(Text(
+                                                            '${index + 1}',
+                                                            style:
+                                                                const TextStyle(
+                                                                    fontSize:
+                                                                        12))),
+                                                        DataCell(Checkbox(
+                                                            value: false,
+                                                            onChanged: (bool?
+                                                                value) {})),
+                                                        const DataCell(Text(
+                                                            '20240731-0001',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text(
+                                                            '20240731-0001',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Text('-',
+                                                            style: TextStyle(
+                                                                fontSize: 12))),
+                                                        const DataCell(Icon(
+                                                            Icons
+                                                                .share_outlined,
+                                                            color: AppColors
+                                                                .textGelap,
+                                                            size: 16)),
+                                                      ]),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             ],
@@ -182,7 +297,6 @@ class PutOnShelfView extends StatelessWidget {
     );
   }
 
-  // Circular IconButton for action buttons
   Widget buildCircleIconButton(IconData icon, String tooltip, Color bgColor) {
     return Tooltip(
       message: tooltip,

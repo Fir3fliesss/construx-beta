@@ -5,7 +5,8 @@ import 'package:construx_beta/app/modules/warehouse_settings/controllers/warehou
 import 'tab_buttons.dart';
 
 class ReservoirSettingsView extends StatelessWidget {
-  final WarehouseSettingsController controller = Get.put(WarehouseSettingsController());
+  final WarehouseSettingsController controller =
+      Get.put(WarehouseSettingsController());
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,8 @@ class ReservoirSettingsView extends StatelessWidget {
                     children: [
                       Text(
                         'Basic Setting',
-                        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 24.0, fontWeight: FontWeight.bold),
                       ),
                       Spacer(),
                       Text(
@@ -59,83 +61,133 @@ class ReservoirSettingsView extends StatelessWidget {
                           padding: const EdgeInsets.all(16.0),
                           child: Row(
                             children: [
-                              buildCircleIconButton(
-                                Icons.add_circle_outline,
-                                "Add",
-                                AppColors.abuabu
-                              ),
+                              buildCircleIconButton(Icons.add_circle_outline,
+                                  "Add", AppColors.abuabu),
                               const SizedBox(width: 16),
                               buildCircleIconButton(
-                                Icons.refresh,
-                                "Refresh",
-                                AppColors.abuabu
-                              ),
+                                  Icons.refresh, "Refresh", AppColors.abuabu),
                               const SizedBox(width: 16),
-                              buildCircleIconButton(
-                                Icons.upload_outlined,
-                                "Upload",
-                                AppColors.abuabu
-                              ),
+                              buildCircleIconButton(Icons.upload_outlined,
+                                  "Upload", AppColors.abuabu),
                             ],
                           ),
                         ),
 
                         // Data table
-                        Container(
-                          constraints: const BoxConstraints(
-                            minWidth: double.infinity,
-                            maxHeight: 500,
-                          ),
-                          child: SingleChildScrollView(
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: DataTable(
-                                headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
-                                columnSpacing: 20, // Jarak antar kolom
-                                columns: const [
-                                  DataColumn(
-                                    label: Expanded(child: Center(child: Text('No'))),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(child: Center(child: Text('Warehouse Name'))),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(child: Center(child: Text('Reservoir Name'))),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(child: Center(child: Text('Reservoir Category'))),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(child: Center(child: Text('Valid'))),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(child: Center(child: Text('Operate'))),
-                                  ),
-                                ],
-                                rows: List.generate(
-                                  10,
-                                  (index) => DataRow(
-                                    cells: [
-                                      DataCell(Center(child: Text('${index + 1}'))),
-                                      DataCell(Center(child: Text('Warehouse ${index + 1}'))),
-                                      DataCell(Center(child: Text('City $index'))),
-                                      const DataCell(Center(child: Text('picking Area'))),
-                                      const DataCell(Center(child: Text('Yes'))),
-                                      const DataCell(
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Icon(Icons.edit, color: Colors.blue),
-                                            SizedBox(width: 30.0),
-                                            Icon(Icons.delete, color: Colors.red),
-                                          ],
+                        Expanded(
+                          child: LayoutBuilder(
+                            builder: (context, constraints) {
+                              // Set the threshold width to trigger horizontal scrolling
+                              bool isSmallScreen = constraints.maxWidth < 1000;
+                              return Container(
+                                constraints: BoxConstraints(
+                                  minWidth: double.infinity,
+                                  maxHeight: 500,
+                                ),
+                                child: Scrollbar(
+                                  child: SingleChildScrollView(
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: SingleChildScrollView(
+                                        scrollDirection: isSmallScreen
+                                            ? Axis.horizontal
+                                            : Axis.vertical,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minWidth: isSmallScreen
+                                                  ? 1000
+                                                  : constraints.maxWidth,
+                                            ),
+                                            child: DataTable(
+                                              headingRowColor:
+                                                  WidgetStateProperty.all(
+                                                      Colors.grey[200]),
+                                              columnSpacing: 10,
+                                              columns: [
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child: Text('No'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child: Text(
+                                                              'Warehouse Name'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child: Text(
+                                                              'Reservoir Name'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child: Text(
+                                                              'Reservoir Category'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child:
+                                                              Text('Valid'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child:
+                                                              Text('Operate'))),
+                                                ),
+                                              ],
+                                              rows: List.generate(
+                                                10,
+                                                (index) => DataRow(
+                                                  cells: [
+                                                    DataCell(Center(
+                                                        child: Text(
+                                                            '${index + 1}'))),
+                                                    DataCell(Center(
+                                                        child: Text(
+                                                            'Warehouse ${index + 1}'))),
+                                                    DataCell(Center(
+                                                        child: Text(
+                                                            'City $index'))),
+                                                    const DataCell(Center(
+                                                        child: Text(
+                                                            'picking Area'))),
+                                                    const DataCell(Center(
+                                                        child: Text('Yes'))),
+                                                    const DataCell(
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(Icons.edit,
+                                                              color:
+                                                                  Colors.blue),
+                                                          SizedBox(width: 30.0),
+                                                          Icon(Icons.delete,
+                                                              color:
+                                                                  Colors.red),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
                           ),
                         ),
                       ],

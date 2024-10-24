@@ -51,7 +51,8 @@ class ToBeUnloadedView extends StatelessWidget {
                           margin: const EdgeInsets.all(20.0),
                           padding: const EdgeInsets.all(5.0), // Updated padding
                           decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.abuabu, width: 2.0),
+                            border:
+                                Border.all(color: AppColors.abuabu, width: 2.0),
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: Column(
@@ -60,62 +61,136 @@ class ToBeUnloadedView extends StatelessWidget {
                                 padding: const EdgeInsets.all(16.0),
                                 child: Row(
                                   children: [
-                                    buildCircleIconButton(Icons.add_circle_outline, 'Add', AppColors.abuabu),
+                                    buildCircleIconButton(
+                                        Icons.add_circle_outline,
+                                        'Add',
+                                        AppColors.abuabu),
                                     const SizedBox(width: 16),
-                                    buildCircleIconButton(Icons.refresh, 'Refresh', AppColors.abuabu),
+                                    buildCircleIconButton(Icons.refresh,
+                                        'Refresh', AppColors.abuabu),
                                     const SizedBox(width: 16),
-                                    buildCircleIconButton(Icons.upload_outlined, 'Upload', AppColors.abuabu),
+                                    buildCircleIconButton(Icons.upload_outlined,
+                                        'Upload', AppColors.abuabu),
                                   ],
                                 ),
                               ),
 
                               // Data table
-                              Container(
-                                constraints: const BoxConstraints(
-                                  minWidth: double.infinity,
-                                  maxHeight: 500,
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: DataTable(
-                                      headingRowColor: WidgetStateProperty.all(Colors.grey[200]),
-                                      columnSpacing: 8, // Adjust column spacing
-                                      columns: [
-                                        const DataColumn(label: Text('')),
-                                        const DataColumn(label: Text('No')),
-                                        const DataColumn(label: Text('ASN No')),
-                                        const DataColumn(label: Text('Commodity Code')),
-                                        const DataColumn(label: Text('Trade Name')),
-                                        const DataColumn(label: Text('Specification Code')),
-                                        const DataColumn(label: Text('From Name')),
-                                        const DataColumn(label: Text('Goods Owner Name')),
-                                        const DataColumn(label: Text('Supplier Name')),
-                                        const DataColumn(label: Text('ASN Quantity')),
-                                        const DataColumn(label: Text('Commodity Price')),
-                                        const DataColumn(label: Text('Weight')),
-                                        const DataColumn(label: Text('Volume')),
-                                      ],
-                                      rows: List.generate(
-                                        15,
-                                        (index) => DataRow(cells: [
-                                          DataCell(Checkbox(value: false, onChanged: (bool? value) {})),
-                                          DataCell(Text('${index + 1}')),
-                                          DataCell(Text('20240731-000${index % 10 + 1}')), // ASN No
-                                          DataCell(Text('CC${index + 1}')), // Commodity Code
-                                          DataCell(Text('Trade Name ${index + 1}')), // Trade Name
-                                          DataCell(Text('Spec Code ${index + 1}')), // Specification Code
-                                          DataCell(Text('From Name ${index + 1}')), // From Name
-                                          DataCell(Text('Goods Owner ${index + 1}')), // Goods Owner Name
-                                          DataCell(Text('${(index + 1) * 10}')), // ASN Quantity
-                                          DataCell(Text('\$${(index + 1) * 100}')), // Commodity Price
-                                          DataCell(Text('${(index + 1) * 5} kg')), // Weight
-                                          DataCell(Text('${(index + 1) * 0.5} m³')), // Volume
-                                          DataCell(Text('${(index + 1) * 0.5} m³')), // Volume
-                                        ]),
+                              Expanded(
+                                child: LayoutBuilder(
+                                  builder: (context, constraints) {
+                                    // Set the threshold width to trigger horizontal scrolling
+                                    bool isSmallScreen =
+                                        constraints.maxWidth < 1000;
+                                    return Container(
+                                      constraints: BoxConstraints(
+                                        minWidth: double.infinity,
+                                        maxHeight: 500,
                                       ),
-                                    ),
-                                  ),
+                                      child: Scrollbar(
+                                        child: SingleChildScrollView(
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: SingleChildScrollView(
+                                              scrollDirection: isSmallScreen
+                                                  ? Axis.horizontal
+                                                  : Axis.vertical,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(20.0),
+                                                child: ConstrainedBox(
+                                                  constraints: BoxConstraints(
+                                                    minWidth: isSmallScreen
+                                                        ? 1000
+                                                        : constraints.maxWidth,
+                                                  ),
+                                                  child: DataTable(
+                                                    headingRowColor:
+                                                        WidgetStateProperty.all(
+                                                            Colors.grey[200]),
+                                                    columnSpacing: 10,
+                                                    columns: [
+                                                      const DataColumn(
+                                                          label: Text('')),
+                                                      const DataColumn(
+                                                          label: Text('No')),
+                                                      const DataColumn(
+                                                          label:
+                                                              Text('ASN No')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Commodity Code')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Trade Name')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Specification Code')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'From Name')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Goods Owner Name')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Supplier Name')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'ASN Quantity')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Commodity Price')),
+                                                      const DataColumn(
+                                                          label:
+                                                              Text('Weight')),
+                                                      const DataColumn(
+                                                          label:
+                                                              Text('Volume')),
+                                                    ],
+                                                    rows: List.generate(
+                                                      15,
+                                                      (index) =>
+                                                          DataRow(cells: [
+                                                        DataCell(Checkbox(
+                                                            value: false,
+                                                            onChanged: (bool?
+                                                                value) {})),
+                                                        DataCell(Text(
+                                                            '${index + 1}')),
+                                                        DataCell(Text(
+                                                            '20240731-000${index % 10 + 1}')), // ASN No
+                                                        DataCell(Text(
+                                                            'CC${index + 1}')), // Commodity Code
+                                                        DataCell(Text(
+                                                            'Trade Name ${index + 1}')), // Trade Name
+                                                        DataCell(Text(
+                                                            'Spec Code ${index + 1}')), // Specification Code
+                                                        DataCell(Text(
+                                                            'From Name ${index + 1}')), // From Name
+                                                        DataCell(Text(
+                                                            'Goods Owner ${index + 1}')), // Goods Owner Name
+                                                        DataCell(Text(
+                                                            '${(index + 1) * 10}')), // ASN Quantity
+                                                        DataCell(Text(
+                                                            '\$${(index + 1) * 100}')), // Commodity Price
+                                                        DataCell(Text(
+                                                            '${(index + 1) * 5} kg')), // Weight
+                                                        DataCell(Text(
+                                                            '${(index + 1) * 0.5} m³')), // Volume
+                                                        DataCell(Text(
+                                                            '${(index + 1) * 0.5} m³')), // Volume
+                                                      ]),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             ],

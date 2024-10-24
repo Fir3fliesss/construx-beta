@@ -116,61 +116,121 @@ class ToBeDeliveredView extends StatelessWidget {
                               ),
 
                               // Data table
-                              Container(
-                                constraints: const BoxConstraints(
-                                  minWidth: double.infinity,
-                                  maxHeight: 500,
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: DataTable(
-                                      headingRowColor: WidgetStateProperty.all(
-                                          Colors.grey[200]),
-                                      columnSpacing:
-                                          10, // Adjust column spacing
-                                      columns: [
-                                        const DataColumn(label: Text('')),
-                                        const DataColumn(label: Text('No')),
-                                        const DataColumn(label: Text('ASN No')),
-                                        const DataColumn(
-                                            label: Text('Commodity Code')),
-                                        const DataColumn(label: Text('Trade Name')),
-                                        const DataColumn(
-                                            label: Text('Specification Code')),
-                                        const DataColumn(label: Text('From Name')),
-                                        const DataColumn(
-                                            label: Text('Goods Owner Name')),
-                                        const DataColumn(
-                                            label: Text('Supplier Name')),
-                                        const DataColumn(label: Text('Asn Quantity')),
-                                        const DataColumn(
-                                            label: Text('Commodity Price')),
-                                        const DataColumn(label: Text('Weight')),
-                                        const DataColumn(label: Text('Volume')),
-                                      ],
-                                      rows: List.generate(
-                                        15,
-                                        (index) => DataRow(cells: [
-                                          DataCell(Checkbox(
-                                              value: false,
-                                              onChanged: (bool? value) {})),
-                                          DataCell(Text('${index + 1}')),
-                                          const DataCell(Text('20240731-0001')),
-                                          const DataCell(Text('20240731-0001')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')), 
-                                          const DataCell(Text('-')), 
-                                        ]),
+                              Expanded(
+                                child: LayoutBuilder(
+                                  builder: (context, constraints) {
+                                    // Set the threshold width to trigger horizontal scrolling
+                                    bool isSmallScreen =
+                                        constraints.maxWidth < 1000;
+                                    return Container(
+                                      constraints: BoxConstraints(
+                                        minWidth: double.infinity,
+                                        maxHeight: 500,
                                       ),
-                                    ),
-                                  ),
+                                      child: Scrollbar(
+                                        child: SingleChildScrollView(
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: SingleChildScrollView(
+                                              scrollDirection: isSmallScreen
+                                                  ? Axis.horizontal
+                                                  : Axis.vertical,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(20.0),
+                                                child: ConstrainedBox(
+                                                  constraints: BoxConstraints(
+                                                    minWidth: isSmallScreen
+                                                        ? 1000
+                                                        : constraints.maxWidth,
+                                                  ),
+                                                  child: DataTable(
+                                                    headingRowColor:
+                                                        WidgetStateProperty.all(
+                                                            Colors.grey[200]),
+                                                    columnSpacing: 10,
+                                                    columns: [
+                                                      const DataColumn(
+                                                          label: Text('')),
+                                                      const DataColumn(
+                                                          label: Text('No')),
+                                                      const DataColumn(
+                                                          label:
+                                                              Text('ASN No')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Commodity Code')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Trade Name')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Specification Code')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'From Name')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Goods Owner Name')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Supplier Name')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Asn Quantity')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Commodity Price')),
+                                                      const DataColumn(
+                                                          label:
+                                                              Text('Weight')),
+                                                      const DataColumn(
+                                                          label:
+                                                              Text('Volume')),
+                                                    ],
+                                                    rows: List.generate(
+                                                      15,
+                                                      (index) =>
+                                                          DataRow(cells: [
+                                                        DataCell(Checkbox(
+                                                            value: false,
+                                                            onChanged: (bool?
+                                                                value) {})),
+                                                        DataCell(Text(
+                                                            '${index + 1}')),
+                                                        const DataCell(Text(
+                                                            '20240731-0001')),
+                                                        const DataCell(Text(
+                                                            '20240731-0001')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                      ]),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             ],

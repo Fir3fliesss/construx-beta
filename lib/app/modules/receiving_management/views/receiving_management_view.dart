@@ -75,22 +75,19 @@ class ReceivingManagementView extends StatelessWidget {
                                     const Spacer(),
                                     Container(
                                       width: 200,
-                                      height:
-                                          50, 
+                                      height: 50,
                                       child: const TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Supplier Name',
                                           hintStyle: TextStyle(
-                                            color: AppColors.textGelap, 
-                                            fontSize:
-                                                16, 
+                                            color: AppColors.textGelap,
+                                            fontSize: 16,
                                           ),
                                           border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(
-                                              12.0), 
+                                          contentPadding: EdgeInsets.all(12.0),
                                         ),
-                                        textAlignVertical: TextAlignVertical
-                                            .center, 
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
                                       ),
                                     ),
                                     const SizedBox(width: 16),
@@ -101,15 +98,14 @@ class ReceivingManagementView extends StatelessWidget {
                                         decoration: InputDecoration(
                                           hintText: 'Form Name',
                                           hintStyle: TextStyle(
-                                            color: AppColors.textGelap, 
-                                            fontSize:
-                                                16,
+                                            color: AppColors.textGelap,
+                                            fontSize: 16,
                                           ),
                                           border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(
-                                              12.0),
+                                          contentPadding: EdgeInsets.all(12.0),
                                         ),
-                                        textAlignVertical: TextAlignVertical.center, 
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
                                       ),
                                     ),
                                   ],
@@ -117,59 +113,103 @@ class ReceivingManagementView extends StatelessWidget {
                               ),
 
                               // Data table
-                              Container(
-                                constraints: const BoxConstraints(
-                                  minWidth: double.infinity,
-                                  maxHeight: 500,
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: DataTable(
-                                      headingRowColor: WidgetStateProperty.all(
-                                          Colors.grey[200]),
-                                      columnSpacing:
-                                          10, 
-                                      columns: [
-                                        const DataColumn(label: Text('')),
-                                        const DataColumn(label: Text('No')),
-                                        const DataColumn(label: Text('Asn No')),
-                                        const DataColumn(label: Text('Batch')),
-                                        const DataColumn(
-                                            label: Text(
-                                                'Estimated time of arrival')),
-                                        const DataColumn(
-                                            label: Text('Good Owner Name')),
-                                        const DataColumn(label: Text('Operate')),
-                                      ],
-                                      rows: List.generate(
-                                        15,
-                                        (index) => DataRow(cells: [
-                                          DataCell(Checkbox(
-                                              value: false,
-                                              onChanged: (bool? value) {})),
-                                          DataCell(Text('${index + 1}')),
-                                          const DataCell(Text('20240824-0003')),
-                                          DataCell(Text(index < 2
-                                              ? '${333 + index}'
-                                              : '3433')),
-                                          const DataCell(Text('2024-08-1')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(
-                                            Row(
-                                              children: [
-                                                Icon(Icons.edit,
-                                                    color: Colors.blue),
-                                                SizedBox(width: 10),
-                                                Icon(Icons.delete,
-                                                    color: Colors.red),
-                                              ],
+                              Expanded(
+                                child: LayoutBuilder(
+                                  builder: (context, constraints) {
+                                    // Set the threshold width to trigger horizontal scrolling
+                                    bool isSmallScreen =
+                                        constraints.maxWidth < 1000;
+                                    return Container(
+                                      constraints: BoxConstraints(
+                                        minWidth: double.infinity,
+                                        maxHeight: 500,
+                                      ),
+                                      child: Scrollbar(
+                                        child: SingleChildScrollView(
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: SingleChildScrollView(
+                                              scrollDirection: isSmallScreen
+                                                  ? Axis.horizontal
+                                                  : Axis.vertical,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(20.0),
+                                                child: ConstrainedBox(
+                                                  constraints: BoxConstraints(
+                                                    minWidth: isSmallScreen
+                                                        ? 1000
+                                                        : constraints.maxWidth,
+                                                  ),
+                                                  child: DataTable(
+                                                    headingRowColor:
+                                                        WidgetStateProperty.all(
+                                                            Colors.grey[200]),
+                                                    columnSpacing: 10,
+                                                    columns: [
+                                                      const DataColumn(
+                                                          label: Text('')),
+                                                      const DataColumn(
+                                                          label: Text('No')),
+                                                      const DataColumn(
+                                                          label:
+                                                              Text('Asn No')),
+                                                      const DataColumn(
+                                                          label: Text('Batch')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Estimated time of arrival')),
+                                                      const DataColumn(
+                                                          label: Text(
+                                                              'Good Owner Name')),
+                                                      const DataColumn(
+                                                          label:
+                                                              Text('Operate')),
+                                                    ],
+                                                    rows: List.generate(
+                                                      15,
+                                                      (index) =>
+                                                          DataRow(cells: [
+                                                        DataCell(Checkbox(
+                                                            value: false,
+                                                            onChanged: (bool?
+                                                                value) {})),
+                                                        DataCell(Text(
+                                                            '${index + 1}')),
+                                                        const DataCell(Text(
+                                                            '20240824-0003')),
+                                                        DataCell(Text(index < 2
+                                                            ? '${333 + index}'
+                                                            : '3433')),
+                                                        const DataCell(
+                                                            Text('2024-08-1')),
+                                                        const DataCell(
+                                                            Text('-')),
+                                                        const DataCell(
+                                                          Row(
+                                                            children: [
+                                                              Icon(Icons.edit,
+                                                                  color: Colors
+                                                                      .blue),
+                                                              SizedBox(
+                                                                  width: 10),
+                                                              Icon(Icons.delete,
+                                                                  color: Colors
+                                                                      .red),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ]),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ]),
+                                        ),
                                       ),
-                                    ),
-                                  ),
+                                    );
+                                  },
                                 ),
                               ),
                             ],
