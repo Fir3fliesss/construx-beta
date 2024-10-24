@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:construx_beta/app/modules/warehouse_settings/controllers/warehouse_settings_controller.dart';
 
 class FreightSettingView extends StatelessWidget {
-  final WarehouseSettingsController controller = Get.put(WarehouseSettingsController());
+  final WarehouseSettingsController controller =
+      Get.put(WarehouseSettingsController());
 
   @override
   Widget build(BuildContext context) {
@@ -51,93 +52,178 @@ class FreightSettingView extends StatelessWidget {
                           child: Row(
                             children: [
                               // Action Buttons
-                              buildCircleIconButton(Icons.add_circle_outline, "Add", AppColors.abuabu),
+                              buildCircleIconButton(Icons.add_circle_outline,
+                                  "Add", AppColors.abuabu),
                               const SizedBox(width: 16),
-                              buildCircleIconButton(Icons.refresh, "Refresh", AppColors.abuabu),
+                              buildCircleIconButton(
+                                  Icons.refresh, "Refresh", AppColors.abuabu),
                               const SizedBox(width: 16),
-                              buildCircleIconButton(Icons.upload_outlined, "Upload", AppColors.abuabu),
+                              buildCircleIconButton(Icons.upload_outlined,
+                                  "Upload", AppColors.abuabu),
                             ],
                           ),
                         ),
 
                         // Data table with wrapped text in header
-                        Container(
-                          constraints: const BoxConstraints(
-                            minWidth: double.infinity,
-                            maxHeight: 500,
-                          ),
-                          child: SingleChildScrollView(
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: DataTable(
-                                headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
-                                columnSpacing: 20,
-                                columns: const [
-                                  DataColumn(
-                                    label: Text('No', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Carrier', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Departure City', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Arrival City', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Weight Fee', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Person In Charge', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Volume Fee', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Min Payment', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Creator', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Create Time', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Valid', style: TextStyle(fontSize: 12)),
-                                  ),
-                                  DataColumn(
-                                    label: Text('Operate', style: TextStyle(fontSize: 12)),
-                                  ),
-                                ],
-                                rows: List.generate(
-                                  15,
-                                  (index) => DataRow(cells: [
-                                    DataCell(Center(child: Text('${index + 1}'))),
-                                    const DataCell(Center(child: Text('20240824-0003'))),
-                                    const DataCell(Center(child: Text('Jakarta'))),
-                                    DataCell(Center(child: Text(index == 0 ? 'Bogor' : 'Jakarta'))),
-                                    DataCell(Center(child: Text(index == 0 ? '-' : '-'))),
-                                    DataCell(Center(child: Text(index == 0 ? 'No. 66' : '-'))),
-                                    DataCell(Center(child: Text(index == 0 ? '123' : '-'))),
-                                    DataCell(Center(child: Text(index == 0 ? '222' : '-'))),
-                                    const DataCell(Center(child: Text('Ali'))),
-                                    const DataCell(Center(child: Text('2024-09-11 11:40'))),
-                                    DataCell(Center(child: Text(index == 0 ? 'yes' : '-'))),
-                                    const DataCell(
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.edit, color: Colors.blue),
-                                          SizedBox(width: 30.0),
-                                          Icon(Icons.delete, color: Colors.red),
-                                        ],
+                        Expanded(
+                          child: LayoutBuilder(
+                            builder: (context, constraints) {
+                              // Set the threshold width to trigger horizontal scrolling
+                              bool isSmallScreen = constraints.maxWidth < 1000;
+                              return Container(
+                                constraints: BoxConstraints(
+                                  minWidth: double.infinity,
+                                  maxHeight: 500,
+                                ),
+                                child: Scrollbar(
+                                  child: SingleChildScrollView(
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: SingleChildScrollView(
+                                        scrollDirection: isSmallScreen
+                                            ? Axis.horizontal
+                                            : Axis.vertical,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minWidth: isSmallScreen
+                                                  ? 1000
+                                                  : constraints.maxWidth,
+                                            ),
+                                            child: DataTable(
+                                              headingRowColor:
+                                                  WidgetStateProperty.all(
+                                                      Colors.grey[200]),
+                                              columnSpacing: 10,
+                                              columns: [
+                                                DataColumn(
+                                                  label: Text('No',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Carrier',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Departure City',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Arrival City',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Weight Fee',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text(
+                                                      'Person In Charge',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Volume Fee',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Min Payment',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Creator',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Create Time',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Valid',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Operate',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                              ],
+                                              rows: List.generate(
+                                                15,
+                                                (index) => DataRow(cells: [
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          '${index + 1}'))),
+                                                  const DataCell(Center(
+                                                      child: Text(
+                                                          '20240824-0003'))),
+                                                  const DataCell(Center(
+                                                      child: Text('Jakarta'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 0
+                                                          ? 'Bogor'
+                                                          : 'Jakarta'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 0
+                                                          ? '-'
+                                                          : '-'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 0
+                                                          ? 'No. 66'
+                                                          : '-'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 0
+                                                          ? '123'
+                                                          : '-'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 0
+                                                          ? '222'
+                                                          : '-'))),
+                                                  const DataCell(Center(
+                                                      child: Text('Ali'))),
+                                                  const DataCell(Center(
+                                                      child: Text(
+                                                          '2024-09-11 11:40'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 0
+                                                          ? 'yes'
+                                                          : '-'))),
+                                                  const DataCell(
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Icon(Icons.edit,
+                                                            color: Colors.blue),
+                                                        SizedBox(width: 30.0),
+                                                        Icon(Icons.delete,
+                                                            color: Colors.red),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ]),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ]),
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
                           ),
                         ),
                       ],
