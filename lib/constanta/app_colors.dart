@@ -18,4 +18,6 @@ class AppColors {
 
   static const Color abuGelap = Color(0x00313a46);
 
+  static const Color hitamAbu = Color(0x171D26);
+
 }
