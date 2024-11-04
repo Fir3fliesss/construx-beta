@@ -68,10 +68,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.COMPANY_INFORMATION,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: const CompanyInformationView(),
-      ),
+      page: () => CompanyInformationView(),
       binding: CompanyInformationBinding(),
     ),
     GetPage(
