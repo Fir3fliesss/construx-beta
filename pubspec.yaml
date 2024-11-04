@@ -41,6 +41,14 @@ dependencies:
   excel: ^4.0.6
   path_provider: ^2.1.4
   intl: ^0.19.0
+  lucide_icons: ^0.257.0
+  google_fonts: ^6.2.1
+  url_launcher: ^6.3.0
+  shared_preferences: ^2.2.3
+  provider: ^6.1.2
+  google_maps_flutter: ^2.6.1
+  feather_icons: ^1.2.0
+  material_symbols_icons: ^4.2789.0
 
 dev_dependencies:
   flutter_test:
