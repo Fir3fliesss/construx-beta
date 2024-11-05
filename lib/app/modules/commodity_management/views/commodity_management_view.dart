@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:construx_beta/app/modules/warehouse_settings/controllers/warehouse_settings_controller.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
+
 
 class CommodityManagementView extends StatelessWidget {
   final WarehouseSettingsController controller =
@@ -9,8 +12,8 @@ class CommodityManagementView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
+    return Layout(menuItem: SidemenuDashboard(), menuName: "Basic Settings", menuSubName: "Commodity Mnangement",
+    child:  Row(
         children: [
           Expanded(
             child: Column(

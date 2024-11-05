@@ -60,10 +60,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: const HomePage(),
-      ),
+      page: () =>  const HomePage(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -73,98 +70,62 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.USER_ROLE,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: const UserRoleView(),
-      ),
+      page: () => UserRoleView(),
       binding: UserRoleBinding(),
     ),
     GetPage(
       name: _Paths.COMMODITY_CATEGORY,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: const CommodityCategoryView(),
-      ),
+      page: () => const CommodityCategoryView(),
       binding: CommodityCategoryBinding(),
     ),
     GetPage(
       name: _Paths.RECEIVING_MANAGEMENT,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: ReceivingManagementView(),
-      ),
+      page: () => ReceivingManagementView(),
       binding: ReceivingManagementBinding(),
     ),
     GetPage(
       name: _Paths.WAREHOUSE_SETTINGS,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: WarehouseSettingsView(),
-      ),
+      page: () => WarehouseSettingsView(),
       binding: WarehouseSettingsBinding(),
     ),
     GetPage(
       name: _Paths.PERMISSION_SETTINGS,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: const PermissionSettingsView(),
-      ),
+      page: () =>  const PermissionSettingsView(),
       binding: PermissionSettingsBinding(),
     ),
     GetPage(
       name: _Paths.USER_MANAGEMENT,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: UserManagementView(),
-      ),
+      page: () => UserManagementView(),
       binding: UserManagementBinding(),
     ),
     GetPage(
       name: _Paths.COMMODITY_MANAGEMENT,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: CommodityManagementView(),
-      ),
+      page: () => CommodityManagementView(),
       binding: CommodityManagementBinding(),
     ),
     GetPage(
       name: _Paths.SUPPLIER_INFO,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: SupplierInfoView(),
-      ),
+      page: () =>  SupplierInfoView(),
       binding: SupplierInfoBinding(),
     ),
     GetPage(
       name: _Paths.OWNER_INFORMATION,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: OwnerInformationView(),
-      ),
+      page: () => OwnerInformationView(),
       binding: OwnerInformationBinding(),
     ),
     GetPage(
       name: _Paths.FREIGHT_SETTING,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: FreightSettingView(),
-      ),
+      page: () => FreightSettingView(),
       binding: FreightSettingBinding(),
     ),
     GetPage(
       name: _Paths.CUSTOMER_INFO,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: CustomerInfoView(),
-      ),
+      page: () => CustomerInfoView(),
       binding: CustomerInfoBinding(),
     ),
     GetPage(
       name: _Paths.PRINT_SETTINGS,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: const PrintSettingsView(),
-      ),
+      page: () => const PrintSettingsView(),
       binding: PrintSettingsBinding(),
     ),
     GetPage(

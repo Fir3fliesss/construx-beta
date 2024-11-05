@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:construx_beta/app/modules/warehouse_settings/controllers/warehouse_settings_controller.dart';
 import 'tab_buttons.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
 
 class ReservoirSettingsView extends StatelessWidget {
   final WarehouseSettingsController controller =
@@ -10,8 +12,8 @@ class ReservoirSettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
+    return Layout(menuItem: SidemenuDashboard(), menuName: "Basic Settings", menuSubName: "Reservoir Settings",
+    child:  Row(
         children: [
           Expanded(
             child: Column(

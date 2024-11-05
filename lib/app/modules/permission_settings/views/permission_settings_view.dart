@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import '../../../data/permission_settings_model.dart';
 import '../controllers/permission_settings_controller.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
 
 class PermissionSettingsView extends StatelessWidget {
   const PermissionSettingsView({super.key});
@@ -11,8 +13,8 @@ class PermissionSettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final PermissionSettingsController controller = Get.put(PermissionSettingsController());
 
-    return Scaffold(
-      body: Column(
+    return Layout(menuItem: SidemenuDashboard(), menuName: "Basic Settings", menuSubName: "Permission Settings",
+    child:  Column(
         children: [
           const SizedBox(height: 32.0),
           // Header section with title and path

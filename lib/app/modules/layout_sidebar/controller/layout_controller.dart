@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:construx_beta/app/modules/layout_sidebar/controller/my_controller.dart';
 import 'package:construx_beta/app/modules/helper/theme/theme_customizer.dart';
 
+
 class LayoutController extends MyController {
   ThemeCustomizer themeCustomizer = ThemeCustomizer();
 

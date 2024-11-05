@@ -2,14 +2,16 @@ import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:construx_beta/app/modules/warehouse_settings/controllers/warehouse_settings_controller.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
 
 class SupplierInfoView extends StatelessWidget {
   final WarehouseSettingsController controller = Get.put(WarehouseSettingsController());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
+    return Layout(menuItem: SidemenuDashboard(), menuName: "Basic Settings", menuSubName: "Supplier Info",
+    child:  Row(
         children: [
           Expanded(
             child: Column(
@@ -142,7 +144,7 @@ class SupplierInfoView extends StatelessWidget {
           ),
         ],
       ),
-    )]));
+    )]),);
   }
 
   // Circular IconButton for action buttons

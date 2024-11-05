@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:construx_beta/app/modules/warehouse_settings/controllers/warehouse_settings_controller.dart';
 import 'package:construx_beta/constanta/app_colors.dart';
 import 'tab_buttons.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
 
 class WarehouseSettingsView extends StatelessWidget {
   final WarehouseSettingsController controller =
@@ -10,8 +12,8 @@ class WarehouseSettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return Layout(menuItem: SidemenuDashboard(), menuName: "Basic Settings", menuSubName: "Warehouse Settings",
+    child:  Column(
         children: [
           Expanded(
             child: Row(
