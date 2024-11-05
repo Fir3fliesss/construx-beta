@@ -58,9 +58,12 @@ class AppPages {
   static const INITIAL = Routes.HOME;
 
   static final routes = [
-    GetPage(
+     GetPage(
       name: _Paths.HOME,
-      page: () =>  const HomePage(),
+      page: () => MainLayout(
+        loadingController: Get.find(),
+        child: const HomePage(),
+      ),
       binding: HomeBinding(),
     ),
     GetPage(

@@ -10,8 +10,11 @@ class SupplierInfoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Layout(menuItem: SidemenuDashboard(), menuName: "Basic Settings", menuSubName: "Supplier Info",
-    child:  Row(
+    return Layout(
+      menuItem: SidemenuDashboard(),
+      menuName: "Basic Settings",
+      menuSubName: "Supplier Info",
+      child: Row(
         children: [
           Expanded(
             child: Column(
@@ -24,8 +27,7 @@ class SupplierInfoView extends StatelessWidget {
                     children: [
                       Text(
                         'Basic Setting',
-                        style: TextStyle(
-                            fontSize: 24.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                       ),
                       Spacer(),
                       Text(
@@ -35,116 +37,94 @@ class SupplierInfoView extends StatelessWidget {
                     ],
                   ),
                 ),
-          const SizedBox(height: 16.0),
-
-          // Container for table and actions
-          Expanded(
-            child: Container(
-              margin: const EdgeInsets.all(20.0),
-              padding: const EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.abuabu, width: 2.0),
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
+                const SizedBox(height: 16.0),
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.abuabu, width: 2.0),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: Column(
                       children: [
-                        // Action Buttons
-                        buildCircleIconButton(Icons.add_circle_outline, "Add", AppColors.abuabu),
-                        const SizedBox(width: 16),
-                        buildCircleIconButton(Icons.refresh, "Refresh", AppColors.abuabu),
-                        const SizedBox(width: 16),
-                        buildCircleIconButton(Icons.upload_outlined, "Upload", AppColors.abuabu),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            children: [
+                              buildCircleIconButton(Icons.add_circle_outline, "Add", AppColors.abuabu),
+                              const SizedBox(width: 16),
+                              buildCircleIconButton(Icons.refresh, "Refresh", AppColors.abuabu),
+                              const SizedBox(width: 16),
+                              buildCircleIconButton(Icons.upload_outlined, "Upload", AppColors.abuabu),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          constraints: const BoxConstraints(
+                            minWidth: double.infinity,
+                            maxHeight: 500,
+                          ),
+                          child: SingleChildScrollView(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: DataTable(
+                                headingRowColor: WidgetStateProperty.all(Colors.grey[200]),
+                                columnSpacing: 20,
+                                columns: const [
+                                  DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('Supplier Name', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('City', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('Address', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('Manager', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('Email', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('Contact Telp', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('Creator', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('Create Time', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('Last Update Time', style: TextStyle(fontSize: 12))),
+                                  DataColumn(label: Text('Operate', style: TextStyle(fontSize: 12))),
+                                ],
+                                rows: List.generate(
+                                  10,
+                                  (index) => DataRow(
+                                    cells: [
+                                      DataCell(Center(child: Text('${index + 1}'))),
+                                      DataCell(Center(child: Text('Supplier ${index + 1}'))),
+                                      DataCell(Center(child: Text('City ${index + 1}'))),
+                                      DataCell(Center(child: Text('Address ${index + 1}'))),
+                                      DataCell(Center(child: Text('Manager ${index + 1}'))),
+                                      DataCell(Center(child: Text('Email ${index + 1}'))),
+                                      DataCell(Center(child: Text('Contact Telp ${index + 1}'))),
+                                      DataCell(Center(child: Text('Creator ${index + 1}'))),
+                                      DataCell(Center(child: Text('Create Time ${index + 1}'))),
+                                      DataCell(Center(child: Text('Last Update ${index + 1}'))),
+                                      const DataCell(
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.edit, color: Colors.blue),
+                                            SizedBox(width: 30.0),
+                                            Icon(Icons.delete, color: Colors.red),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-
-                  // Data table with wrapped text in header
-                  Container(
-                    constraints: const BoxConstraints(
-                      minWidth: double.infinity,
-                      maxHeight: 500,
-                    ),
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: DataTable(
-                          headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
-                          columnSpacing: 20,
-                          columns: const [
-                            DataColumn(
-                              label: Text('No', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('Supplier Name', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('City', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('Address', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('Manager', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('Email', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('Contact Telp', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('Creator', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('Create Time', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('Last Update Time', style: TextStyle(fontSize: 12)),
-                            ),
-                            DataColumn(
-                              label: Text('Operate', style: TextStyle(fontSize: 12)),
-                            ),
-                          ],
-                          rows: List.generate(
-                            10,
-                            (index) => DataRow(cells: [
-                              DataCell(Center(child: Text('${index + 1}'))),
-                              DataCell(Center(child: Text('Supplier ${index + 1}'))),
-                              DataCell(Center(child: Text('City ${index + 1}'))),
-                              DataCell(Center(child: Text('Address ${index + 1}'))),
-                              DataCell(Center(child: Text('Manager ${index + 1}'))),
-                              DataCell(Center(child: Text('Email ${index + 1}'))),
-                              DataCell(Center(child: Text('Contact Telp ${index + 1}'))),
-                              DataCell(Center(child: Text('Creator ${index + 1}'))),
-                              DataCell(Center(child: Text('Create Time ${index + 1}'))),
-                              DataCell(Center(child: Text('Last Update ${index + 1}'))),
-                              const DataCell(
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.edit, color: Colors.blue),
-                                    SizedBox(width: 30.0),
-                                    Icon(Icons.delete, color: Colors.red),
-                                  ],
-                                ),
-                              ),
-                            ]),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
       ),
-    )]),);
+    );
   }
 
   // Circular IconButton for action buttons

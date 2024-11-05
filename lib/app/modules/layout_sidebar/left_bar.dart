@@ -231,7 +231,7 @@ class _LeftBarState extends State<LeftBar>
                               ),
                               MenuItemDrawer(
                                 title: "Commdity Management".tr(),
-                                route: '/commodity-managemenet',
+                                route: '/commodity-management',
                                 isCondensed: widget.isCondensed,
                               ),
                               MenuItemDrawer(
