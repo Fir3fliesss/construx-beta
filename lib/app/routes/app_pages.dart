@@ -60,10 +60,7 @@ class AppPages {
   static final routes = [
      GetPage(
       name: _Paths.HOME,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: const HomePage(),
-      ),
+      page: () => const HomePage(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -234,7 +231,7 @@ class AppPages {
         child: WarehouseProcessingView(),
       ),
       binding: WarehouseProcessingBinding(),
-    ),  
+    ),
     GetPage(
       name: _Paths.INVENTORY_MOVE,
       page: () => MainLayout(

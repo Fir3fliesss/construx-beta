@@ -106,7 +106,7 @@ class PermissionSettingsView extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
-                                headingRowColor: MaterialStateProperty.all(AppColors.abuabu),
+                                headingRowColor: WidgetStateProperty.all(AppColors.abuabu),
                                 dataTextStyle: const TextStyle(
                                   color: Colors.black,
                                 ),
