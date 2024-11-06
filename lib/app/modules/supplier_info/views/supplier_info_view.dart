@@ -38,33 +38,34 @@ class SupplierInfoView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16.0),
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(20.0),
-                    padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.abuabu, width: 2.0),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              buildCircleIconButton(Icons.add_circle_outline, "Add", AppColors.abuabu),
-                              const SizedBox(width: 16),
-                              buildCircleIconButton(Icons.refresh, "Refresh", AppColors.abuabu),
-                              const SizedBox(width: 16),
-                              buildCircleIconButton(Icons.upload_outlined, "Upload", AppColors.abuabu),
-                            ],
-                          ),
+                Container(
+                  margin: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.abuabu, width: 2.0),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          children: [
+                            buildCircleIconButton(Icons.add_circle_outline, "Add", AppColors.abuabu),
+                            const SizedBox(width: 16),
+                            buildCircleIconButton(Icons.refresh, "Refresh", AppColors.abuabu),
+                            const SizedBox(width: 16),
+                            buildCircleIconButton(Icons.upload_outlined, "Upload", AppColors.abuabu),
+                          ],
                         ),
-                        Container(
-                          constraints: const BoxConstraints(
-                            minWidth: double.infinity,
-                            maxHeight: 500,
-                          ),
+                      ),
+                      Container(
+                        constraints: const BoxConstraints(
+                          minWidth: double.infinity,
+                          maxHeight: 500,
+                        ),
+                        child: SingleChildScrollView(
+                          // scrollDirection: Axis.horizontal,
                           child: SingleChildScrollView(
                             child: Padding(
                               padding: const EdgeInsets.all(20.0),
@@ -115,8 +116,8 @@ class SupplierInfoView extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],

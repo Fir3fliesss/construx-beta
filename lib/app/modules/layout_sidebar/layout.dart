@@ -138,7 +138,7 @@ class Layout extends StatelessWidget {
               Container(
                 color: const Color(0xFFF1F4F8),
               ),
-              Positioned(
+              Positioned.fill(
                 top: 0,
                 right: 0,
                 left: 0,

@@ -56,7 +56,7 @@ class CommodityCategoryView extends GetView<CommodityCategoryController> {
                           children: [
                             buildCircleIconButton(
                               icon: Icons.add_circle_outline,
-                              onPressed: controller.showAddCategoryDialog,
+                              onPressed: ()=>{},
                             ),
                             const SizedBox(width: 16),
                             buildCircleIconButton(

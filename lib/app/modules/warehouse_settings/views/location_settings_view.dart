@@ -48,295 +48,293 @@ class LocationSettingsView extends StatelessWidget {
                 const SizedBox(height: 16.0),
 
                 // Container for table and actions
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(20.0),
-                    padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.abuabu, width: 2.0),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              // Action Buttons
-                              buildCircleIconButton(Icons.add_circle_outline,
-                                  "Add", AppColors.abuabu),
-                              const SizedBox(width: 16),
-                              buildCircleIconButton(
-                                  Icons.refresh, "Refresh", AppColors.abuabu),
-                              const SizedBox(width: 16),
-                              buildCircleIconButton(Icons.upload_outlined,
-                                  "Upload", AppColors.abuabu),
-                            ],
-                          ),
+                Container(
+                  margin: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.abuabu, width: 2.0),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          children: [
+                            // Action Buttons
+                            buildCircleIconButton(Icons.add_circle_outline,
+                                "Add", AppColors.abuabu),
+                            const SizedBox(width: 16),
+                            buildCircleIconButton(
+                                Icons.refresh, "Refresh", AppColors.abuabu),
+                            const SizedBox(width: 16),
+                            buildCircleIconButton(Icons.upload_outlined,
+                                "Upload", AppColors.abuabu),
+                          ],
                         ),
-
-                        // Data table with wrapped text in header
-                        Expanded(
-                          child: LayoutBuilder(
-                            builder: (context, constraints) {
-                              // Set the threshold width to trigger horizontal scrolling
-                              bool isSmallScreen = constraints.maxWidth < 1000;
-                              return Container(
-                                constraints: BoxConstraints(
-                                  minWidth: double.infinity,
-                                  maxHeight: 500,
-                                ),
-                                child: Scrollbar(
+                      ),
+                
+                      // Data table with wrapped text in header
+                      Expanded(
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            // Set the threshold width to trigger horizontal scrolling
+                            bool isSmallScreen = constraints.maxWidth < 1000;
+                            return Container(
+                              constraints: BoxConstraints(
+                                minWidth: double.infinity,
+                                maxHeight: 500,
+                              ),
+                              child: Scrollbar(
+                                child: SingleChildScrollView(
                                   child: SingleChildScrollView(
+                                    scrollDirection: Axis.vertical,
                                     child: SingleChildScrollView(
-                                      scrollDirection: Axis.vertical,
-                                      child: SingleChildScrollView(
-                                        scrollDirection: isSmallScreen
-                                            ? Axis.horizontal
-                                            : Axis.vertical,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(20.0),
-                                          child: ConstrainedBox(
-                                            constraints: BoxConstraints(
-                                              minWidth: isSmallScreen
-                                                  ? 1000
-                                                  : constraints.maxWidth,
-                                            ),
-                                            child: DataTable(
-                                              headingRowColor:
-                                                  WidgetStateProperty.all(
-                                                      Colors.grey[200]),
-                                              columnSpacing: 10,
-                                              columns: [
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'No',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Warehouse Name',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Reservoir Name',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Reservoir Category',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Location Code',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Location Length (m)',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Location Width (m)',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Location Height (m)',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Location Volume (m³)',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Location Load (kg)',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                DataColumn(
-                                                  label: Flexible(
-                                                    child: Wrap(
-                                                      alignment:
-                                                          WrapAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                          'Operate',
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                          softWrap: true,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                              rows: List.generate(
-                                                10,
-                                                (index) => DataRow(
-                                                  cells: [
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            '${index + 1}'))),
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            'Warehouse ${index + 1}'))),
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            'Reservoir ${index + 1}'))),
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            'Category ${index + 1}'))),
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            'Code ${index + 1}'))),
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            'Length ${index + 1}'))),
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            'Width ${index + 1}'))),
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            'Height ${index + 1}'))),
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            'Volume ${index + 1}'))),
-                                                    DataCell(Center(
-                                                        child: Text(
-                                                            'Load ${index + 1}'))),
-                                                    const DataCell(
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Icon(Icons.edit,
-                                                              color:
-                                                                  Colors.blue),
-                                                          SizedBox(width: 30.0),
-                                                          Icon(Icons.delete,
-                                                              color:
-                                                                  Colors.red),
-                                                        ],
+                                      scrollDirection: isSmallScreen
+                                          ? Axis.horizontal
+                                          : Axis.vertical,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: ConstrainedBox(
+                                          constraints: BoxConstraints(
+                                            minWidth: isSmallScreen
+                                                ? 1000
+                                                : constraints.maxWidth,
+                                          ),
+                                          child: DataTable(
+                                            headingRowColor:
+                                                WidgetStateProperty.all(
+                                                    Colors.grey[200]),
+                                            columnSpacing: 10,
+                                            columns: [
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'No',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Warehouse Name',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Reservoir Name',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Reservoir Category',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Location Code',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Location Length (m)',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Location Width (m)',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Location Height (m)',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Location Volume (m³)',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Location Load (kg)',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              DataColumn(
+                                                label: Flexible(
+                                                  child: Wrap(
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        'Operate',
+                                                        style: TextStyle(
+                                                            fontSize: 12),
+                                                        softWrap: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                            rows: List.generate(
+                                              10,
+                                              (index) => DataRow(
+                                                cells: [
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          '${index + 1}'))),
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          'Warehouse ${index + 1}'))),
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          'Reservoir ${index + 1}'))),
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          'Category ${index + 1}'))),
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          'Code ${index + 1}'))),
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          'Length ${index + 1}'))),
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          'Width ${index + 1}'))),
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          'Height ${index + 1}'))),
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          'Volume ${index + 1}'))),
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          'Load ${index + 1}'))),
+                                                  const DataCell(
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Icon(Icons.edit,
+                                                            color:
+                                                                Colors.blue),
+                                                        SizedBox(width: 30.0),
+                                                        Icon(Icons.delete,
+                                                            color:
+                                                                Colors.red),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
@@ -345,12 +343,12 @@ class LocationSettingsView extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            );
+                          },
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],
