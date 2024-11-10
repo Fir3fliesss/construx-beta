@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get/get_navigation/src/routes/default_transitions.dart';
 
 import '../modules/commodity_category/bindings/commodity_category_binding.dart';
 import '../modules/commodity_category/views/commodity_category_view.dart';
@@ -67,178 +68,164 @@ class AppPages {
       name: _Paths.COMPANY_INFORMATION,
       page: () => CompanyInformationView(),
       binding: CompanyInformationBinding(),
+      transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.USER_ROLE,
       page: () => UserRoleView(),
       binding: UserRoleBinding(),
+            transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.COMMODITY_CATEGORY,
       page: () => const CommodityCategoryView(),
       binding: CommodityCategoryBinding(),
+            transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.RECEIVING_MANAGEMENT,
       page: () => ReceivingManagementView(),
       binding: ReceivingManagementBinding(),
+            transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.WAREHOUSE_SETTINGS,
       page: () => WarehouseSettingsView(),
       binding: WarehouseSettingsBinding(),
+            transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.PERMISSION_SETTINGS,
       page: () =>  const PermissionSettingsView(),
       binding: PermissionSettingsBinding(),
+            transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.USER_MANAGEMENT,
       page: () => UserManagementView(),
       binding: UserManagementBinding(),
+            transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.COMMODITY_MANAGEMENT,
       page: () => CommodityManagementView(),
       binding: CommodityManagementBinding(),
+            transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.SUPPLIER_INFO,
       page: () =>  SupplierInfoView(),
       binding: SupplierInfoBinding(),
+            transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.OWNER_INFORMATION,
       page: () => OwnerInformationView(),
       binding: OwnerInformationBinding(),
+       transition: Transition.noTransition
+
     ),
     GetPage(
       name: _Paths.FREIGHT_SETTING,
       page: () => FreightSettingView(),
       binding: FreightSettingBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.CUSTOMER_INFO,
       page: () => CustomerInfoView(),
       binding: CustomerInfoBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.PRINT_SETTINGS,
       page: () => const PrintSettingsView(),
       binding: PrintSettingsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.RESERVOIR_SETTINGS,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: ReservoirSettingsView(),
-      ),
+      page: () => ReservoirSettingsView(),
       binding: PrintSettingsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.LOCATION_SETTINGS,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: LocationSettingsView(),
-      ),
+      page: () => LocationSettingsView(),
       binding: PrintSettingsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.TO_BE_DELIVERED,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: ToBeDeliveredView(),
-      ),
+      page: () => ToBeDeliveredView(),
       binding: PrintSettingsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.TO_BE_UNLOADED,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: ToBeUnloadedView(),
-      ),
+      page: () => ToBeUnloadedView(),
       binding: PrintSettingsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.TO_BE_SORTED,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: ToBeSortedView(),
-      ),
+      page: () => ToBeSortedView(),
       binding: PrintSettingsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.PUT_ON_SHELF,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: PutOnShelfView(),
-      ),
+      page: () => PutOnShelfView(),
       binding: PrintSettingsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.RECEIPT_DETAILS,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: ReceiptDetailsView(),
-      ),
+      page: () => ReceiptDetailsView(),
       binding: PrintSettingsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.STOCK_MANAGEMENT,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: StockManagementView(),
-      ),
+      page: () => StockManagementView(),
       binding: StockManagementBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.STOCK,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: StockView(),
-      ),
+      page: () => StockView(),
       binding: StockManagementBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.SAFETY_STOCK,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: SafetyStockView(),
-      ),
+      page: () => SafetyStockView(),
       binding: SafetyStockBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.RECEIVING_STATISTICS,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: ReceivingStatisticsView(),
-      ),
+      page: () => ReceivingStatisticsView(),
       binding: ReceivingStatisticsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.SHIPMENT_STATISTICS,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: ShipmentStatisticsView(),
-      ),
+      page: () => ShipmentStatisticsView(),
       binding: ShipmentStatisticsBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.WAREHOUSE_PROCESSING,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: WarehouseProcessingView(),
-      ),
+      page: () => WarehouseProcessingView(),
       binding: WarehouseProcessingBinding(),
+       transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.INVENTORY_MOVE,
-      page: () => MainLayout(
-        loadingController: Get.find(),
-        child: InventoryMoveView(),
-      ),
+      page: () => InventoryMoveView(),
       binding: WarehouseProcessingBinding(),
+       transition: Transition.noTransition
     ),
   ];
 }
