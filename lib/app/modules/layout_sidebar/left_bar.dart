@@ -268,49 +268,44 @@ class _LeftBarState extends State<LeftBar>
                           );
                         }),
                         const SizedBox(height: 10),
+                        NavigationItem(
+                          iconData: LucideIcons.calendarDays,
+                          title: "Receiving Management".tr(),
+                          isCondensed: isCondensed,
+                          route: '/receiving-management',
+                        ),
+                        const SizedBox(height: 10),
+                        NavigationItem(
+                          iconData: LucideIcons.users,
+                          title: "Stock Management".tr(),
+                          isCondensed: isCondensed,
+                          route: '/stock-management',
+                        ),
+                        const SizedBox(height: 10),
                         GetBuilder<LayoutController>(builder: (task) {
                           return MenuWidgetDrawer(
                             iconData: LucideIcons.clipboardList,
                             isCondensed: isCondensed,
-                            title: "Task",
+                            title: "Statistic Analystic",
                             children: [
                               MenuItemDrawer(
-                                title: "Initiation".tr(),
-                                route: '/project_information',
+                                title: "Safety Stock".tr(),
+                                route: '/safety_stock',
                                 isCondensed: widget.isCondensed,
                               ),
                               MenuItemDrawer(
-                                title: "Planning".tr(),
+                                title: "Receiving Statistics".tr(),
                                 route: '',
                                 isCondensed: widget.isCondensed,
                               ),
                               MenuItemDrawer(
-                                title: "Excecution".tr(),
-                                route: '',
-                                isCondensed: widget.isCondensed,
-                              ),
-                              MenuItemDrawer(
-                                title: "Clossing".tr(),
+                                title: "Shipment Statistics".tr(),
                                 route: '',
                                 isCondensed: widget.isCondensed,
                               ),
                             ],
                           );
                         }),
-                        const SizedBox(height: 10),
-                        NavigationItem(
-                          iconData: LucideIcons.calendarDays,
-                          title: "Schedule".tr(),
-                          isCondensed: isCondensed,
-                          route: '',
-                        ),
-                        const SizedBox(height: 10),
-                        NavigationItem(
-                          iconData: LucideIcons.users,
-                          title: "Coordination".tr(),
-                          isCondensed: isCondensed,
-                          route: '',
-                        ),
                         const SizedBox(height: 10),
                         NavigationItem(
                           iconData: LucideIcons.file,

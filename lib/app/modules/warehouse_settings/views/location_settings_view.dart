@@ -10,12 +10,12 @@ class LocationSettingsView extends StatelessWidget {
   final WarehouseSettingsController controller =
       Get.put(WarehouseSettingsController());
 
-  @override
+    @override
   Widget build(BuildContext context) {
     return Layout(
       menuItem: SidemenuDashboard(),
       menuName: "Basic Settings",
-      menuSubName: "Warehouse Settings",
+      menuSubName: "Location Settings",
       child: Column(
         children: [
           Row(
