@@ -4,64 +4,74 @@ import 'package:construx_beta/app/modules/receiving_management/controllers/recei
 import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:construx_beta/app/modules/receiving_management/views/tab_button.dart';
 
+import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
+
 class ToBeDeliveredView extends StatelessWidget {
   final ReceivingManagementController controller =
       Get.put(ReceivingManagementController());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return Layout(
+      menuItem: SidemenuDashboard(),
+      menuName: "Receiving Management",
+      menuSubName: "",
+      child: Column(
         children: [
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 32.0),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Receiving Management',
-                              style: TextStyle(
-                                  fontSize: 24.0, fontWeight: FontWeight.bold),
-                            ),
-                            Spacer(),
-                            Text(
-                              'Receiving Management > To Be Delivered',
-                              style: TextStyle(color: Colors.black54),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 16.0),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: TabButtons(),
-                      ),
-                      const SizedBox(height: 16.0),
-
-                      // Container for table and actions
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.all(20.0),
-                          padding: const EdgeInsets.all(5.0), // Updated padding
-                          decoration: BoxDecoration(
-                            border:
-                                Border.all(color: AppColors.abuabu, width: 2.0),
-                            borderRadius: BorderRadius.circular(5.0),
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 32.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Receiving Management',
+                            style: TextStyle(
+                                fontSize: 24.0, fontWeight: FontWeight.bold),
                           ),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Row(
-                                  children: [
+                          Spacer(),
+                          Text(
+                            'Receiving Management > To Be Delivered',
+                            style: TextStyle(color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                     Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          buildTabButton( 0, "Notice Of Arrival", Icons.note, '/receiving-management'),
+                          buildTabButton( 1, "To be Delivered", Icons.local_shipping, '/to-be-delivered'),
+                          buildTabButton( 2, "To be Unloaded", Icons.unarchive, '/to-be-unloaded'),
+                          buildTabButton( 3, "To be Sorted", Icons.sort_outlined, '/to-be-sorted'),
+                          buildTabButton( 4, "To be Put On The Shelf", Icons.inventory, '/put-on-shelf'),
+                          buildTabButton( 5, "Receipt Details", Icons.receipt, '/receipt-details'),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    Container(
+                      margin: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.all(5.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.abuabu, width: 2.0),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              children: [
                                     buildCircleIconButton(
                                         Icons.add_circle_outline,
                                         'Add',
@@ -80,7 +90,7 @@ class ToBeDeliveredView extends StatelessWidget {
                                         decoration: InputDecoration(
                                           hintText: 'Supplier Name',
                                           hintStyle: TextStyle(
-                                            color: Colors.grey,
+                                            color: AppColors.textGelap,
                                             fontSize: 16,
                                           ),
                                           border: OutlineInputBorder(),
@@ -98,157 +108,146 @@ class ToBeDeliveredView extends StatelessWidget {
                                         decoration: InputDecoration(
                                           hintText: 'Form Name',
                                           hintStyle: TextStyle(
-                                            color: Colors
-                                                .grey, // Kamu bisa ubah warna atau gaya teks hint di sini
-                                            fontSize:
-                                                16, // Sesuaikan ukuran font
+                                            color: AppColors.textGelap,
+                                            fontSize: 16,
                                           ),
                                           border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(
-                                              12.0), // Tetap penting untuk menyesuaikan padding
+                                          contentPadding: EdgeInsets.all(12.0),
                                         ),
-                                        textAlignVertical: TextAlignVertical
-                                            .center, // Pastikan teks di tengah vertikal
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
                                       ),
                                     ),
                                   ],
+                            ),
+                          ),
+                           LayoutBuilder(
+                            builder: (context, constraints) {
+                              // Set the threshold width to trigger horizontal scrolling
+                              bool isSmallScreen = constraints.maxWidth < 1000;
+                              return Container(
+                                constraints: BoxConstraints(
+                                  minWidth: double.infinity,
+                                  maxHeight: 500,
                                 ),
-                              ),
-
-                              // Data table
-                              Expanded(
-                                child: LayoutBuilder(
-                                  builder: (context, constraints) {
-                                    // Set the threshold width to trigger horizontal scrolling
-                                    bool isSmallScreen =
-                                        constraints.maxWidth < 1000;
-                                    return Container(
-                                      constraints: BoxConstraints(
-                                        minWidth: double.infinity,
-                                        maxHeight: 500,
-                                      ),
-                                      child: Scrollbar(
-                                        child: SingleChildScrollView(
-                                          child: SingleChildScrollView(
-                                            scrollDirection: Axis.vertical,
-                                            child: SingleChildScrollView(
-                                              scrollDirection: isSmallScreen
-                                                  ? Axis.horizontal
-                                                  : Axis.vertical,
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(20.0),
-                                                child: ConstrainedBox(
-                                                  constraints: BoxConstraints(
-                                                    minWidth: isSmallScreen
-                                                        ? 1000
-                                                        : constraints.maxWidth,
-                                                  ),
-                                                  child: DataTable(
-                                                    headingRowColor:
-                                                        WidgetStateProperty.all(
-                                                            Colors.grey[200]),
-                                                    columnSpacing: 10,
-                                                    columns: [
-                                                      const DataColumn(
-                                                          label: Text('')),
-                                                      const DataColumn(
-                                                          label: Text('No')),
-                                                      const DataColumn(
-                                                          label:
-                                                              Text('ASN No')),
-                                                      const DataColumn(
-                                                          label: Text(
-                                                              'Commodity Code')),
-                                                      const DataColumn(
-                                                          label: Text(
-                                                              'Trade Name')),
-                                                      const DataColumn(
-                                                          label: Text(
-                                                              'Specification Code')),
-                                                      const DataColumn(
-                                                          label: Text(
-                                                              'From Name')),
-                                                      const DataColumn(
-                                                          label: Text(
-                                                              'Goods Owner Name')),
-                                                      const DataColumn(
-                                                          label: Text(
-                                                              'Supplier Name')),
-                                                      const DataColumn(
-                                                          label: Text(
-                                                              'Asn Quantity')),
-                                                      const DataColumn(
-                                                          label: Text(
-                                                              'Commodity Price')),
-                                                      const DataColumn(
-                                                          label:
-                                                              Text('Weight')),
-                                                      const DataColumn(
-                                                          label:
-                                                              Text('Volume')),
-                                                    ],
-                                                    rows: List.generate(
-                                                      15,
-                                                      (index) =>
-                                                          DataRow(cells: [
-                                                        DataCell(Checkbox(
-                                                            value: false,
-                                                            onChanged: (bool?
-                                                                value) {})),
-                                                        DataCell(Text(
-                                                            '${index + 1}')),
-                                                        const DataCell(Text(
-                                                            '20240731-0001')),
-                                                        const DataCell(Text(
-                                                            '20240731-0001')),
-                                                        const DataCell(
-                                                            Text('-')),
-                                                        const DataCell(
-                                                            Text('-')),
-                                                        const DataCell(
-                                                            Text('-')),
-                                                        const DataCell(
-                                                            Text('-')),
-                                                        const DataCell(
-                                                            Text('-')),
-                                                        const DataCell(
-                                                            Text('-')),
-                                                        const DataCell(
-                                                            Text('-')),
-                                                        const DataCell(
-                                                            Text('-')),
-                                                        const DataCell(
-                                                            Text('-')),
-                                                      ]),
+                                child: Scrollbar(
+                                  child: SingleChildScrollView(
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: SingleChildScrollView(
+                                        scrollDirection: isSmallScreen
+                                            ? Axis.horizontal
+                                            : Axis.vertical,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minWidth: isSmallScreen
+                                                  ? 1000
+                                                  : constraints.maxWidth,
+                                            ),
+                                            child: DataTable(
+                                              headingRowColor:
+                                                  WidgetStateProperty.all(
+                                                      Colors.grey[200]),
+                                              columnSpacing: 10,
+                                              columns: [
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child: Text('No'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child: Text(
+                                                              'Warehouse Name'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child: Text(
+                                                              'Reservoir Name'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child: Text(
+                                                              'Reservoir Category'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child:
+                                                              Text('Valid'))),
+                                                ),
+                                                DataColumn(
+                                                  label: Expanded(
+                                                      child: Center(
+                                                          child:
+                                                              Text('Operate'))),
+                                                ),
+                                              ],
+                                              rows: List.generate(
+                                                10,
+                                                (index) => DataRow(
+                                                  cells: [
+                                                    DataCell(Center(
+                                                        child: Text(
+                                                            '${index + 1}'))),
+                                                    DataCell(Center(
+                                                        child: Text(
+                                                            'Warehouse ${index + 1}'))),
+                                                    DataCell(Center(
+                                                        child: Text(
+                                                            'City $index'))),
+                                                    const DataCell(Center(
+                                                        child: Text(
+                                                            'picking Area'))),
+                                                    const DataCell(Center(
+                                                        child: Text('Yes'))),
+                                                    const DataCell(
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(Icons.edit,
+                                                              color:
+                                                                  Colors.blue),
+                                                          SizedBox(width: 30.0),
+                                                          Icon(Icons.delete,
+                                                              color:
+                                                                  Colors.red),
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    );
-                                  },
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              );
+                            },
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 
-  // Circular IconButton for action buttons
   Widget buildCircleIconButton(IconData icon, String tooltip, Color bgColor) {
     return Tooltip(
       message: tooltip,

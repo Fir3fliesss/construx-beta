@@ -270,7 +270,7 @@ class _LeftBarState extends State<LeftBar>
                         const SizedBox(height: 10),
                         NavigationItem(
                           iconData: LucideIcons.calendarDays,
-                          title: "Receiving Management".tr(),
+                          title: "Receiving".tr(),
                           isCondensed: isCondensed,
                           route: '/receiving-management',
                         ),
@@ -290,7 +290,7 @@ class _LeftBarState extends State<LeftBar>
                             children: [
                               MenuItemDrawer(
                                 title: "Safety Stock".tr(),
-                                route: '/safety_stock',
+                                route: '/supplier-info',
                                 isCondensed: widget.isCondensed,
                               ),
                               MenuItemDrawer(
