@@ -13,7 +13,7 @@ class CommodityManagementView extends StatelessWidget {
     return Layout(
       menuItem: SidemenuDashboard(),
       menuName: "Basic Settings",
-      menuSubName: "Commodity Category",
+      menuSubName: "Commodity Management",
       child: Row(
         children: [
           Expanded(
@@ -26,12 +26,12 @@ class CommodityManagementView extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        'Commodity Categories',
+                        'Basic Settings',
                         style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                       ),
                       Spacer(),
                       Text(
-                        'Basic Settings > Commodity Categories',
+                        'Basic Settings > Commodity Management',
                         style: TextStyle(color: Colors.black54),
                       ),
                     ],
@@ -79,7 +79,7 @@ class CommodityManagementView extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: DataTable(
-                                headingRowColor: MaterialStateProperty.all(AppColors.abuabu),
+                                headingRowColor: WidgetStateProperty.all(AppColors.abuabu),
                                 columns: [
                                   DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
                                   DataColumn(label: Text('Commodity Code', style: TextStyle(fontSize: 12))),

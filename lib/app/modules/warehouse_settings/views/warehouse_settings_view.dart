@@ -36,7 +36,7 @@ class WarehouseSettingsView extends StatelessWidget {
                           ),
                           Spacer(),
                           Text(
-                            'Basic Settings > Company Information',
+                            'Basic Settings > Warehouse Settings',
                             style: TextStyle(color: Colors.black54),
                           ),
                         ],

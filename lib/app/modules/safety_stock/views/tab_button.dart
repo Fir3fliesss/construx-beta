@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:construx_beta/app/modules/receiving_management/controllers/receiving_management_controller.dart';
+import 'package:construx_beta/app/modules/safety_stock/controllers/safety_stock_controller.dart';
 import 'package:construx_beta/constanta/app_colors.dart';
 
-  final ReceivingManagementController controller = Get.find();
+  final SafetyStockController controller = Get.find();
   // Tab button builder
   Widget buildTabButton(int index, String text, IconData icon, String routeName) {
     return Obx(() {
@@ -26,4 +26,3 @@ import 'package:construx_beta/constanta/app_colors.dart';
       );
     });
   }
-

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:construx_beta/app/modules/stock_management/views/tab_button.dart';
+import 'package:construx_beta/app/modules/stock_management/controllers/stock_management_controller.dart';
 import 'package:construx_beta/constanta/app_colors.dart';
-import '../controllers/stock_management_controller.dart';
+import 'package:construx_beta/app/modules/stock_management/views/tab_button.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
 
 class StockManagementView extends StatelessWidget {
   final StockManagementController controller =
@@ -11,58 +12,61 @@ class StockManagementView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return Layout(
+      menuItem: SidemenuDashboard(),
+      menuName: "Stock Management",
+      menuSubName: "Stock Location",
+      child: Column(
         children: [
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 32.0),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Stock Management',
-                              style: TextStyle(
-                                  fontSize: 24.0, fontWeight: FontWeight.bold),
-                            ),
-                            Spacer(),
-                            Text(
-                              'Stock Management > Stock Location',
-                              style: TextStyle(color: Colors.black54),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 16.0),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: TabButtons(),
-                      ),
-                      const SizedBox(height: 16.0),
-
-                      // Container for table and actions
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.all(20.0),
-                          padding: const EdgeInsets.all(5.0), // Updated padding
-                          decoration: BoxDecoration(
-                            border:
-                                Border.all(color: AppColors.abuabu, width: 2.0),
-                            borderRadius: BorderRadius.circular(5.0),
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 32.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Stock Management',
+                            style: TextStyle(
+                                fontSize: 24.0, fontWeight: FontWeight.bold),
                           ),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Row(
-                                  children: [
+                          Spacer(),
+                          Text(
+                            'Stock Management > Stock Location',
+                            style: TextStyle(color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                     Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
+                        children: [
+                          buildTabButton( 0, "Stock Location", Icons.note, '/stock-management'),
+                          SizedBox(width: 16),
+                          buildTabButton( 1, "Stock", Icons.local_shipping, '/stock'),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    Container(
+                      margin: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.all(5.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.abuabu, width: 2.0),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              children: [
                                     buildCircleIconButton(
                                         Icons.add_circle_outline,
                                         'Add',
@@ -76,22 +80,19 @@ class StockManagementView extends StatelessWidget {
                                     const Spacer(),
                                     Container(
                                       width: 200,
-                                      height:
-                                          50, 
+                                      height: 50,
                                       child: const TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Supplier Name',
                                           hintStyle: TextStyle(
-                                            color: AppColors.textGelap, 
-                                            fontSize:
-                                                16, 
+                                            color: AppColors.textGelap,
+                                            fontSize: 16,
                                           ),
                                           border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(
-                                              12.0), 
+                                          contentPadding: EdgeInsets.all(12.0),
                                         ),
-                                        textAlignVertical: TextAlignVertical
-                                            .center, 
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
                                       ),
                                     ),
                                     const SizedBox(width: 16),
@@ -102,101 +103,120 @@ class StockManagementView extends StatelessWidget {
                                         decoration: InputDecoration(
                                           hintText: 'Form Name',
                                           hintStyle: TextStyle(
-                                            color: AppColors.textGelap, 
-                                            fontSize:
-                                                16,
+                                            color: AppColors.textGelap,
+                                            fontSize: 16,
                                           ),
                                           border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(
-                                              12.0),
+                                          contentPadding: EdgeInsets.all(12.0),
                                         ),
-                                        textAlignVertical: TextAlignVertical.center, 
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
                                       ),
                                     ),
                                   ],
-                                ),
-                              ),
-
-                              // Data table
-                              Container(
-                                constraints: const BoxConstraints(
+                            ),
+                          ),
+                          LayoutBuilder(
+                            builder: (context, constraints) {
+                              // Set the threshold width to trigger horizontal scrolling
+                              bool isSmallScreen = constraints.maxWidth < 1000;
+                              return Container(
+                                constraints: BoxConstraints(
                                   minWidth: double.infinity,
                                   maxHeight: 500,
                                 ),
-                                child: SingleChildScrollView(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: DataTable(
-                                      headingRowColor: WidgetStateProperty.all(
-                                          Colors.grey[200]),
-                                      columnSpacing:
-                                          10, 
-                                      columns: [
-                                        const DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('')),
-                                        const DataColumn(label: Text('Warehouse', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('Location\nCode', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(
-                                            label: Text(
-                                                'Commodity Name', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(
-                                            label: Text('Trade Name', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('Spefication Code', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('Form Name', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('Serial Number', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('Supplier Number', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('Supplier Name', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('Quantity', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('Available\nQuantity', style: TextStyle(fontSize: 12))),
-                                        const DataColumn(label: Text('Locked\nQuantity', style: TextStyle(fontSize: 12))),  
-                                        const DataColumn(label: Text('Commodity\nPrice', style: TextStyle(fontSize: 12))),  
-                                        const DataColumn(label: Text('Expiration Date', style: TextStyle(fontSize: 12))),  
-                                      ],
-                                      rows: List.generate(
-                                        15,
-                                        (index) => DataRow(cells: [
-                                          DataCell(Text('${index + 1}')),
-                                          DataCell(Checkbox(
-                                              value: false,
-                                              onChanged: (bool? value) {})),
-                                          const DataCell(Text('20240824-0003')),
-                                          DataCell(Text(index < 2
-                                              ? '${333 + index}'
-                                              : '3433')),
-                                          const DataCell(Text('2024-08-1')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                          const DataCell(Text('-')),
-                                        ]),
+                                child: Scrollbar(
+                                  child: SingleChildScrollView(
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: SingleChildScrollView(
+                                        scrollDirection: isSmallScreen
+                                            ? Axis.horizontal
+                                            : Axis.vertical,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minWidth: isSmallScreen
+                                                  ? 1000
+                                                  : constraints.maxWidth,
+                                            ),
+                                            child: DataTable(
+                                              headingRowColor:
+                                                  WidgetStateProperty.all(
+                                                      Colors.grey[200]),
+                                              columnSpacing: 10,
+                                              columns: [
+                                                const DataColumn(
+                                                    label: Text('')),
+                                                const DataColumn(
+                                                    label: Text('No')),
+                                                const DataColumn(
+                                                    label: Text('Asn No')),
+                                                const DataColumn(
+                                                    label: Text('Batch')),
+                                                const DataColumn(
+                                                    label: Text(
+                                                        'Estimated time of arrival')),
+                                                const DataColumn(
+                                                    label: Text(
+                                                        'Good Owner Name')),
+                                                const DataColumn(
+                                                    label: Text('Operate')),
+                                              ],
+                                              rows: List.generate(
+                                                15,
+                                                (index) => DataRow(cells: [
+                                                  DataCell(Checkbox(
+                                                      value: false,
+                                                      onChanged:
+                                                          (bool? value) {})),
+                                                  DataCell(
+                                                      Text('${index + 1}')),
+                                                  const DataCell(
+                                                      Text('20240824-0003')),
+                                                  DataCell(Text(index < 2
+                                                      ? '${333 + index}'
+                                                      : '3433')),
+                                                  const DataCell(
+                                                      Text('2024-08-1')),
+                                                  const DataCell(Text('-')),
+                                                  const DataCell(
+                                                    Row(
+                                                      children: [
+                                                        Icon(Icons.edit,
+                                                            color: Colors.blue),
+                                                        SizedBox(width: 10),
+                                                        Icon(Icons.delete,
+                                                            color: Colors.red),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ]),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              );
+                            },
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 
-  // Circular IconButton for action buttons
   Widget buildCircleIconButton(IconData icon, String tooltip, Color bgColor) {
     return Tooltip(
       message: tooltip,

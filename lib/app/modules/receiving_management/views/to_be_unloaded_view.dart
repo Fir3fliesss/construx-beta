@@ -125,7 +125,7 @@ class ToBeUnloadedView extends StatelessWidget {
                           LayoutBuilder(
                             builder: (context, constraints) {
                               // Set the threshold width to trigger horizontal scrolling
-                              bool isSmallScreen = constraints.maxWidth < 1000;
+                              bool isSmallScreen = constraints.maxWidth < 500;
                               return Container(
                                 constraints: BoxConstraints(
                                   minWidth: double.infinity,

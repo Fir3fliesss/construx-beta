@@ -15,7 +15,7 @@ class OwnerInformationView extends StatelessWidget {
     return Layout(
       menuItem: SidemenuDashboard(),
       menuName: "Basic Settings",
-      menuSubName: "Warehouse Settings",
+      menuSubName: "Owner Information",
       child: Column(
         children: [
           Row(
@@ -36,14 +36,14 @@ class OwnerInformationView extends StatelessWidget {
                           ),
                           Spacer(),
                           Text(
-                            'Basic Settings > Location Settings',
+                            'Basic Settings > Owner Information',
                             style: TextStyle(color: Colors.black54),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 16.0),
-                
+
                     const SizedBox(height: 16.0),
                     Container(
                       margin: const EdgeInsets.all(20.0),

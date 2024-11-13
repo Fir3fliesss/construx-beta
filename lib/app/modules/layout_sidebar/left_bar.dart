@@ -251,7 +251,7 @@ class _LeftBarState extends State<LeftBar>
                               ),
                               MenuItemDrawer(
                                 title: "Freight Settings".tr(),
-                                route: '/freight-settings',
+                                route: '/freight-setting',
                                 isCondensed: widget.isCondensed,
                               ),
                               MenuItemDrawer(
@@ -290,7 +290,7 @@ class _LeftBarState extends State<LeftBar>
                             children: [
                               MenuItemDrawer(
                                 title: "Safety Stock".tr(),
-                                route: '/supplier-info',
+                                route: '/safety-stock',
                                 isCondensed: widget.isCondensed,
                               ),
                               MenuItemDrawer(

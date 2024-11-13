@@ -2,20 +2,20 @@ import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:construx_beta/app/modules/warehouse_settings/controllers/warehouse_settings_controller.dart';
-import 'package:construx_beta/app/modules/freight_setting/controllers/freight_setting_controller.dart';
+import 'package:construx_beta/app/modules/owner_information/controllers/owner_information_controller.dart';
 import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
 import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
 
 class FreightSettingView extends StatelessWidget {
-  final FreightSettingController controller =
-      Get.put(FreightSettingController());
+  final OwnerInformationController controller =
+      Get.put(OwnerInformationController());
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return Layout(
       menuItem: SidemenuDashboard(),
       menuName: "Basic Settings",
-      menuSubName: "Warehouse Settings",
+      menuSubName: "Freight Setting",
       child: Column(
         children: [
           Row(
@@ -36,13 +36,14 @@ class FreightSettingView extends StatelessWidget {
                           ),
                           Spacer(),
                           Text(
-                            'Basic Settings > Location Settings',
+                            'Basic Settings > Freight Setting',
                             style: TextStyle(color: Colors.black54),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 16.0),
+
                     const SizedBox(height: 16.0),
                     Container(
                       margin: const EdgeInsets.all(20.0),
@@ -68,134 +69,143 @@ class FreightSettingView extends StatelessWidget {
                               ],
                             ),
                           ),
-                          LayoutBuilder(
+                         LayoutBuilder(
                             builder: (context, constraints) {
+                              // Set the threshold width to trigger horizontal scrolling
                               bool isSmallScreen = constraints.maxWidth < 1000;
                               return Container(
                                 constraints: BoxConstraints(
                                   minWidth: double.infinity,
                                   maxHeight: 500,
                                 ),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
+                                child: Scrollbar(
                                   child: SingleChildScrollView(
-                                    scrollDirection: isSmallScreen
-                                        ? Axis.horizontal
-                                        : Axis.vertical,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                          minWidth: isSmallScreen
-                                              ? 1000
-                                              : constraints.maxWidth,
-                                        ),
-                                        child: DataTable(
-                                          headingRowColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.grey[200]),
-                                          columnSpacing: 10,
-                                          columns: [
-                                            DataColumn(
-                                                label: Text('No',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text('Warehouse Name',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text('Reservoir Name',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Reservoir Category',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text('Location Code',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Length (m)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Width (m)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Height (m)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Volume (m³)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Load (kg)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text('Operate',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                          ],
-                                          rows: List.generate(
-                                            10,
-                                            (index) => DataRow(
-                                              cells: [
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        '${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Warehouse ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Reservoir ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Category ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Code ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Length ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Width ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Height ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Volume ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Load ${index + 1}'))),
-                                                const DataCell(
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Icon(Icons.edit,
-                                                          color: Colors.blue),
-                                                      SizedBox(width: 30.0),
-                                                      Icon(Icons.delete,
-                                                          color: Colors.red),
-                                                    ],
-                                                  ),
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: SingleChildScrollView(
+                                        scrollDirection: isSmallScreen
+                                            ? Axis.horizontal
+                                            : Axis.vertical,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minWidth: isSmallScreen
+                                                  ? 1000
+                                                  : constraints.maxWidth,
+                                            ),
+                                            child: DataTable(
+                                              headingRowColor:
+                                                  WidgetStateProperty.all(
+                                                      Colors.grey[200]),
+                                              columnSpacing: 10,
+                                              columns: [
+                                                DataColumn(
+                                                  label: Text('No',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Customer Name',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('City',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Address',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Manager',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Email',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Contact Telp',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Creator',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Create Time',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text(
+                                                      'Last Update Time',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
+                                                DataColumn(
+                                                  label: Text('Operate',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
                                                 ),
                                               ],
+                                              rows: List.generate(
+                                                15,
+                                                (index) => DataRow(cells: [
+                                                  DataCell(Center(
+                                                      child: Text(
+                                                          '${index + 1}'))),
+                                                  const DataCell(Center(
+                                                      child: Text(
+                                                          '20240824-0003'))),
+                                                  const DataCell(Center(
+                                                      child: Text('Jakarta'))),
+                                                  const DataCell(Center(
+                                                      child: Text('Jakarta'))),
+                                                  const DataCell(Center(
+                                                      child: Text('Byotos'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 1
+                                                          ? 'ali'
+                                                          : '-'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 1
+                                                          ? 'ali'
+                                                          : '-'))),
+                                                  const DataCell(Center(
+                                                      child: Text('ali'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 1
+                                                          ? '2024-09-11 11:40'
+                                                          : '-'))),
+                                                  DataCell(Center(
+                                                      child: Text(index == 1
+                                                          ? '2024-09-11 11:40'
+                                                          : '-'))),
+                                                  const DataCell(
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Icon(Icons.edit,
+                                                            color: Colors.blue),
+                                                        SizedBox(width: 30.0),
+                                                        Icon(Icons.delete,
+                                                            color: Colors.red),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ]),
+                                              ),
                                             ),
                                           ),
                                         ),
