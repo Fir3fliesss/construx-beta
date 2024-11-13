@@ -10,7 +10,7 @@ class LocationSettingsView extends StatelessWidget {
   final WarehouseSettingsController controller =
       Get.put(WarehouseSettingsController());
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Layout(
       menuItem: SidemenuDashboard(),
@@ -74,143 +74,70 @@ class LocationSettingsView extends StatelessWidget {
                               ],
                             ),
                           ),
-                          LayoutBuilder(
-                            builder: (context, constraints) {
-                              bool isSmallScreen = constraints.maxWidth < 1000;
-                              return Container(
-                                constraints: BoxConstraints(
-                                  minWidth: double.infinity,
-                                  maxHeight: 500,
-                                ),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
-                                  child: SingleChildScrollView(
-                                    scrollDirection: isSmallScreen
-                                        ? Axis.horizontal
-                                        : Axis.vertical,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                          minWidth: isSmallScreen
-                                              ? 1000
-                                              : constraints.maxWidth,
-                                        ),
-                                        child: DataTable(
-                                          headingRowColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.grey[200]),
-                                          columnSpacing: 10,
-                                          columns: [
-                                            DataColumn(
-                                                label: Text('No',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text('Warehouse Name',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text('Reservoir Name',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Reservoir Category',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text('Location Code',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Length (m)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Width (m)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Height (m)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Volume (m³)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text(
-                                                    'Location Load (kg)',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                            DataColumn(
-                                                label: Text('Operate',
-                                                    style: TextStyle(
-                                                        fontSize: 12))),
-                                          ],
-                                          rows: List.generate(
-                                            10,
-                                            (index) => DataRow(
-                                              cells: [
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        '${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Warehouse ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Reservoir ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Category ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Code ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Length ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Width ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Height ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Volume ${index + 1}'))),
-                                                DataCell(Center(
-                                                    child: Text(
-                                                        'Load ${index + 1}'))),
-                                                const DataCell(
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Icon(Icons.edit,
-                                                          color: Colors.blue),
-                                                      SizedBox(width: 30.0),
-                                                      Icon(Icons.delete,
-                                                          color: Colors.red),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
+                          Container(
+                            constraints: BoxConstraints(
+                              minWidth: double.infinity,
+                              maxHeight: 500,
+                            ),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: ConstrainedBox(
+                                    constraints: BoxConstraints(
+                                      minWidth: 1000, // Tentukan minWidth
+                                    ),
+                                    child: DataTable(
+                                      headingRowColor: MaterialStateProperty.all(
+                                          Colors.grey[200]),
+                                      columnSpacing: 10,
+                                      columns: [
+                                        DataColumn(label: Text('No', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Warehouse Name', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Reservoir Name', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Reservoir Category', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Location Code', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Location Length (m)', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Location Width (m)', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Location Height (m)', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Location Volume (m³)', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Location Load (kg)', style: TextStyle(fontSize: 12))),
+                                        DataColumn(label: Text('Operate', style: TextStyle(fontSize: 12))),
+                                      ],
+                                      rows: List.generate(
+                                        10,
+                                        (index) => DataRow(
+                                          cells: [
+                                            DataCell(Center(child: Text('${index + 1}'))),
+                                            DataCell(Center(child: Text('Warehouse ${index + 1}'))),
+                                            DataCell(Center(child: Text('Reservoir ${index + 1}'))),
+                                            DataCell(Center(child: Text('Category ${index + 1}'))),
+                                            DataCell(Center(child: Text('Code ${index + 1}'))),
+                                            DataCell(Center(child: Text('Length ${index + 1}'))),
+                                            DataCell(Center(child: Text('Width ${index + 1}'))),
+                                            DataCell(Center(child: Text('Height ${index + 1}'))),
+                                            DataCell(Center(child: Text('Volume ${index + 1}'))),
+                                            DataCell(Center(child: Text('Load ${index + 1}'))),
+                                            const DataCell(
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(Icons.edit, color: Colors.blue),
+                                                  SizedBox(width: 30.0),
+                                                  Icon(Icons.delete, color: Colors.red),
+                                                ],
+                                              ),
                                             ),
-                                          ),
+                                          ],
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              );
-                            },
+                              ),
+                            ),
                           ),
                         ],
                       ),

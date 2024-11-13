@@ -15,7 +15,7 @@ class PutOnShelfView extends StatelessWidget {
     return Layout(
       menuItem: SidemenuDashboard(),
       menuName: "Receiving Management",
-      menuSubName: "",
+      menuSubName: "Put On The Shelf",
       child: Column(
         children: [
           Row(
@@ -48,18 +48,39 @@ class PutOnShelfView extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          buildTabButton(0, "Notice Of Arrival", Icons.note,
-                              '/receiving-management'),
-                          buildTabButton(1, "To be Delivered",
-                              Icons.local_shipping, '/to-be-delivered'),
-                          buildTabButton(2, "To be Unloaded", Icons.unarchive,
-                              '/to-be-unloaded'),
-                          buildTabButton(3, "To be Sorted", Icons.sort_outlined,
-                              '/to-be-sorted'),
-                          buildTabButton(4, "To be Put On The Shelf",
-                              Icons.inventory, '/put-on-shelf'),
-                          buildTabButton(5, "Receipt Details", Icons.receipt,
-                              '/receipt-details'),
+                          Expanded(
+                              child: buildTabButton(0, "Notice Of Arrival",
+                                  Icons.note, '/receiving-management')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(1, "To be Delivered",
+                                  Icons.local_shipping, '/to-be-delivered')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(2, "To be Unloaded",
+                                  Icons.unarchive, '/to-be-unloaded')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(3, "To be Sorted",
+                                  Icons.sort_outlined, '/to-be-sorted')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(4, "To be Put On The Shelf",
+                                  Icons.inventory, '/put-on-shelf')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(5, "Receipt Details",
+                                  Icons.receipt, '/receipt-details')),
                         ],
                       ),
                     ),
@@ -169,7 +190,7 @@ class PutOnShelfView extends StatelessWidget {
                                                         style: TextStyle(
                                                             fontSize: 12))),
                                                 const DataColumn(
-                                                    label: Text('Trade Nam',
+                                                    label: Text('Trade Name',
                                                         style: TextStyle(
                                                             fontSize: 12))),
                                                 const DataColumn(

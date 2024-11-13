@@ -43,14 +43,12 @@ class SafetyStockView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16.0),
-
                     // Container for table and actions
                     Container(
                       margin: const EdgeInsets.all(20.0),
                       padding: const EdgeInsets.all(5.0),
                       decoration: BoxDecoration(
-                        border:
-                            Border.all(color: AppColors.abuabu, width: 2.0),
+                        border: Border.all(color: AppColors.abuabu, width: 2.0),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       child: Column(
@@ -60,16 +58,31 @@ class SafetyStockView extends StatelessWidget {
                             child: Row(
                               children: [
                                 // Action Buttons
-                                buildCircleIconButton(
-                                    Icons.add_circle_outline,
-                                    "Add",
-                                    AppColors.abuabu),
+                                buildCircleIconButton(Icons.add_circle_outline,
+                                    "Add", AppColors.abuabu),
                                 const SizedBox(width: 16),
-                                buildCircleIconButton(Icons.refresh,
-                                    "Refresh", AppColors.abuabu),
+                                buildCircleIconButton(
+                                    Icons.refresh, "Refresh", AppColors.abuabu),
                                 const SizedBox(width: 16),
                                 buildCircleIconButton(Icons.upload_outlined,
                                     "Upload", AppColors.abuabu),
+                                const Spacer(),
+                                Container(
+                                  width: 200,
+                                  height: 50,
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Location Code',
+                                      hintStyle: TextStyle(
+                                        color: AppColors.textGelap,
+                                        fontSize: 16,
+                                      ),
+                                      border: OutlineInputBorder(),
+                                      contentPadding: EdgeInsets.all(12.0),
+                                    ),
+                                    textAlignVertical: TextAlignVertical.center,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -78,8 +91,7 @@ class SafetyStockView extends StatelessWidget {
                           LayoutBuilder(
                             builder: (context, constraints) {
                               // Set the threshold width to trigger horizontal scrolling
-                              bool isSmallScreen =
-                                  constraints.maxWidth < 1000;
+                              bool isSmallScreen = constraints.maxWidth < 1000;
                               return Container(
                                 constraints: BoxConstraints(
                                   minWidth: double.infinity,
@@ -87,6 +99,7 @@ class SafetyStockView extends StatelessWidget {
                                 ),
                                 child: Scrollbar(
                                   child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: SingleChildScrollView(
@@ -94,8 +107,7 @@ class SafetyStockView extends StatelessWidget {
                                             ? Axis.horizontal
                                             : Axis.vertical,
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsets.all(20.0),
+                                          padding: const EdgeInsets.all(20.0),
                                           child: ConstrainedBox(
                                             constraints: BoxConstraints(
                                               minWidth: isSmallScreen
@@ -114,20 +126,17 @@ class SafetyStockView extends StatelessWidget {
                                                           fontSize: 12)),
                                                 ),
                                                 DataColumn(
-                                                  label: Text(
-                                                      'Warehouse Name',
+                                                  label: Text('Warehouse Name',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
                                                 DataColumn(
-                                                  label: Text(
-                                                      'Commodity Code',
+                                                  label: Text('Commodity Code',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
                                                 DataColumn(
-                                                  label: Text(
-                                                      'Commodity Name',
+                                                  label: Text('Commodity Name',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
@@ -160,14 +169,12 @@ class SafetyStockView extends StatelessWidget {
                                                           fontSize: 12)),
                                                 ),
                                                 DataColumn(
-                                                  label: Text(
-                                                      'Locked Quantity',
+                                                  label: Text('Locked Quantity',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
                                                 DataColumn(
-                                                  label: Text(
-                                                      'Frozen Quantity',
+                                                  label: Text('Frozen Quantity',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
@@ -187,8 +194,8 @@ class SafetyStockView extends StatelessWidget {
                                                   const DataCell(Center(
                                                       child: Text(
                                                           '20240824-0003'))),
-                                                  const DataCell(Text(
-                                                      '20240824-0003')),
+                                                  const DataCell(
+                                                      Text('20240824-0003')),
                                                   DataCell(Text(index < 2
                                                       ? '${333 + index}'
                                                       : '3433')),

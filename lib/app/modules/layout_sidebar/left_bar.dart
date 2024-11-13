@@ -295,12 +295,12 @@ class _LeftBarState extends State<LeftBar>
                               ),
                               MenuItemDrawer(
                                 title: "Receiving Statistics".tr(),
-                                route: '',
+                                route: '/receiving-statistics',
                                 isCondensed: widget.isCondensed,
                               ),
                               MenuItemDrawer(
                                 title: "Shipment Statistics".tr(),
-                                route: '',
+                                route: '/shipment-statistics',
                                 isCondensed: widget.isCondensed,
                               ),
                             ],

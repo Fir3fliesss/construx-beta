@@ -1,8 +1,9 @@
+import 'package:construx_beta/app/modules/receiving_statistics/controllers/receiving_statistics_controller.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:construx_beta/constanta/app_colors.dart';
-import '../controllers/receiving_statistics_controller.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
+import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
 
 class ReceivingStatisticsView extends StatelessWidget {
   final ReceivingStatisticsController controller =
@@ -10,69 +11,104 @@ class ReceivingStatisticsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
+    return Layout(
+      menuItem: SidemenuDashboard(),
+      menuName: 'Statistic Analysis',
+      menuSubName: 'Receiving Statistic',
+      child: Column(
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 32.0),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Statistic Analysis',
-                        style: TextStyle(
-                            fontSize: 24.0, fontWeight: FontWeight.bold),
-                      ),
-                      Spacer(),
-                      Text(
-                        'Statistic Analysis > Receiving Statistics',
-                        style: TextStyle(color: Colors.black54),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 16.0),
-
-                // Container for table and actions
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(20.0),
-                    padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.abuabu, width: 2.0),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              // Action Buttons
-                              buildCircleIconButton(Icons.add_circle_outline,
-                                  "Add", AppColors.abuabu),
-                              const SizedBox(width: 16),
-                              buildCircleIconButton(
-                                  Icons.refresh, "Refresh", AppColors.abuabu),
-                              const SizedBox(width: 16),
-                              buildCircleIconButton(Icons.upload_outlined,
-                                  "Upload", AppColors.abuabu),
-                              const SizedBox(
-                                width: 16,
-                              ),
-                              buildCircleIconButton(Icons.bar_chart,
-                                  "Statistic", AppColors.abuabu),
-                            ],
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 32.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Statistic Analysis',
+                            style: TextStyle(
+                                fontSize: 24.0, fontWeight: FontWeight.bold),
                           ),
-                        ),
-
-                        // Data table with wrapped text in header
-                        Expanded(
-                          child: LayoutBuilder(
+                          Spacer(),
+                          Text(
+                            'Statistic Analysis > Receiving Statistics',
+                            style: TextStyle(color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    // Container for table and actions
+                    Container(
+                      margin: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.all(5.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.abuabu, width: 2.0),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              children: [
+                                // Action Buttons
+                                buildCircleIconButton(Icons.add_circle_outline,
+                                    "Add", AppColors.abuabu),
+                                const SizedBox(width: 16),
+                                buildCircleIconButton(
+                                    Icons.refresh, "Refresh", AppColors.abuabu),
+                                const SizedBox(width: 16),
+                                buildCircleIconButton(Icons.upload_outlined,
+                                    "Upload", AppColors.abuabu),
+                                const SizedBox(
+                                  width: 16,
+                                ),
+                                buildCircleIconButton(Icons.bar_chart,
+                                    "Statistic", AppColors.abuabu),
+                                Spacer(),
+                                Container(
+                                  width: 200,
+                                  height: 50,
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Supplier Name',
+                                      hintStyle: TextStyle(
+                                        color: AppColors.textGelap,
+                                        fontSize: 16,
+                                      ),
+                                      border: OutlineInputBorder(),
+                                      contentPadding: EdgeInsets.all(12.0),
+                                    ),
+                                    textAlignVertical: TextAlignVertical.center,
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Container(
+                                  width: 200,
+                                  height: 50,
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Form Name',
+                                      hintStyle: TextStyle(
+                                        color: AppColors.textGelap,
+                                        fontSize: 16,
+                                      ),
+                                      border: OutlineInputBorder(),
+                                      contentPadding: EdgeInsets.all(12.0),
+                                    ),
+                                    textAlignVertical: TextAlignVertical.center,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          // Data table with wrapped text in header
+                          LayoutBuilder(
                             builder: (context, constraints) {
                               // Set the threshold width to trigger horizontal scrolling
                               bool isSmallScreen = constraints.maxWidth < 1000;
@@ -83,6 +119,7 @@ class ReceivingStatisticsView extends StatelessWidget {
                                 ),
                                 child: Scrollbar(
                                   child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: SingleChildScrollView(
@@ -114,7 +151,7 @@ class ReceivingStatisticsView extends StatelessWidget {
                                                           fontSize: 12)),
                                                 ),
                                                 DataColumn(
-                                                  label: Text('Commodity\nCode',
+                                                  label: Text('Commodity Code',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
@@ -125,12 +162,12 @@ class ReceivingStatisticsView extends StatelessWidget {
                                                 ),
                                                 DataColumn(
                                                   label: Text(
-                                                      'Spesification\nCode',
+                                                      'Spesification Code',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
                                                 DataColumn(
-                                                  label: Text('Form\nName',
+                                                  label: Text('Form Name',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
@@ -141,12 +178,12 @@ class ReceivingStatisticsView extends StatelessWidget {
                                                           fontSize: 12)),
                                                 ),
                                                 DataColumn(
-                                                  label: Text('Supplier\nName',
+                                                  label: Text('Supplier Name',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
                                                 DataColumn(
-                                                  label: Text('Asn\nQuantity',
+                                                  label: Text('Asn Quantity',
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
@@ -195,6 +232,11 @@ class ReceivingStatisticsView extends StatelessWidget {
                                                       style: TextStyle(
                                                           fontSize: 12)),
                                                 ),
+                                                DataColumn(
+                                                  label: Text('Expiration\nDate',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                ),
                                               ],
                                               rows: List.generate(
                                                 15,
@@ -224,6 +266,7 @@ class ReceivingStatisticsView extends StatelessWidget {
                                                   const DataCell(Text('-')),
                                                   const DataCell(Text('-')),
                                                   const DataCell(Text('-')),
+                                                  const DataCell(Text('-')),
                                                 ]),
                                               ),
                                             ),
@@ -236,13 +279,13 @@ class ReceivingStatisticsView extends StatelessWidget {
                               );
                             },
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),

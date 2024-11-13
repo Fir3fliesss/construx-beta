@@ -16,7 +16,7 @@ class ReservoirSettingsView extends StatelessWidget {
     return Layout(
       menuItem: SidemenuDashboard(),
       menuName: "Basic Settings",
-      menuSubName: "Warehouse Settings",
+      menuSubName: "Reservoir Settings",
       child: Column(
         children: [
           Row(
@@ -37,7 +37,7 @@ class ReservoirSettingsView extends StatelessWidget {
                           ),
                           Spacer(),
                           Text(
-                            'Basic Settings > Location Settings',
+                            'Basic Settings > Reservoir Settings',
                             style: TextStyle(color: Colors.black54),
                           ),
                         ],

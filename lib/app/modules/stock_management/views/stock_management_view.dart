@@ -43,13 +43,15 @@ class StockManagementView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16.0),
-                     Padding(
+                    Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Row(
                         children: [
-                          buildTabButton( 0, "Stock Location", Icons.note, '/stock-management'),
+                          buildTabButton(0, "Stock Location", Icons.note,
+                              '/stock-management'),
                           SizedBox(width: 16),
-                          buildTabButton( 1, "Stock", Icons.local_shipping, '/stock'),
+                          buildTabButton(
+                              1, "Stock", Icons.local_shipping, '/stock'),
                         ],
                       ),
                     ),
@@ -67,53 +69,49 @@ class StockManagementView extends StatelessWidget {
                             padding: const EdgeInsets.all(16.0),
                             child: Row(
                               children: [
-                                    buildCircleIconButton(
-                                        Icons.add_circle_outline,
-                                        'Add',
-                                        AppColors.abuabu),
-                                    const SizedBox(width: 16),
-                                    buildCircleIconButton(Icons.refresh,
-                                        'Refresh', AppColors.abuabu),
-                                    const SizedBox(width: 16),
-                                    buildCircleIconButton(Icons.upload_outlined,
-                                        'Upload', AppColors.abuabu),
-                                    const Spacer(),
-                                    Container(
-                                      width: 200,
-                                      height: 50,
-                                      child: const TextField(
-                                        decoration: InputDecoration(
-                                          hintText: 'Supplier Name',
-                                          hintStyle: TextStyle(
-                                            color: AppColors.textGelap,
-                                            fontSize: 16,
-                                          ),
-                                          border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(12.0),
-                                        ),
-                                        textAlignVertical:
-                                            TextAlignVertical.center,
+                                buildCircleIconButton(Icons.add_circle_outline,
+                                    'Add', AppColors.abuabu),
+                                const SizedBox(width: 16),
+                                buildCircleIconButton(
+                                    Icons.refresh, 'Refresh', AppColors.abuabu),
+                                const SizedBox(width: 16),
+                                buildCircleIconButton(Icons.upload_outlined,
+                                    'Upload', AppColors.abuabu),
+                                const Spacer(),
+                                Container(
+                                  width: 200,
+                                  height: 50,
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Supplier Name',
+                                      hintStyle: TextStyle(
+                                        color: AppColors.textGelap,
+                                        fontSize: 16,
                                       ),
+                                      border: OutlineInputBorder(),
+                                      contentPadding: EdgeInsets.all(12.0),
                                     ),
-                                    const SizedBox(width: 16),
-                                    Container(
-                                      width: 200,
-                                      height: 50,
-                                      child: const TextField(
-                                        decoration: InputDecoration(
-                                          hintText: 'Form Name',
-                                          hintStyle: TextStyle(
-                                            color: AppColors.textGelap,
-                                            fontSize: 16,
-                                          ),
-                                          border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(12.0),
-                                        ),
-                                        textAlignVertical:
-                                            TextAlignVertical.center,
+                                    textAlignVertical: TextAlignVertical.center,
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Container(
+                                  width: 200,
+                                  height: 50,
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Form Name',
+                                      hintStyle: TextStyle(
+                                        color: AppColors.textGelap,
+                                        fontSize: 16,
                                       ),
+                                      border: OutlineInputBorder(),
+                                      contentPadding: EdgeInsets.all(12.0),
                                     ),
-                                  ],
+                                    textAlignVertical: TextAlignVertical.center,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           LayoutBuilder(
@@ -127,6 +125,7 @@ class StockManagementView extends StatelessWidget {
                                 ),
                                 child: Scrollbar(
                                   child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: SingleChildScrollView(
@@ -148,31 +147,57 @@ class StockManagementView extends StatelessWidget {
                                               columnSpacing: 10,
                                               columns: [
                                                 const DataColumn(
-                                                    label: Text('')),
-                                                const DataColumn(
                                                     label: Text('No')),
                                                 const DataColumn(
-                                                    label: Text('Asn No')),
+                                                    label: Text('')),
                                                 const DataColumn(
-                                                    label: Text('Batch')),
+                                                    label: Text('Warehouse')),
+                                                const DataColumn(
+                                                    label:
+                                                        Text('Location Code')),
+                                                const DataColumn(
+                                                    label:
+                                                        Text('Commodity Code')),
+                                                const DataColumn(
+                                                    label: Text('Trade Name')),
                                                 const DataColumn(
                                                     label: Text(
-                                                        'Estimated time of arrival')),
+                                                        'Specification code')),
+                                                const DataColumn(
+                                                    label: Text('From Name')),
+                                                const DataColumn(
+                                                    label:
+                                                        Text('Serial Number')),
+                                                const DataColumn(
+                                                    label:
+                                                        Text('Supplier Name')),
+                                                const DataColumn(
+                                                    label: Text('Quantity')),
                                                 const DataColumn(
                                                     label: Text(
-                                                        'Good Owner Name')),
+                                                        'Available Quantity')),
                                                 const DataColumn(
-                                                    label: Text('Operate')),
+                                                    label: Text(
+                                                        'Locked Quantity')),
+                                                const DataColumn(
+                                                    label: Text(
+                                                        'Commodity Price')),
+                                                const DataColumn(
+                                                    label: Text(
+                                                        'Expiration Date')),
+                                                const DataColumn(
+                                                    label: Text(
+                                                        'Listing Date')),
                                               ],
                                               rows: List.generate(
                                                 15,
                                                 (index) => DataRow(cells: [
+                                                  DataCell(
+                                                      Text('${index + 1}')),
                                                   DataCell(Checkbox(
                                                       value: false,
                                                       onChanged:
                                                           (bool? value) {})),
-                                                  DataCell(
-                                                      Text('${index + 1}')),
                                                   const DataCell(
                                                       Text('20240824-0003')),
                                                   DataCell(Text(index < 2
@@ -182,15 +207,34 @@ class StockManagementView extends StatelessWidget {
                                                       Text('2024-08-1')),
                                                   const DataCell(Text('-')),
                                                   const DataCell(
-                                                    Row(
-                                                      children: [
-                                                        Icon(Icons.edit,
-                                                            color: Colors.blue),
-                                                        SizedBox(width: 10),
-                                                        Icon(Icons.delete,
-                                                            color: Colors.red),
-                                                      ],
-                                                    ),
+                                                    Text('Spec1234'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('FromName'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('SN123456'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('SupplierX'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('100'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('80'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('20'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('15.00'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('2024-12-01'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('2024-08-10'),
                                                   ),
                                                 ]),
                                               ),

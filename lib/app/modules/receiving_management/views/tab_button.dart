@@ -8,7 +8,8 @@ import 'package:construx_beta/constanta/app_colors.dart';
   Widget buildTabButton(int index, String text, IconData icon, String routeName) {
     return Obx(() {
       return SizedBox(
-        width: 200,
+        width: 250,
+        height: 55,
         child: ElevatedButton.icon(
           onPressed: () {
             controller.changeButton(index);
@@ -26,4 +27,3 @@ import 'package:construx_beta/constanta/app_colors.dart';
       );
     });
   }
-

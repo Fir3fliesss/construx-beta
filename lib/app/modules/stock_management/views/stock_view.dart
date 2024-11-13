@@ -127,6 +127,7 @@ class StockView extends StatelessWidget {
                                 ),
                                 child: Scrollbar(
                                   child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: SingleChildScrollView(
@@ -148,31 +149,51 @@ class StockView extends StatelessWidget {
                                               columnSpacing: 10,
                                               columns: [
                                                 const DataColumn(
-                                                    label: Text('')),
-                                                const DataColumn(
                                                     label: Text('No')),
                                                 const DataColumn(
-                                                    label: Text('Asn No')),
+                                                    label: Text('')),
                                                 const DataColumn(
-                                                    label: Text('Batch')),
+                                                    label: Text('Commodity Code')),
+                                                const DataColumn(
+                                                    label:
+                                                        Text('Trade Name')),
+                                                const DataColumn(
+                                                    label:
+                                                        Text('Spesification Code')),
+                                                const DataColumn(
+                                                    label: Text('Quantity')),
                                                 const DataColumn(
                                                     label: Text(
-                                                        'Estimated time of arrival')),
+                                                        'Available Quantity')),
+                                                const DataColumn(
+                                                    label: Text('Locked Quantity')),
+                                                const DataColumn(
+                                                    label:
+                                                        Text('Frozen Quantity')),
+                                                const DataColumn(
+                                                    label:
+                                                        Text('ASN Quantity')),
+                                                const DataColumn(
+                                                    label: Text('Unload Quantity')),
                                                 const DataColumn(
                                                     label: Text(
-                                                        'Good Owner Name')),
+                                                        'Sort Quantity')),
                                                 const DataColumn(
-                                                    label: Text('Operate')),
+                                                    label: Text(
+                                                        'Sorted Quantity')),
+                                                const DataColumn(
+                                                    label: Text(
+                                                        'Shortage Quantity')),
                                               ],
                                               rows: List.generate(
                                                 15,
                                                 (index) => DataRow(cells: [
+                                                  DataCell(
+                                                      Text('${index + 1}')),
                                                   DataCell(Checkbox(
                                                       value: false,
                                                       onChanged:
                                                           (bool? value) {})),
-                                                  DataCell(
-                                                      Text('${index + 1}')),
                                                   const DataCell(
                                                       Text('20240824-0003')),
                                                   DataCell(Text(index < 2
@@ -182,15 +203,28 @@ class StockView extends StatelessWidget {
                                                       Text('2024-08-1')),
                                                   const DataCell(Text('-')),
                                                   const DataCell(
-                                                    Row(
-                                                      children: [
-                                                        Icon(Icons.edit,
-                                                            color: Colors.blue),
-                                                        SizedBox(width: 10),
-                                                        Icon(Icons.delete,
-                                                            color: Colors.red),
-                                                      ],
-                                                    ),
+                                                    Text('Spec1234'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('FromName'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('SN123456'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('SupplierX'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('100'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('80'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('20'),
+                                                  ),
+                                                  const DataCell(
+                                                    Text('15.00'),
                                                   ),
                                                 ]),
                                               ),

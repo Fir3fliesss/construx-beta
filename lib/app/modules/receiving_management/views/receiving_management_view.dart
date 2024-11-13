@@ -43,17 +43,44 @@ class ReceivingManagementView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16.0),
-                     Padding(
+                    Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          buildTabButton( 0, "Notice Of Arrival", Icons.note, '/receiving-management'),
-                          buildTabButton( 1, "To be Delivered", Icons.local_shipping, '/to-be-delivered'),
-                          buildTabButton( 2, "To be Unloaded", Icons.unarchive, '/to-be-unloaded'),
-                          buildTabButton( 3, "To be Sorted", Icons.sort_outlined, '/to-be-sorted'),
-                          buildTabButton( 4, "To be Put On The Shelf", Icons.inventory, '/put-on-shelf'),
-                          buildTabButton( 5, "Receipt Details", Icons.receipt, '/receipt-details'),
+                          Expanded(
+                              child: buildTabButton(0, "Notice Of Arrival",
+                                  Icons.note, '/receiving-management')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(1, "To be Delivered",
+                                  Icons.local_shipping, '/to-be-delivered')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(2, "To be Unloaded",
+                                  Icons.unarchive, '/to-be-unloaded')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(3, "To be Sorted",
+                                  Icons.sort_outlined, '/to-be-sorted')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(4, "To be Put On The Shelf",
+                                  Icons.inventory, '/put-on-shelf')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(5, "Receipt Details",
+                                  Icons.receipt, '/receipt-details')),
                         ],
                       ),
                     ),
@@ -71,53 +98,49 @@ class ReceivingManagementView extends StatelessWidget {
                             padding: const EdgeInsets.all(16.0),
                             child: Row(
                               children: [
-                                    buildCircleIconButton(
-                                        Icons.add_circle_outline,
-                                        'Add',
-                                        AppColors.abuabu),
-                                    const SizedBox(width: 16),
-                                    buildCircleIconButton(Icons.refresh,
-                                        'Refresh', AppColors.abuabu),
-                                    const SizedBox(width: 16),
-                                    buildCircleIconButton(Icons.upload_outlined,
-                                        'Upload', AppColors.abuabu),
-                                    const Spacer(),
-                                    Container(
-                                      width: 200,
-                                      height: 50,
-                                      child: const TextField(
-                                        decoration: InputDecoration(
-                                          hintText: 'Supplier Name',
-                                          hintStyle: TextStyle(
-                                            color: AppColors.textGelap,
-                                            fontSize: 16,
-                                          ),
-                                          border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(12.0),
-                                        ),
-                                        textAlignVertical:
-                                            TextAlignVertical.center,
+                                buildCircleIconButton(Icons.add_circle_outline,
+                                    'Add', AppColors.abuabu),
+                                const SizedBox(width: 16),
+                                buildCircleIconButton(
+                                    Icons.refresh, 'Refresh', AppColors.abuabu),
+                                const SizedBox(width: 16),
+                                buildCircleIconButton(Icons.upload_outlined,
+                                    'Upload', AppColors.abuabu),
+                                const Spacer(),
+                                Container(
+                                  width: 200,
+                                  height: 50,
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Supplier Name',
+                                      hintStyle: TextStyle(
+                                        color: AppColors.textGelap,
+                                        fontSize: 16,
                                       ),
+                                      border: OutlineInputBorder(),
+                                      contentPadding: EdgeInsets.all(12.0),
                                     ),
-                                    const SizedBox(width: 16),
-                                    Container(
-                                      width: 200,
-                                      height: 50,
-                                      child: const TextField(
-                                        decoration: InputDecoration(
-                                          hintText: 'Form Name',
-                                          hintStyle: TextStyle(
-                                            color: AppColors.textGelap,
-                                            fontSize: 16,
-                                          ),
-                                          border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.all(12.0),
-                                        ),
-                                        textAlignVertical:
-                                            TextAlignVertical.center,
+                                    textAlignVertical: TextAlignVertical.center,
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Container(
+                                  width: 200,
+                                  height: 50,
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Form Name',
+                                      hintStyle: TextStyle(
+                                        color: AppColors.textGelap,
+                                        fontSize: 16,
                                       ),
+                                      border: OutlineInputBorder(),
+                                      contentPadding: EdgeInsets.all(12.0),
                                     ),
-                                  ],
+                                    textAlignVertical: TextAlignVertical.center,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           LayoutBuilder(

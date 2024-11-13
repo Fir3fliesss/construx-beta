@@ -15,7 +15,7 @@ class ReceiptDetailsView extends StatelessWidget {
     return Layout(
       menuItem: SidemenuDashboard(),
       menuName: "Receiving Management",
-      menuSubName: "",
+      menuSubName: "Receipt Details",
       child: Column(
         children: [
           Row(
@@ -48,18 +48,39 @@ class ReceiptDetailsView extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          buildTabButton(0, "Notice Of Arrival", Icons.note,
-                              '/receiving-management'),
-                          buildTabButton(1, "To be Delivered",
-                              Icons.local_shipping, '/to-be-delivered'),
-                          buildTabButton(2, "To be Unloaded", Icons.unarchive,
-                              '/to-be-unloaded'),
-                          buildTabButton(3, "To be Sorted", Icons.sort_outlined,
-                              '/to-be-sorted'),
-                          buildTabButton(4, "To be Put On The Shelf",
-                              Icons.inventory, '/put-on-shelf'),
-                          buildTabButton(5, "Receipt Details", Icons.receipt,
-                              '/receipt-details'),
+                          Expanded(
+                              child: buildTabButton(0, "Notice Of Arrival",
+                                  Icons.note, '/receiving-management')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(1, "To be Delivered",
+                                  Icons.local_shipping, '/to-be-delivered')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(2, "To be Unloaded",
+                                  Icons.unarchive, '/to-be-unloaded')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(3, "To be Sorted",
+                                  Icons.sort_outlined, '/to-be-sorted')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(4, "To be Put On The Shelf",
+                                  Icons.inventory, '/put-on-shelf')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(5, "Receipt Details",
+                                  Icons.receipt, '/receipt-details')),
                         ],
                       ),
                     ),
@@ -133,6 +154,7 @@ class ReceiptDetailsView extends StatelessWidget {
                                 ),
                                 child: Scrollbar(
                                   child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: SingleChildScrollView(

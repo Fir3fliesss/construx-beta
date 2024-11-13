@@ -15,7 +15,7 @@ class ToBeUnloadedView extends StatelessWidget {
     return Layout(
       menuItem: SidemenuDashboard(),
       menuName: "Receiving Management",
-      menuSubName: "",
+      menuSubName: "To Be Unloaded",
       child: Column(
         children: [
           Row(
@@ -48,18 +48,39 @@ class ToBeUnloadedView extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          buildTabButton(0, "Notice Of Arrival", Icons.note,
-                              '/receiving-management'),
-                          buildTabButton(1, "To be Delivered",
-                              Icons.local_shipping, '/to-be-delivered'),
-                          buildTabButton(2, "To be Unloaded", Icons.unarchive,
-                              '/to-be-unloaded'),
-                          buildTabButton(3, "To be Sorted", Icons.sort_outlined,
-                              '/to-be-sorted'),
-                          buildTabButton(4, "To be Put On The Shelf",
-                              Icons.inventory, '/put-on-shelf'),
-                          buildTabButton(5, "Receipt Details", Icons.receipt,
-                              '/receipt-details'),
+                          Expanded(
+                              child: buildTabButton(0, "Notice Of Arrival",
+                                  Icons.note, '/receiving-management')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(1, "To be Delivered",
+                                  Icons.local_shipping, '/to-be-delivered')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(2, "To be Unloaded",
+                                  Icons.unarchive, '/to-be-unloaded')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(3, "To be Sorted",
+                                  Icons.sort_outlined, '/to-be-sorted')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(4, "To be Put On The Shelf",
+                                  Icons.inventory, '/put-on-shelf')),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: buildTabButton(5, "Receipt Details",
+                                  Icons.receipt, '/receipt-details')),
                         ],
                       ),
                     ),
@@ -124,15 +145,15 @@ class ToBeUnloadedView extends StatelessWidget {
                           ),
                           LayoutBuilder(
                             builder: (context, constraints) {
-                              // Set the threshold width to trigger horizontal scrolling
                               bool isSmallScreen = constraints.maxWidth < 500;
                               return Container(
-                                constraints: BoxConstraints(
+                                constraints: const BoxConstraints(
                                   minWidth: double.infinity,
                                   maxHeight: 500,
                                 ),
                                 child: Scrollbar(
                                   child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: SingleChildScrollView(
@@ -152,72 +173,73 @@ class ToBeUnloadedView extends StatelessWidget {
                                                   WidgetStateProperty.all(
                                                       Colors.grey[200]),
                                               columnSpacing: 10,
-                                              columns: [
-                                                const DataColumn(
-                                                    label: Text('')),
-                                                const DataColumn(
-                                                    label: Text('No')),
-                                                const DataColumn(
+                                              columns: const [
+                                                DataColumn(label: Text('No')),
+                                                DataColumn(label: Text('')),
+                                                DataColumn(
                                                     label: Text('ASN No')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label:
                                                         Text('Commodity Code')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label: Text('Trade Name')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label: Text(
                                                         'Specification Code')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label: Text('From Name')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label: Text(
                                                         'Goods Owner Name')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label:
                                                         Text('Supplier Name')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label:
                                                         Text('ASN Quantity')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label: Text(
                                                         'Commodity Price')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label: Text('Weight')),
-                                                const DataColumn(
+                                                DataColumn(
                                                     label: Text('Volume')),
                                               ],
                                               rows: List.generate(
                                                 15,
-                                                (index) => DataRow(cells: [
-                                                  DataCell(Checkbox(
+                                                (index) => DataRow(
+                                                  cells: [
+                                                    DataCell(
+                                                        Text('${index + 1}')),
+                                                    DataCell(Checkbox(
                                                       value: false,
                                                       onChanged:
-                                                          (bool? value) {})),
-                                                  DataCell(
-                                                      Text('${index + 1}')),
-                                                  DataCell(Text(
-                                                      '20240731-000${index % 10 + 1}')), // ASN No
-                                                  DataCell(Text(
-                                                      'CC${index + 1}')), // Commodity Code
-                                                  DataCell(Text(
-                                                      'Trade Name ${index + 1}')), // Trade Name
-                                                  DataCell(Text(
-                                                      'Spec Code ${index + 1}')), // Specification Code
-                                                  DataCell(Text(
-                                                      'From Name ${index + 1}')), // From Name
-                                                  DataCell(Text(
-                                                      'Goods Owner ${index + 1}')), // Goods Owner Name
-                                                  DataCell(Text(
-                                                      '${(index + 1) * 10}')), // ASN Quantity
-                                                  DataCell(Text(
-                                                      '\$${(index + 1) * 100}')), // Commodity Price
-                                                  DataCell(Text(
-                                                      '${(index + 1) * 5} kg')), // Weight
-                                                  DataCell(Text(
-                                                      '${(index + 1) * 0.5} m³')), // Volume
-                                                  DataCell(Text(
-                                                      '${(index + 1) * 0.5} m³')), // Volume
-                                                ]),
+                                                          (bool? value) {},
+                                                    )),
+                                                    DataCell(Text(
+                                                        '20240731-000${index % 10 + 1}')),
+                                                    DataCell(
+                                                        Text('CC${index + 1}')),
+                                                    DataCell(Text(
+                                                        'Trade Name ${index + 1}')),
+                                                    DataCell(Text(
+                                                        'Spec Code ${index + 1}')),
+                                                    DataCell(Text(
+                                                        'From Name ${index + 1}')),
+                                                    DataCell(Text(
+                                                        'Goods Owner ${index + 1}')),
+                                                    DataCell(Text(
+                                                        'Supplier ${index + 1}')),
+                                                    DataCell(Text(
+                                                        '${(index + 1) * 10}')),
+                                                    DataCell(Text(
+                                                        '\$${(index + 1) * 100}')),
+                                                    DataCell(Text(
+                                                        '${(index + 1) * 5} kg')),
+                                                    DataCell(Text(
+                                                        '${(index + 1) * 0.5} m³')),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
