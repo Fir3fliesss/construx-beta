@@ -20,4 +20,6 @@ class AppColors {
 
   static const Color hitamAbu = Color(0x171D26);
 
+  static const Color nonactive = Color(0xD9D9D9);
+
 }

@@ -279,19 +279,23 @@ class ToBeSortedView extends StatelessWidget {
                                                   const DataCell(Text('-',
                                                       style: TextStyle(
                                                           fontSize: 12))),
-                                                  const DataCell(Icon(Icons.add,
-                                                      color:
-                                                          AppColors.textGelap,
-                                                      size: 16)),
-                                                  // const DataCell(Icon(
-                                                  //     Icons.edit,
-                                                  //     color:
-                                                  //         AppColors.textGelap,
-                                                  //     size: 16)),
-                                                  // const DataCell(Icon(
-                                                  //     Icons.delete,
-                                                  //     color: Colors.red,
-                                                  //     size: 16)),
+                                                  DataCell(
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: const [
+                                                        Icon(Icons.add,
+                                                            color: Colors.black),
+                                                        SizedBox(width: 10.0),
+                                                        Icon(Icons.edit,
+                                                            color: Colors.black),
+                                                        SizedBox(width: 10.0),
+                                                        Icon(Icons.delete,
+                                                            color: Colors.red),
+                                                      ],
+                                                    ),
+                                                  ),
                                                 ]),
                                               ),
                                             ),

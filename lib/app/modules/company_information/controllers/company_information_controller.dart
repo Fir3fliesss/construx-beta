@@ -19,7 +19,6 @@ class CompanyInformationController extends GetxController {
   ).obs;
 
   final formKey = GlobalKey<FormState>();
-// TODO: fix the loading bugs
 
   @override
   Future<void> onInit() async {

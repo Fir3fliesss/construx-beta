@@ -27,6 +27,11 @@ abstract class Routes {
   static const SHIPMENT_STATISTICS = _Paths.SHIPMENT_STATISTICS;
   static const WAREHOUSE_PROCESSING = _Paths.WAREHOUSE_PROCESSING;
   static const INVENTORY_MOVE = _Paths.INVENTORY_MOVE;
+  static const INVENTORY_FREEZE = _Paths.INVENTORY_FREEZE;
+  static const INVENTORY_ADJUST = _Paths.INVENTORY_ADJUST;
+  static const INVENTORY_TAKE = _Paths.INVENTORY_TAKE;
+  static const DELIVERY_MANAGEMENT = _Paths.DELIVERY_MANAGEMENT;
+  static const VISUAL_WAREHOUSE = _Paths.VISUAL_WAREHOUSE;
 }
 
 abstract class _Paths {
@@ -61,4 +66,9 @@ abstract class _Paths {
   static const SHIPMENT_STATISTICS = '/shipment-statistics';
   static const WAREHOUSE_PROCESSING = '/warehouse-processing';
   static const INVENTORY_MOVE = '/inventory-move';
+  static const INVENTORY_FREEZE = '/inventory-freeze';
+  static const INVENTORY_ADJUST = '/inventory-adjust';
+  static const INVENTORY_TAKE = '/inventory-take';
+  static const DELIVERY_MANAGEMENT = '/delivery-management';
+  static const VISUAL_WAREHOUSE = '/visual-warehouse';
 }

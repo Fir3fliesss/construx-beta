@@ -346,14 +346,14 @@ class _LeftBarState extends State<LeftBar>
                           iconData: LucideIcons.packageCheck,
                           title: "Delivery Management".tr(),
                           isCondensed: isCondensed,
-                          route: '',
+                          route: '/delivery-management',
                         ),
                         const SizedBox(height: 10),
                         NavigationItem(
                           iconData: LucideIcons.mapPin,
                           title: "Visual Warehouse".tr(),
                           isCondensed: isCondensed,
-                          route: '',
+                          route: '/visual-warehouse',
                         ),
                         // NavigationItemCustom(
                         //   iconData: job,
