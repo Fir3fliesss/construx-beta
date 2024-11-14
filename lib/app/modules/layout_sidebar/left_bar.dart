@@ -205,7 +205,7 @@ class _LeftBarState extends State<LeftBar>
                         //Dashboard
                         GetBuilder<LayoutController>(builder: (dashboard) {
                           return MenuWidgetDrawer(
-                            iconData: LucideIcons.layoutDashboard,
+                            iconData: LucideIcons.settings,
                             isCondensed: isCondensed,
                             title: "Basic Settings",
                             children: [
@@ -269,14 +269,14 @@ class _LeftBarState extends State<LeftBar>
                         }),
                         const SizedBox(height: 10),
                         NavigationItem(
-                          iconData: LucideIcons.calendarDays,
-                          title: "Receiving".tr(),
+                          iconData: LucideIcons.boxes,
+                          title: "Receiving\nManagement".tr(),
                           isCondensed: isCondensed,
                           route: '/receiving-management',
                         ),
                         const SizedBox(height: 10),
                         NavigationItem(
-                          iconData: LucideIcons.users,
+                          iconData: LucideIcons.warehouse,
                           title: "Stock Management".tr(),
                           isCondensed: isCondensed,
                           route: '/stock-management',
@@ -284,7 +284,7 @@ class _LeftBarState extends State<LeftBar>
                         const SizedBox(height: 10),
                         GetBuilder<LayoutController>(builder: (task) {
                           return MenuWidgetDrawer(
-                            iconData: LucideIcons.clipboardList,
+                            iconData: LucideIcons.pieChart,
                             isCondensed: isCondensed,
                             title: "Statistic Analystic",
                             children: [
@@ -306,10 +306,52 @@ class _LeftBarState extends State<LeftBar>
                             ],
                           );
                         }),
+                         const SizedBox(height: 10),
+                        GetBuilder<LayoutController>(builder: (task) {
+                          return MenuWidgetDrawer(
+                            iconData: LucideIcons.hardHat,
+                            isCondensed: isCondensed,
+                            title: "Warehouse Working",
+                            children: [
+                              MenuItemDrawer(
+                                title: "Warehouse Processing".tr(),
+                                route: '/warehouse-processing',
+                                isCondensed: widget.isCondensed,
+                              ),
+                              MenuItemDrawer(
+                                title: "Inventory Move".tr(),
+                                route: '/inventory-move',
+                                isCondensed: widget.isCondensed,
+                              ),
+                              MenuItemDrawer(
+                                title: "Inventory freeze".tr(),
+                                route: '/inventory-freeze',
+                                isCondensed: widget.isCondensed,
+                              ),
+                              MenuItemDrawer(
+                                title: "Inventory adjust".tr(),
+                                route: '/inventory-adjust',
+                                isCondensed: widget.isCondensed,
+                              ),
+                              MenuItemDrawer(
+                                title: "Inventory Take".tr(),
+                                route: '/inventory-take',
+                                isCondensed: widget.isCondensed,
+                              ),
+                            ],
+                          );
+                        }),
                         const SizedBox(height: 10),
                         NavigationItem(
-                          iconData: LucideIcons.file,
-                          title: "Documents".tr(),
+                          iconData: LucideIcons.packageCheck,
+                          title: "Delivery Management".tr(),
+                          isCondensed: isCondensed,
+                          route: '',
+                        ),
+                        const SizedBox(height: 10),
+                        NavigationItem(
+                          iconData: LucideIcons.mapPin,
+                          title: "Visual Warehouse".tr(),
                           isCondensed: isCondensed,
                           route: '',
                         ),

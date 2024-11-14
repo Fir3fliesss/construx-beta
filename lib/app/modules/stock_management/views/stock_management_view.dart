@@ -7,8 +7,8 @@ import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
 import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
 
 class StockManagementView extends StatelessWidget {
-  final StockManagementController controller =
-      Get.put(StockManagementController());
+final StockManagementController controller = Get.put(StockManagementController());
+
 
   @override
   Widget build(BuildContext context) {
