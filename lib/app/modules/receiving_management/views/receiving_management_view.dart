@@ -5,6 +5,7 @@ import 'package:construx_beta/constanta/app_colors.dart';
 import 'package:construx_beta/app/modules/receiving_management/views/tab_button.dart';
 import 'package:construx_beta/app/modules/layout_sidebar/layout.dart';
 import 'package:construx_beta/app/modules/layout_sidebar/sidemenu_dashboard.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class ReceivingManagementView extends StatelessWidget {
   final ReceivingManagementController controller =
@@ -50,13 +51,13 @@ class ReceivingManagementView extends StatelessWidget {
                         children: [
                           Expanded(
                               child: buildTabButton(0, "Notice Of Arrival",
-                                  Icons.note, '/receiving-management')),
+                                  LucideIcons.clipboardList, '/receiving-management')),
                           SizedBox(
                             width: 8.0,
                           ),
                           Expanded(
                               child: buildTabButton(1, "To be Delivered",
-                                  Icons.local_shipping, '/to-be-delivered')),
+                                   LucideIcons.bus, '/to-be-delivered')),
                           SizedBox(
                             width: 8.0,
                           ),
@@ -68,19 +69,19 @@ class ReceivingManagementView extends StatelessWidget {
                           ),
                           Expanded(
                               child: buildTabButton(3, "To be Sorted",
-                                  Icons.sort_outlined, '/to-be-sorted')),
+                                   LucideIcons.packageSearch, '/to-be-sorted')),
                           SizedBox(
                             width: 8.0,
                           ),
                           Expanded(
                               child: buildTabButton(4, "To be Put On The Shelf",
-                                  Icons.inventory, '/put-on-shelf')),
+                                  LucideIcons.inbox, '/put-on-shelf')),
                           SizedBox(
                             width: 8.0,
                           ),
                           Expanded(
                               child: buildTabButton(5, "Receipt Details",
-                                  Icons.receipt, '/receipt-details')),
+                                  LucideIcons.packageCheck, '/receipt-details')),
                         ],
                       ),
                     ),
